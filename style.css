@@ -43,12 +43,13 @@ body {
 .welcome-section h1 {
   font-size: 60px;
   color: white;
-  padding:50px;
+ 
 }
 h1 {
   font-size: 50px;
   color: white;
   text-align: center;
+  padding:50px;
 }
 h2 {
   color: rgb(200, 200,100 );
@@ -121,7 +122,6 @@ a {
 .projects-section-header {
   max-width: 640px;
   margin: 0 auto 6rem auto;
-padding-bottom: 50px;
   border-bottom: 0.2rem solid #f0f0f0;
 }
 
