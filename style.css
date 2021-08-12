@@ -114,6 +114,7 @@ a {
   text-align: center;
   padding: 150px 2rem;
    background-image: linear-gradient(62deg, #de6262  0%, #ffb88c 100%);
+   
 }
 
 
@@ -137,7 +138,7 @@ a {
   max-width: 1300px;
   margin: 0 auto;
   margin-bottom: 6rem;
-  padding:100px;
+
 }
 
 @media (max-width:482px) {
