@@ -182,7 +182,7 @@ background-image: linear-gradient(90deg, #516395 0%, #614385 100%);
 
 .project-title {
   font-size: 20px;
-  padding: 100px;
+  padding: 2rem 0.5rem;
 }
 .projects-grid p {
   font-size: 21px;
