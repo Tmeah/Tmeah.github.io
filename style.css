@@ -121,7 +121,7 @@ a {
 .projects-section-header {
   max-width: 640px;
   margin: 0 auto 6rem auto;
-  padding: 100px;
+
   border-bottom: 0.2rem solid #f0f0f0;
 }
 
@@ -139,6 +139,7 @@ a {
   max-width: 1300px;
   margin: 0 auto;
   margin-bottom: 6rem;
+  padding-top: 100px;
 
 }
 
