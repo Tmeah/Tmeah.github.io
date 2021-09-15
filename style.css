@@ -337,11 +337,7 @@ animation: animate-wave 500ms infinite ease-in-out;
   transition: all 300ms ;
 }
 
-.react{
-  height: 100px;
-  max-width: 200px;
 
-}
 
 .language:hover .language__img{
 filter: brightness(80%);
