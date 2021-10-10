@@ -478,6 +478,7 @@ footer {
   width: 70px;
   height: 70px;
 }
+
 .footer__social--list {
   width: 100%;
   display: flex;
@@ -518,4 +519,32 @@ footer {
   transform: translateX(60px);
 
   opacity: 1;
+}
+
+.header__logo--img {
+  width: 60px;
+  height: 60px;
+}
+
+.header__logo--popper {
+  position: absolute;
+  color: black;
+  top: 0px;
+  right: 20px;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.header__anchor {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.header__logo--popper1 {
+  transform: translateX(160px);
+  opacity: 1;
+}
+
+.header__logo--hover:hover {
+  opacity: 0.5;
 }
