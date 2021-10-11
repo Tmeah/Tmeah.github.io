@@ -19,3 +19,9 @@ function toggleContrast() {
     document.body.classList.remove("dark-theme");
   }
 }
+
+function click() {
+  document.getElementsByClassName("click").classList.toggle("click");
+}
+
+addEventListener("click", function () {});

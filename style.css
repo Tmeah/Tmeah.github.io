@@ -199,6 +199,39 @@ section {
   font-weight: bold;
 }
 
+.btn__mail {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  color: white;
+  font-size: 32px;
+  border: 2px solid #242424;
+  background-color: #242424;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 99;
+  padding: 4px;
+  transition: all 300ms ease;
+}
+
+.btn__mail i:hover {
+  opacity: 1;
+}
+
+.click {
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.click:hover {
+  transform: scale(1.1);
+}
+
+.click:active {
+  transform: scale(0.8);
+}
+
 .dark-theme .title,
 .dark-theme section,
 .dark-theme .section__sub-title,
