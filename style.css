@@ -249,6 +249,12 @@ section {
 .dark-theme .languages {
   background-color: #242424;
 }
+
+.dark-theme .btn__mail {
+  background-color: #f5f5f5;
+  color: #242424;
+}
+
 .dark-theme section {
   background-color: #242424;
 }
