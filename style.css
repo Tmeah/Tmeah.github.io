@@ -619,7 +619,7 @@ footer {
 
   .project__description {
     padding: 0;
-    left: 0;
+    left: 12px;
     width: 100%;
   }
 
