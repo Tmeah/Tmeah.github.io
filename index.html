@@ -8,30 +8,36 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
   <script src="index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+(function() {
+emailjs.init("user_BBq1wqUbR0NpeCxXj9acX");
+})();
+</script>
 </head>
 
 
 
 <body>
-  <section id="about__me">
+  <section id="landing-page" onmousemove="moveBackground(event)">
     <nav id="navbar" class="nav">
       <div class="personal_logo header__logo--hover" id="header__logo--hover" onclick="stopOpac()" > <a href="#" class="header__anchor" ">
-        <figure class="header__logo " onclick="openHeader()" >
+        <figure class="header__logo" onclick="openHeader()" >
 
           <img src="logo white.jpg" alt="" class="header__logo--img" >
         </figure>
         <span class="header__logo--popper" id="header__anchor">
-          Tausif Meah
+         <h4>Tausif Meah</h4> 
           
         </span>
       </a></div>
       <ul class="nav-list">
-        <li class="nav__link">
-          <a href="#languages" class="
+        <li class="nav__link" onclick="toggleModal()">
+          <a href="#" class="
           nav__link--anchor
           link__hover--effect
           link__hover--effect--black
-          ">Languages</a>
+          ">About Me</a>
         </li>
         <li class="nav__link">
           <a href="#projects" class="
@@ -41,10 +47,10 @@
           ">Projects</a>
         </li>
         <li class="nav__link">
-          <a href="mailto:tausifmeah@gmail.com" target="_blank" class="nav_link--anchor
+          <a href="#"  class="nav_link--anchor
     
           nav__link--anchor--primary
-          ">Contact</a>
+          " onclick="toggleModal()">Contact</a>
         </li>
         <li class="nav__link" onclick="toggleContrast()">
           <a href="#" class="
@@ -60,10 +66,11 @@
           <h1 class="about__me__info--title">Hey</h1> <h1 class="about__me__info--title text--blue"> I'm  Tausif. </h1>
           <p class="about__me__info--para"> I am a <strong class="text--blue"> front-end software engineer
             </strong> with a drive for
-            developing responsive and perfomant web applications which enrich user experiences and positively impact the
-            world. </p>
+            developing responsive and perfomant web applications which enrich user experiences. <br>
+             Heres a bit more <span class="text--blue click" onclick="toggleModal()">about me.</span>
+          </p>
           <div class="about__me_links">
-            <a href="mailto:tausifmeah@gmail.com" target="_blank" class="about__me_link">
+            <a href="#" class="about__me_link" onclick="toggleModal()">
               <i class="far fa-envelope"></i>
             </a>
 
@@ -82,9 +89,92 @@
       </div>
     </header>
     <a href="#" >
-    <button class="btn__mail click" onclick="click()"> 
-       <i class="fas fa-envelope"></i>
+    <button class="btn__mail click" onclick="toggleModal()"> 
+
+       <i class="fas fa-envelope click" ></i>
     </button></a>
+
+      <div class="modal">
+       
+        <div class="modal__half modal__about"><h3 class="modal__title  modal__title--about"> Here's a bit about me.</h3>
+        <h4 class="modal__subtitle modal__subtitle--about"> Frontend Software Engineer</h4>
+         <p class="modal__para">I'm a 21 year old <span class="text--blue"><b>Software Engineer</b> </span>  based in Wales with a strong passion for developing websites with  <span class="text--blue"><b>great user experiences.</b></span> <br>
+        I currently work on extremely difficult engineering problems and learn from my mentors/teachers consisting of some of the most <span class="text--blue"><b>talented</b> </span>  and <span class="text--blue"><b>experienced</b> </span>software engineers every day.
+        </p>
+
+        <div class="modal__languages">
+            <figure class="modal__language" >
+              <img class="modal__langauage--img"  
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+              alt="Html Logo"/>
+             <span class="language__name">HTML</span>   
+            </figure>
+
+           
+    
+         
+            <figure class="modal__language">
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png" alt="CSS Logo"
+                  />
+             <span class="language__name">CSS</span>     
+            </figure>
+
+ 
+        
+          
+            <figure class="modal__language">
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="JavaScript Logo"
+                class=/>
+             <span class="language__name">JavaScript</span>     
+            </figure>
+
+            
+       
+         
+            <figure class="modal__language" >
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/react-3-1175109.png" alt="React Logo"  />
+             <span class="language__name">React</span>   
+            </figure>
+        
+          
+        </div>
+    
+
+
+      </div>
+      <div class="modal__half modal__contact">
+        <i class="fas fa-times modal__exit click" click onclick="toggleModal()" ></i>
+        <div class="modal__title modal__title--contact">
+         <h3 class="modal__sub--title modal__subtitle--contact"> Let's have a chat!</h3>
+         <h3 class="modal__subtitle modal__subtitle--contact"> I'm currently open to new opprtunities.</h3>
+         <form  id="contact__form" onsubmit="contact(event)">
+           <div class="form__item">
+             <label class="form__item--label" >Name</label>
+             <input class="input" name="user_name"   type="text" required></input>
+           </div>
+           <div class="form__item">
+            <label class="form__item--label" >E-mail</label>
+            <input class="input" name="user_email"   type="email"   required></input>
+          </div>
+          <div class="form__item">
+            <label class="form__item--label" >Message</label>
+            <textarea class="input" name="message" type="text" required></textarea>
+          </div>
+           <button id="contact__submit" class="form__submit">Send it my way</button>
+         </form>
+         <div class="modal__overlay modal__overlay--loading">
+           <i class="fas fa-spinner"></i>
+         </div>
+         <div class="modal__overlay modal__overlay--success">
+           Thanks for the message! looking forward to speaking to you soon.
+         </div>
+        </div>
+
+      </div>
+
+      </div>
+
+
     <img src="bloblong copy 2.svg" class="shape shape--0">
     <img src="bloblong copy 2.svg" class="shape shape--1">
     <img src="bloblong copy 2.svg" class="shape shape--2">
@@ -97,56 +187,12 @@
   
   </section>
 
-  <section id="languages">
-    <div class="container">
-      <div class="row">
-        <div class="languages">
-        <h1 class="section-title">This is my <span class="text--blue">Technology stack </span> </h1>
-        <div class="language_list">
-          <div class="language">
-            <figure class="language__img--wrapper">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
-                alt="Html Logo" class="language__img" />
-            </figure>
-
-            <span class="language__name">HTML</span>
-          </div>
-          <div class="language">
-            <figure class="language__img--wrapper">
-              <img src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png" alt="CSS Logo"
-                class="language__img" />
-            </figure>
-
-            <span class="language__name">CSS</span>
-          </div>
-          <div class="language">
-            <figure class="language__img--wrapper">
-              <img src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="JavaScript Logo"
-                class="language__img" />
-            </figure>
-
-            <span class="language__name">JavaScript</span>
-          </div>
-          <div class="language">
-            <figure class="language__img--wrapper">
-              <img src="react_coming1-remove.png" alt="React Logo" class="language__img
-                
-              react" />
-            </figure>
-            <span class="language__name">React</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-  </section>
-  <section id="projects">
+ 
+  <section id="projects" >
     <div class="container">
       <div class="row">
 
-        <h1 class="section-title"> Below are some of my <span class="text--blue">projects </span> </h1>
+        <h1 class="section__title"> Below are some of my <span class="text--blue">projects </span> </h1>
         <ul class="projects__list">
           <li class="project">
             <div class="project__wrapper">
@@ -279,9 +325,9 @@
         <a href="Software CV.pdf" target="_blank" class="footer__social--link 
     link__hover--effect
     link__hover--effect--white"><i></i> CV </a>
-        <a href="mailto:tausifmeah@gmail.com" class="footer__social--link 
+        <a href="#" class="footer__social--link 
     link__hover--effect
-    link__hover--effect--white"><i class="fas fa-at"></i> Email </a>
+    link__hover--effect--white" onclick="toggleModal()"> Contact</a>
 
       </div>
       <div class="footer__copyright">
