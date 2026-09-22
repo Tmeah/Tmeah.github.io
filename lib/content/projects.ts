@@ -11,9 +11,9 @@ export const flagshipProjects: FlagshipProject[] = [
     role: "Founder & full stack developer",
     timeline: "2024 – Present",
     liveUrl: "https://viralz.app/",
-    thumbnail: "/projects/viralz-1.webp",
+    thumbnail: "/projects/viralz-live.png",
     gallery: [
-      "/projects/viralz-1.webp",
+      "/projects/viralz-live.png",
       "/projects/viralz-2.webp",
       "/projects/viralz-3.webp",
     ],
@@ -61,9 +61,9 @@ export const flagshipProjects: FlagshipProject[] = [
     role: "Lead developer",
     timeline: "2023 – Present",
     liveUrl: "https://getgogrow.app/",
-    thumbnail: "/projects/gogrow-1.webp",
+    thumbnail: "/projects/gogrow-live.png",
     gallery: [
-      "/projects/gogrow-1.webp",
+      "/projects/gogrow-live.png",
       "/projects/gogrow-2.webp",
       "/projects/gogrow-3.webp",
     ],

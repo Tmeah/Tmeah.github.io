@@ -3,7 +3,8 @@ import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/lib/content/site";
 import "./globals.css";
-import "./portfolio.css";
+import "./live.css";
+import "./live-fixes.css";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -53,7 +54,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${roboto.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="portfolio min-h-full flex flex-col antialiased">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+      </head>
+      <body className="min-h-full flex flex-col antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
