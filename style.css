@@ -464,6 +464,12 @@ nav,
 
 .modal__langauage--img {
   width: 100%;
+  max-width: 64px;
+  height: auto;
+}
+
+.modal__contact a.text--blue {
+  color: #0074d9;
 }
 
 .modal__contact {

@@ -1,6 +1,16 @@
 let contrastToggle = false;
 let isModalOpen = false;
 const scaleFactor = 1 / 20;
+
+const EMAILJS_PUBLIC_KEY = "user_BBq1wqUbR0NpeCxXj9acX";
+const EMAILJS_SERVICE_ID = "service_3z6t7ek";
+const EMAILJS_TEMPLATE_ID = "template_xpg0xms";
+const CONTACT_EMAIL = "tausifmeah@gmail.com";
+
+if (typeof emailjs !== "undefined") {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
 function moveBackground(event) {
   const shapes = document.querySelectorAll(".shape");
   const x = event.clientX * scaleFactor;
@@ -23,6 +33,7 @@ function stopOpac() {
     .getElementById("header__logo--hover")
     .classList.toggle("header__logo--hover");
 }
+
 function toggleContrast() {
   contrastToggle = !contrastToggle;
   if (contrastToggle) {
@@ -32,35 +43,46 @@ function toggleContrast() {
   }
 }
 
-// template_xpg0xms
-// service_3z6t7ek
-// user_BBq1wqUbR0NpeCxXj9acX
+function openMailtoFallback(name, email, message) {
+  const subject = encodeURIComponent(`Portfolio message from ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\n${message}`
+  );
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+}
 
-function contact() {
+function contact(event) {
   event.preventDefault();
+  const form = event.target;
   const loading = document.querySelector(".modal__overlay--loading");
   const success = document.querySelector(".modal__overlay--success");
-  loading.classList += " modal__overlay--visible";
+  loading.classList.add("modal__overlay--visible");
+
+  if (typeof emailjs === "undefined") {
+    loading.classList.remove("modal__overlay--visible");
+    openMailtoFallback(
+      form.user_name.value,
+      form.user_email.value,
+      form.message.value
+    );
+    return;
+  }
 
   emailjs
-    .sendForm(
-      "service_3z6t7ek",
-      "template_xpg0xms",
-      event.target,
-      "user_BBq1wqUbR0NpeCxXj9acX"
-    )
+    .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
     .then(() => {
       loading.classList.remove("modal__overlay--visible");
-      success.classList += " modal__overlay--visible";
+      success.classList.add("modal__overlay--visible");
+      form.reset();
     })
     .catch(() => {
       loading.classList.remove("modal__overlay--visible");
-      alert(
-        "The email service is temporarily unavailable. Please contact me directly on tausifmeah@gmail.com"
+      openMailtoFallback(
+        form.user_name.value,
+        form.user_email.value,
+        form.message.value
       );
     });
-
-  setTimeout(() => {});
 }
 
 function toggleModal() {
@@ -69,5 +91,5 @@ function toggleModal() {
     return document.body.classList.remove("modal--open");
   }
   isModalOpen = true;
-  document.body.classList += " modal--open";
+  document.body.classList.add("modal--open");
 }
