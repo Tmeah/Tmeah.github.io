@@ -49,12 +49,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { prev, next } = getAdjacentProjects(slug);
 
   return (
-    <>
+    <div className="portfolio">
       <SiteHeader />
       <main id="main-content">
         <CaseStudyLayout project={project} prev={prev} next={next} />
       </main>
       <SiteFooter />
-    </>
+    </div>
   );
 }

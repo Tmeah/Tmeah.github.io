@@ -9,7 +9,7 @@ import { SkillsSection } from "@/components/sections/skills-section";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="portfolio">
       <SiteHeader />
       <main id="main-content">
         <HeroSection />
@@ -20,6 +20,6 @@ export default function HomePage() {
         <ContactSection />
       </main>
       <SiteFooter />
-    </>
+    </div>
   );
 }

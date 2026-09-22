@@ -1,33 +1,22 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { skillGroups } from "@/lib/content/skills";
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="scroll-mt-20 py-20 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading
-          eyebrow="Skills"
-          title="Tools I use in production"
-          description="Grouped the same way as my CV—languages through cloud and testing."
-        />
-        <div className="grid gap-6 md:grid-cols-2">
+    <section className="section" id="skills">
+      <div className="section__inner">
+        <h2 className="section__title">
+          Technical <span>skills</span>
+        </h2>
+        <div className="skill-grid">
           {skillGroups.map((group) => (
-            <Card key={group.title} className="border-border/80">
-              <CardHeader>
-                <CardTitle className="text-lg">{group.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <Badge key={item} variant="outline">
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <div className="skill-card" key={group.title}>
+              <h3>{group.title}</h3>
+              <div className="pills">
+                {group.items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

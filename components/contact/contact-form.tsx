@@ -64,7 +64,13 @@ export function ContactForm() {
     <form onSubmit={onSubmit} className="space-y-4" noValidate={false}>
       <div className="space-y-2">
         <Label htmlFor="user_name">Name</Label>
-        <Input id="user_name" name="user_name" required autoComplete="name" />
+        <Input
+          id="user_name"
+          name="user_name"
+          required
+          autoComplete="name"
+          className="border-0 border-b border-white/40 bg-transparent text-white shadow-none"
+        />
       </div>
       <div className="space-y-2">
         <Label htmlFor="user_email">Email</Label>
@@ -74,13 +80,20 @@ export function ContactForm() {
           type="email"
           required
           autoComplete="email"
+          className="border-0 border-b border-white/40 bg-transparent text-white shadow-none"
         />
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" required rows={5} />
+        <Textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          className="border-0 border-b border-white/40 bg-transparent text-white shadow-none"
+        />
       </div>
-      <Button type="submit" disabled={status === "loading"} className="w-full sm:w-auto">
+      <Button type="submit" disabled={status === "loading"} className="mt-2 bg-[#0074d9] text-white hover:bg-transparent hover:text-white">
         {status === "loading" ? "Sending…" : "Send message"}
       </Button>
       {status === "success" ? (
