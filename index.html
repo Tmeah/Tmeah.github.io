@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tausif Meah</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+(function() {
+emailjs.init("user_BBq1wqUbR0NpeCxXj9acX");
+})();
+</script>
+</head>
+
+
+
+<body>
+  <section id="landing-page" onmousemove="moveBackground(event)">
+    <nav id="navbar" class="nav">
+      <div class="personal_logo header__logo--hover" id="header__logo--hover" onclick="stopOpac()" > <a href="#" class="header__anchor" ">
+        <figure class="header__logo" onclick="openHeader()" >
+
+          <img src="logo white.jpg" alt="" class="header__logo--img" >
+        </figure>
+        <span class="header__logo--popper" id="header__anchor">
+         <h4>Tausif Meah</h4> 
+          
+        </span>
+      </a></div>
+      <ul class="nav-list">
+        <li class="nav__link" onclick="toggleModal()">
+          <a href="#" class="
+          nav__link--anchor
+          link__hover--effect
+          link__hover--effect--black
+          ">About Me</a>
+        </li>
+        <li class="nav__link">
+          <a href="#projects" class="
+          nav__link--anchor
+          link__hover--effect
+          link__hover--effect--black
+          ">Projects</a>
+        </li>
+        <li class="nav__link">
+          <a href="#"  class="nav_link--anchor
+    
+          nav__link--anchor--primary
+          " onclick="toggleModal()">Contact</a>
+        </li>
+        <li class="nav__link" onclick="toggleContrast()">
+          <a href="#" class="
+          nav__link--anchor
+          
+          link__hover--effect--black
+          "><i class="fas fa-adjust"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <header class="header">
+      <div class="header__content">
+          <h1 class="about__me__info--title">Hey</h1> <h1 class="about__me__info--title text--blue"> I'm  Tausif. </h1>
+          <p class="about__me__info--para"> I am a <strong class="text--blue"> front-end software engineer
+            </strong> with a drive for
+            developing responsive and performant web applications which enrich user experiences. <br>
+             Heres a bit more <span class="text--blue click" onclick="toggleModal()">about me.</span>
+          </p>
+          <div class="about__me_links">
+            <a href="#" class="about__me_link" onclick="toggleModal()">
+              <i class="far fa-envelope"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/tausif-meah/" target="_blank" class="about__me_link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Tmeah" target="_blank" class="about__me_link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="Tausif Meah - CV.pdf" target="_blank" class="about__me_link">
+              <i class="fas fa-file-pdf"></i>
+            </a>
+          </div>
+      
+      
+      </div>
+    </header>
+    <a href="#" >
+    <button class="btn__mail click" onclick="toggleModal()"> 
+
+       <i class="fas fa-envelope click" ></i>
+    </button></a>
+
+      <div class="modal">
+       
+        <div class="modal__half modal__about"><h3 class="modal__title  modal__title--about"> Here's a bit about me.</h3>
+        <h4 class="modal__subtitle modal__subtitle--about"> Frontend Software Engineer</h4>
+         <p class="modal__para">I'm a 22 year old <span class="text--blue"><b>Software Engineer</b> </span>  based in Wales with a strong passion for developing websites with  <span class="text--blue"><b>great user experiences.</b></span> <br>
+        I currently work on extremely difficult engineering problems and learn from my mentors/teachers consisting of some of the most <span class="text--blue"><b>talented</b> </span>  and <span class="text--blue"><b>experienced</b> </span>software engineers every day.
+        </p>
+
+        <div class="modal__languages">
+            <figure class="modal__language" >
+              <img class="modal__langauage--img"  
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+              alt="Html Logo"/>
+             <span class="language__name">HTML</span>   
+            </figure>
+
+           
+    
+         
+            <figure class="modal__language">
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png" alt="CSS Logo"
+                  />
+             <span class="language__name">CSS</span>     
+            </figure>
+
+ 
+        
+          
+            <figure class="modal__language">
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="JavaScript Logo"
+                class=/>
+             <span class="language__name">JavaScript</span>     
+            </figure>
+
+            
+       
+         
+            <figure class="modal__language" >
+              <img class="modal__langauage--img" src="https://cdn.iconscout.com/icon/free/png-256/react-3-1175109.png" alt="React Logo"  />
+             <span class="language__name">React</span>   
+            </figure>
+        
+          
+        </div>
+    
+
+
+      </div>
+      <div class="modal__half modal__contact">
+        <i class="fas fa-times modal__exit click" click onclick="toggleModal()" ></i>
+        <div class="modal__title modal__title--contact">
+         <h3 class="modal__sub--title modal__subtitle--contact"> Let's have a chat!</h3>
+         <h3 class="modal__subtitle modal__subtitle--contact"> I'm currently open to new opprtunities.</h3>
+         <form  id="contact__form" onsubmit="contact(event)">
+           <div class="form__item">
+             <label class="form__item--label" >Name</label>
+             <input class="input" name="user_name"   type="text" required></input>
+           </div>
+           <div class="form__item">
+            <label class="form__item--label" >E-mail</label>
+            <input class="input" name="user_email"   type="email"   required></input>
+          </div>
+          <div class="form__item">
+            <label class="form__item--label" >Message</label>
+            <textarea class="input" name="message" type="text" required></textarea>
+          </div>
+           <button id="contact__submit" class="form__submit">Send it my way</button>
+         </form>
+         <div class="modal__overlay modal__overlay--loading">
+           <i class="fas fa-spinner"></i>
+         </div>
+         <div class="modal__overlay modal__overlay--success">
+           Thanks for the message! looking forward to speaking to you soon.
+         </div>
+        </div>
+
+      </div>
+
+      </div>
+
+
+    <img src="bloblong copy 2.svg" class="shape shape--0">
+    <img src="bloblong copy 2.svg" class="shape shape--1">
+    <img src="bloblong copy 2.svg" class="shape shape--2">
+    <img src="bloblong copy.svg" class="shape shape--3">
+    <img src="bloblong copy.svg" class="shape shape--4">
+    <img src="bloblong copy.svg" class="shape shape--5">
+    <img src="bloblong.svg" class="shape shape--6">
+    <img src="bloblong.svg" class="shape shape--7">
+    <img src="bloblong.svg" class="shape shape--8">
+  
+  </section>
+
+ 
+  <section id="projects" >
+    <div class="container">
+      <div class="row">
+
+        <h1 class="section__title"> Below are some of my <span class="text--blue">projects </span> </h1>
+        <ul class="projects__list">
+          <li class="project">
+            <div class="project__wrapper">
+              <img class="project__img" src="reactss.png" alt="N/A">
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  React Templates Site
+                </h3>
+                <h4 class="project__description--sub-title">
+                  HTML,CSS,JavaScript
+                </h4>
+                <p class="project__description--para">
+              A Webpage for React Templates. Stunning design, with the functionality to match.
+                </p>
+                <div class="project__description--links">
+                  <a href="https://github.com/Tmeah/react-templates-page" target="_blank" class="project__description--link">
+                    <i class="fab fa-github"></i> </a>
+                  <a href="https://tausifmeah.co.uk/react-templates-page/" target="_blank" class="project__description--link">
+                    <i class="fas fa-globe"></i></a>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project__wrapper">
+              <img class="project__img" src="trvlwales.png" alt="">
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  Travel Website (React)
+                </h3>
+                <h4 class="project__description--sub-title">
+                  React,HTML,CSS,JavaScript
+                </h4>
+                <p class="project__description--para">
+                 A travel/holiday booking webpage based in Wales, made using React technologies.
+
+                </p>
+                <div class="project__description--links">
+                  <a href="https://github.com/Tmeah01/react-travel" target="_blank" class="project__description--link">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://tmeah01.github.io/react-travel/" target="_blank" class="project__description--link">
+                    <i class="fas fa-globe"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project__wrapper">
+              <img class="project__img" src="numberguesser.png" alt="survey">
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  Number Guesser
+                </h3>
+                <h4 class="project__description--sub-title">
+                  HTML,CSS,JavaScript
+                </h4>
+                <p class="project__description--para">
+                 A retro themed number guessing game capable of tracking highscores and allowing the user to play new games over and over.
+
+                </p>
+                <div class="project__description--links">
+                  <a href="https://github.com/Tmeah/Number-guesser" target="_blank" class="project__description--link">
+                    <i class="fab fa-github"></i> </a>
+                    <a href="https://tausifmeah.co.uk/Number-guesser/" target="_blank" class="project__description--link">
+                      <i class="fas fa-globe"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+  
+          <li class="project">
+            <div class="project__wrapper">
+              <img class="project__img" src="e-commerce.png" alt="N/A">
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  E-commerce Store
+                </h3>
+                <h4 class="project__description--sub-title">
+                  HTML,CSS,JavaScript
+                </h4>
+                <p class="project__description--para">
+                 An E-commerce Store showcasing books as the product, with a section for the featured books and latest books.  </p>
+                <div class="project__description--links">
+                  <a href="https://github.com/Tmeah/e-commerce" target="_blank" class="project__description--link">
+                    <i class="fab fa-github"></i> </a>
+                  <a href="https://tausifmeah.co.uk/e-commerce/" target="_blank" class="project__description--link">
+                    <i class="fas fa-globe"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project__wrapper">
+              <img class="project__img" src="dice.png" alt="">
+              <div class="project__description">
+                <h3 class="project__description--title">
+                  Dice Game
+                </h3>
+                <h4 class="project__description--sub-title">
+                  HTML,CSS,JavaScript
+                </h4>
+                <p class="project__description--para">
+                 A 2-player dice game where either player has to roll to 100 to win. Be careful for the 1's!
+
+                </p>
+                <div class="project__description--links">
+                  <a href="https://tausifmeah.co.uk/Dice-game/" target="_blank" class="project__description--link">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://tausifmeah.co.uk/Dice-game/" target="_blank" class="project__description--link">
+                    <i class="fas fa-globe"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          
+         
+        </ul>
+
+
+      </div>
+    </div>
+    </div>
+
+  </section>
+
+
+
+  <footer id="contact">
+    <div class="row footer__row">
+      <a href="#" class="footer__anchor">
+        <figure class="footer__logo">
+
+          <img src="logo.jpg" alt="" class="footer__logo--img">
+        </figure>
+        <span class="footer__logo--popper">
+          Top
+          <i class="fas fa-arrow-up"></i>
+        </span>
+      </a>
+
+      <div class="footer__social--list">
+        <a href="https://www.linkedin.com/in/tausif-meah/" id="profile-link" target="_blank" class="footer__social--link 
+    link__hover--effect
+    link__hover--effect--white"> LinkedIn </a>
+        <a href="https://github.com/Tmeah" target="_blank" class="footer__social--link 
+    link__hover--effect
+    link__hover--effect--white"><i></i> GitHub</a>
+
+        <a href="Tausif Meah - CV.pdf" target="_blank" class="footer__social--link 
+    link__hover--effect
+    link__hover--effect--white"><i></i> CV </a>
+        <a href="#" class="footer__social--link 
+    link__hover--effect
+    link__hover--effect--white" onclick="toggleModal()"> Contact</a>
+
+      </div>
+      <div class="footer__copyright">
+        &copy; Created by © Tausif Meah</div>
+    </div>
+
+</body>
+</footer>
+
+</html>
