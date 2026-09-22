@@ -27,7 +27,33 @@ npm run build
 
 Static output is written to `out/` for GitHub Pages.
 
-## Deploy to GitHub Pages
+## Dev site (no Vercel)
+
+### Option A — Share local work instantly
+
+With the dev server running (`npm run dev`), in another terminal:
+
+```bash
+npm run tunnel
+```
+
+That starts a **Cloudflare Tunnel** and prints a public `https://….trycloudflare.com` URL. No Vercel account required. The link stops when you stop the tunnel.
+
+### Option B — Stable dev subdomain (`dev.tausifmeah.co.uk`)
+
+GitHub Pages only (same stack as production):
+
+1. Create a **`dev`** branch and push it to your GitHub Pages repo.
+2. In DNS, add **CNAME** `dev` → `tmeah.github.io` (or your `*.github.io` host).
+3. In GitHub **Settings → Pages**, use **GitHub Actions** (same as production).
+4. The workflow [`.github/workflows/deploy-dev.yml`](.github/workflows/deploy-dev.yml) runs on pushes to **`dev`**, sets `public/CNAME` to `dev.tausifmeah.co.uk`, and deploys.
+
+**Note:** One Pages site per repo shares a single custom domain in GitHub settings. For **production** (`tausifmeah.co.uk`) and **dev** (`dev.tausifmeah.co.uk`) at the same time, use either:
+
+- **`dev` branch** deploys to the Pages URL while you test, then **`main`** redeploys production, or  
+- A **second repository** (e.g. `portfolio-dev`) with its own Pages + `dev.tausifmeah.co.uk` CNAME.
+
+## Deploy to GitHub Pages (production)
 
 1. Push this repository to `Tmeah/Tmeah.github.io` (or your user/organization Pages repo).
 2. In GitHub **Settings → Pages**, set source to **GitHub Actions**.
