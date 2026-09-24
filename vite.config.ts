@@ -1,12 +1,13 @@
 import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { firstPaint } from "./scripts/first-paint-plugin";
 
 const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
 export default defineConfig({
   appType: "mpa",
-  plugins: [react()],
+  plugins: [react(), firstPaint()],
   resolve: {
     alias: {
       "@": fromRoot("./src"),
