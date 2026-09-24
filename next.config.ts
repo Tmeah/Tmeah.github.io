@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  allowedDevOrigins: ["motorcycles-shop-reward-broad.trycloudflare.com"],
+  allowedDevOrigins: ["127.0.0.1", "localhost", "*.trycloudflare.com"],
 };
 
 export default nextConfig;

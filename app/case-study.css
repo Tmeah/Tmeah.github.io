@@ -15,6 +15,15 @@
   height: auto;
 }
 
+.case__band--viralz .case__band-visual img {
+  border-radius: 14% / 7%;
+}
+
+.case__band--gogrow .case__band-visual img {
+  border-radius: 13% 13% 0 0 / 8% 8% 0 0;
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+}
+
 .case__eyebrow {
   font-size: 13px;
   font-weight: 700;

@@ -13,6 +13,7 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
 
   return (
     <li
+      id={project.slug}
       className={`showcase showcase--${project.theme}${reverse ? " showcase--reverse" : ""}`}
     >
       {themeDetails.decorations}
