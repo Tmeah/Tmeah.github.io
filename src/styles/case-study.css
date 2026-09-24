@@ -302,6 +302,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
+  list-style: none;
   counter-reset: built;
 }
 
@@ -360,7 +361,7 @@
   gap: 14px;
   padding: 28px;
   border-radius: 18px;
-  background: var(--accent-soft);
+  background: linear-gradient(var(--accent-soft), var(--accent-soft)), var(--surface);
 }
 
 .case__outcomes li {
