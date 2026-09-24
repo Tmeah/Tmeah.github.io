@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useRef, type MouseEvent, type ReactNode } from "react";
 import { DeviceFrame } from "@/components/site/device-frame";
 import type { Project, ProjectTheme } from "@/content/types";
 
@@ -9,11 +9,29 @@ type ProjectShowcaseProps = {
 
 export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
   const themeDetails = getThemeDetails(project.theme);
+  const caseStudyLink = useRef<HTMLAnchorElement>(null);
+
+  function openCaseStudy(event: MouseEvent<HTMLLIElement>) {
+    const clickedControl = (event.target as Element).closest("a, button");
+    if (clickedControl || window.getSelection()?.toString()) {
+      return;
+    }
+    caseStudyLink.current?.dispatchEvent(
+      new window.MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+        metaKey: event.metaKey,
+        ctrlKey: event.ctrlKey,
+        shiftKey: event.shiftKey,
+      }),
+    );
+  }
 
   return (
     <li
       id={project.slug}
       className={`showcase showcase--${project.theme}${reverse ? " showcase--reverse" : ""}`}
+      onClick={openCaseStudy}
     >
       {themeDetails.decorations}
       <div className="showcase__text">
@@ -38,7 +56,11 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
           ))}
         </ul>
         <div className="showcase__actions">
-          <a href={`/projects/${project.slug}/`} className="showcase__cta">
+          <a
+            ref={caseStudyLink}
+            href={`/projects/${project.slug}/`}
+            className="showcase__cta"
+          >
             Case study
           </a>
           {project.links.map((link) => (

@@ -10,11 +10,16 @@
   overflow: hidden;
   box-shadow: var(--shadow);
   isolation: isolate;
+  cursor: pointer;
   transition: transform 400ms ease, box-shadow 400ms ease;
 }
 
 .showcase:hover {
   transform: translateY(-6px);
+}
+
+.showcase:hover .showcase__cta {
+  transform: translateY(-2px);
 }
 
 .showcase:hover .device {
