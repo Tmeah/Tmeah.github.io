@@ -2,24 +2,100 @@
   --accent: var(--blue);
 }
 
-.case--viralz {
-  --accent: #ff2d55;
+/* Whole-page product themes */
+
+.page--themed {
+  color: var(--ink);
 }
 
-.case--snappd {
-  --accent: #d9486f;
+.page--viralz {
+  --ink: #f2f2f2;
+  --muted: #b9b9b9;
+  --blue: #ff2d55;
+  --blue-hover: #ff5e87;
+  --surface: #141414;
+  background:
+    radial-gradient(900px 640px at 85% 0%, rgba(255, 45, 85, 0.3), transparent 70%),
+    radial-gradient(760px 760px at 0% 55%, rgba(255, 45, 85, 0.12), transparent 70%),
+    radial-gradient(760px 760px at 100% 95%, rgba(255, 45, 85, 0.14), transparent 70%),
+    #000;
 }
 
-.case--gogrow {
-  --accent: #129ba2;
+.page--gogrow {
+  --ink: #e6f2f2;
+  --muted: #9fb3b3;
+  --blue: #5ee0e6;
+  --blue-hover: #9beff2;
+  --surface: #121414;
+  background:
+    radial-gradient(900px 640px at 85% 0%, rgba(94, 224, 230, 0.2), transparent 70%),
+    radial-gradient(760px 760px at 0% 55%, rgba(94, 224, 230, 0.08), transparent 70%),
+    radial-gradient(760px 760px at 100% 95%, rgba(94, 224, 230, 0.1), transparent 70%),
+    #0a0a0a;
 }
 
-.dark .case--snappd {
-  --accent: #f28aa5;
+.page--gogrow .nav__link--anchor--primary {
+  color: #062b2d;
 }
 
-.dark .case--gogrow {
-  --accent: #5ee0e6;
+.page--snappd {
+  --ink: #4a3b37;
+  --muted: #7a6660;
+  --blue: #d9486f;
+  --blue-hover: #e8577e;
+  --surface: #ffffff;
+  background-color: #fdf8f3;
+  background-image:
+    linear-gradient(#ece2d9 1px, transparent 1px),
+    linear-gradient(90deg, #ece2d9 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.dark .page--snappd {
+  --ink: #efe4dc;
+  --muted: #cdbdb4;
+  --blue: #f28aa5;
+  --blue-hover: #f7a9bd;
+  --surface: #3a322e;
+  background-color: #2b2522;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+body:has(.page--viralz) {
+  background: #000;
+}
+
+body:has(.page--gogrow) {
+  background: #0a0a0a;
+}
+
+body:has(.page--snappd) {
+  background: #fdf8f3;
+}
+
+.dark body:has(.page--snappd) {
+  background: #2b2522;
+}
+
+.page--viralz .case-story__title,
+.page--viralz .case-story__decisions h3 {
+  font-family: var(--font-spartan), sans-serif;
+}
+
+.page--snappd .case-story {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+.page--snappd .case-story__title,
+.page--snappd .case-story__decisions h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 500;
+}
+
+.page--gogrow .case-story {
+  font-family: var(--font-outfit), sans-serif;
 }
 
 /* Product themes (hero, showcase band, next card) */
@@ -500,4 +576,20 @@
   .case-next__arrow {
     font-size: 28px;
   }
+}
+
+/* On themed pages the page itself carries the product background */
+
+.page--themed .case-hero,
+.page--themed .case-showcase {
+  background: none;
+}
+
+.page--themed .case-showcase {
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.page--themed .case-hero__facts {
+  border-top-color: color-mix(in srgb, var(--ink) 20%, transparent);
 }

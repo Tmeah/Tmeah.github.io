@@ -9,7 +9,7 @@ const project = getProjectBySlug(slug);
 
 mount(
   project ? (
-    <InnerPage>
+    <InnerPage theme={project.theme}>
       <CaseStudyLayout project={project} next={getNextProject(slug)} />
     </InnerPage>
   ) : (
