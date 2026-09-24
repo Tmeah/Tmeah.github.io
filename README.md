@@ -1,13 +1,14 @@
 # Tausif Meah — Portfolio
 
-Next.js portfolio for [tausifmeah.co.uk](https://tausifmeah.co.uk): experience, flagship case studies (Viralz, GoGrow, Snappd), skills aligned to the 2026 CV, and contact via EmailJS with mailto fallback.
+Next.js portfolio for [tausifmeah.co.uk](https://tausifmeah.co.uk). It keeps the original site's look (big "Hey / I'm Tausif." hero, animated triangles, About/Contact panel) and showcases Viralz, Snappd, and GoGrow in each product's own branding, with a case study page for each.
 
 ## Stack
 
-- Next.js (App Router, static export)
-- TypeScript, Tailwind CSS, shadcn/ui
-- next-themes, Framer Motion (reduced-motion aware)
-- EmailJS (optional env vars)
+- Next.js (App Router, static export), TypeScript
+- Hand-written CSS in `app/site.css`, `app/showcase.css`, and `app/case-study.css`
+- `next-themes` for light/dark mode (follows the system setting, remembers the visitor's choice)
+- Font Awesome icons from cdnjs
+- EmailJS for the contact form (optional env vars), with a mailto fallback
 
 ## Local development
 
@@ -66,12 +67,12 @@ GitHub Pages only (same stack as production):
 
 ## Content updates
 
-- Site copy and links: `lib/content/site.ts`
-- Experience: `lib/content/experience.ts`
-- Skills: `lib/content/skills.ts`
-- Projects and archive: `lib/content/projects.ts`
+- Site copy, "Now" strip, About text, and skill logos: `lib/content/site.ts`
+- Experience list in the About panel: `lib/content/experience.ts`
+- Projects, case studies, and archive: `lib/content/projects.ts`
 - CV PDF: replace `public/cv/Tausif-Meah-CV-2026.pdf`
-- Project screenshots: add WebP files under `public/projects/`
+- Project screenshots: `public/projects/<name>.webp` (desktop) and `<name>-phone.webp` (phone)
+- Background triangles: `public/shapes/`
 
 ## Legacy static site
 
