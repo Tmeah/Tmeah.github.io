@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
 import { CaseStudyLayout } from "@/components/projects/case-study-layout";
+import { InnerPage } from "@/components/site/inner-page";
 import {
-  flagshipProjects,
   getAdjacentProjects,
   getProjectBySlug,
+  projects,
 } from "@/lib/content/projects";
 import { siteConfig } from "@/lib/content/site";
 
@@ -15,7 +14,7 @@ type ProjectPageProps = {
 };
 
 export function generateStaticParams() {
-  return flagshipProjects.map((project) => ({ slug: project.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
@@ -28,13 +27,14 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.name} — Case study`,
+    title: `${project.name} case study`,
     description: project.summary,
+    alternates: { canonical: `/projects/${project.slug}/` },
     openGraph: {
       title: `${project.name} | ${siteConfig.name}`,
       description: project.summary,
       url: `${siteConfig.url}/projects/${project.slug}/`,
-      images: [{ url: `${siteConfig.url}${project.thumbnail}` }],
+      images: [{ url: `${siteConfig.url}${project.desktopImage}` }],
     },
   };
 }
@@ -49,12 +49,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { prev, next } = getAdjacentProjects(slug);
 
   return (
-    <div className="portfolio">
-      <SiteHeader />
-      <main id="main-content">
-        <CaseStudyLayout project={project} prev={prev} next={next} />
-      </main>
-      <SiteFooter />
-    </div>
+    <InnerPage>
+      <CaseStudyLayout project={project} prev={prev} next={next} />
+    </InnerPage>
   );
 }

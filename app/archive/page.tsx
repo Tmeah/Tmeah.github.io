@@ -1,105 +1,60 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { FaGithub } from "react-icons/fa6";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
-import { Badge } from "@/components/ui/badge";
-import { ButtonLink } from "@/components/ui/button-link";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "cn";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { InnerPage } from "@/components/site/inner-page";
 import { archiveProjects } from "@/lib/content/projects";
-import { siteConfig } from "@/lib/content/site";
 
 export const metadata: Metadata = {
-  title: "Project archive",
-  description: "Earlier front-end demos and learning projects.",
+  title: "Earlier work",
+  description: "Earlier front-end projects by Tausif Meah.",
+  alternates: { canonical: "/archive/" },
 };
 
 export default function ArchivePage() {
   return (
-    <>
-      <SiteHeader />
-      <main id="main-content" className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <ButtonLink href="/" variant="ghost" className="mb-6 -ml-2">
-          <ArrowLeft className="size-4" />
-          Home
-        </ButtonLink>
-        <h1 className="text-4xl font-bold tracking-tight">Project archive</h1>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          Earlier demos and coursework-style builds—kept for reference while
-          flagship work leads the portfolio.
+    <InnerPage>
+      <div className="inner">
+        <Link href="/#projects" className="back-link">
+          <i className="fas fa-arrow-left" aria-hidden /> Back to projects
+        </Link>
+        <h1 className="archive__title">
+          Earlier <span className="text--blue">work</span>
+        </h1>
+        <p className="archive__lede">
+          Front-end projects from when I was starting out. Kept here for the
+          record; my current work is on the homepage.
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <ul className="archive__grid">
           {archiveProjects.map((project) => (
-            <Card key={project.name} className="overflow-hidden py-0">
-              <div className="relative aspect-[16/10] border-b border-border">
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle>{project.name}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <Badge key={item} variant="outline">
-                      {item}
-                    </Badge>
-                  ))}
+            <li key={project.name} className="archive__card">
+              <Image
+                src={project.image}
+                alt={`${project.name} screenshot`}
+                width={1200}
+                height={750}
+                sizes="(max-width: 768px) 100vw, 470px"
+              />
+              <div className="archive__body">
+                <h2>{project.name}</h2>
+                <p>{project.description}</p>
+                <p className="archive__stack">{project.stack.join(" · ")}</p>
+                <div className="archive__links">
+                  {project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noreferrer">
+                      <i className="fas fa-globe" aria-hidden /> Live
+                    </a>
+                  ) : null}
+                  {project.githubUrl ? (
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                      <i className="fab fa-github" aria-hidden /> Code
+                    </a>
+                  ) : null}
                 </div>
-              </CardContent>
-              <CardFooter className="gap-2 pb-6">
-                {project.liveUrl ? (
-                  <ButtonLink
-                    href={project.liveUrl}
-                    size="sm"
-                    variant="outline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Live
-                    <ArrowUpRight className="size-4" />
-                  </ButtonLink>
-                ) : null}
-                {project.githubUrl ? (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(buttonVariants({ size: "sm", variant: "ghost" }))}
-                  >
-                    <FaGithub className="size-4" />
-                  </a>
-                ) : null}
-              </CardFooter>
-            </Card>
+              </div>
+            </li>
           ))}
-        </div>
-        <p className="mt-10 text-sm text-muted-foreground">
-          Primary portfolio content lives on{" "}
-          <a href={siteConfig.url} className="text-brand hover:underline">
-            {siteConfig.url.replace("https://", "")}
-          </a>
-          .
-        </p>
-      </main>
-      <SiteFooter />
-    </>
+        </ul>
+      </div>
+    </InnerPage>
   );
 }

@@ -5,28 +5,32 @@ export type ExperienceEntry = {
   highlights: string[];
 };
 
-export type ProjectStackGroup = {
+export type ProjectTheme = "viralz" | "snappd" | "gogrow";
+
+export type ProjectLink = {
   label: string;
-  items: string[];
+  href: string;
+  icon: string;
 };
 
-export type FlagshipProject = {
+export type Project = {
   slug: string;
+  theme: ProjectTheme;
   name: string;
-  tagline: string;
+  eyebrow: string;
+  headline: string;
   summary: string;
-  outcome: string;
+  highlights: string[];
+  stack: string[];
+  links: ProjectLink[];
+  desktopImage: string;
+  phoneImage: string;
   role: string;
-  timeline: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  thumbnail: string;
-  gallery: string[];
-  stacks: ProjectStackGroup[];
+  platform: string;
+  overview: string;
   built: string[];
-  challenges: { title: string; body: string }[];
-  results: string[];
-  featured: boolean;
+  decisions: { title: string; body: string }[];
+  outcomes: string[];
 };
 
 export type ArchiveProject = {
@@ -36,9 +40,4 @@ export type ArchiveProject = {
   image: string;
   liveUrl?: string;
   githubUrl?: string;
-};
-
-export type SkillGroup = {
-  title: string;
-  items: string[];
 };

@@ -1,152 +1,140 @@
-import type { ArchiveProject, FlagshipProject } from "@/lib/content/types";
+import type { ArchiveProject, Project } from "@/lib/content/types";
 
-export const flagshipProjects: FlagshipProject[] = [
+export const projects: Project[] = [
   {
     slug: "viralz",
+    theme: "viralz",
     name: "Viralz",
-    tagline: "AI-powered creator marketplace SaaS",
+    eyebrow: "TikTok analytics platform",
+    headline: "Analyze your TikTok performance like a pro.",
     summary:
-      "Performance-based campaigns connecting brands and creators with verified views, Stripe billing, and Google OAuth sign-in.",
-    outcome: "Launched SaaS with Stripe payments and ~£1,000 monthly revenue at peak.",
-    role: "Founder & full stack developer",
-    timeline: "2024 – Present",
-    liveUrl: "https://viralz.app/",
-    thumbnail: "/projects/viralz-live.png",
-    gallery: [
-      "/projects/viralz-live.png",
-      "/projects/viralz-2.webp",
-      "/projects/viralz-3.webp",
+      "An AI-powered TikTok analytics app. Creators get deep insights into their content, track performance over time, and get guidance on what to post next.",
+    highlights: [
+      "Live on the App Store, with Google Play coming soon",
+      "Stripe subscriptions and Google OAuth sign-in",
+      "Around £1,000 in monthly revenue",
     ],
-    stacks: [
-      {
-        label: "Product",
-        items: ["React", "TypeScript", "Stripe", "Google OAuth"],
-      },
-      {
-        label: "Platform",
-        items: ["REST APIs", "Firebase", "Cloud deployment"],
-      },
+    stack: ["React", "TypeScript", "Stripe", "Google OAuth", "AI"],
+    links: [
+      { label: "viralzapp.com", href: "https://viralzapp.com/", icon: "fas fa-globe" },
     ],
+    desktopImage: "/projects/viralz.png",
+    phoneImage: "/projects/viralz-phone.png",
+    role: "Founder and developer",
+    platform: "iOS app and web",
+    overview:
+      "Viralz helps TikTok creators understand why some videos take off and others don't. It pulls performance data into one place and uses AI to turn it into clear insights and next steps. I designed, built, launched, and now run it.",
     built: [
-      "End-to-end subscription and payment flows with Stripe.",
-      "Authenticated onboarding with Google OAuth and role-based access patterns.",
-      "Campaign browsing and creator workflows aligned to verified performance metrics.",
-      "Responsive marketing site and in-app UX for brands and creators.",
-      "Operational tooling for monitoring sign-ups, billing events, and product iterations.",
+      "The mobile app and marketing site, from first design to App Store release.",
+      "AI-driven insights that summarise performance and suggest improvements.",
+      "Subscription billing with Stripe, including plans and payment flows.",
+      "Google OAuth sign-in so creators can get started in a couple of taps.",
     ],
-    challenges: [
+    decisions: [
       {
-        title: "Aligning incentives in the product model",
-        body: "Viralz needed a UX that made performance-based pricing understandable for both brands and creators. I structured flows so budgets, tiers, and payouts stay transparent without overwhelming first-time users.",
+        title: "Insight over raw numbers",
+        body: "Creators already see view counts. The value is explaining what drove them, so the product leads with plain-language insights and keeps the charts as supporting detail.",
       },
       {
-        title: "Shipping payments and auth safely",
-        body: "Stripe and OAuth touchpoints require careful state handling and error recovery. I implemented defensive client flows, server-validated webhooks where applicable, and clear user feedback when third-party services fail.",
+        title: "Quick to start, simple to pay",
+        body: "Google OAuth gets creators in without a new password, and Stripe handles subscriptions, so the path from download to paying user stays short.",
       },
     ],
-    results: [
-      "Shipped a production SaaS with live payments and authenticated users.",
-      "Reached approximately £1,000 in monthly revenue while iterating on product-market fit.",
-      "Demonstrated full ownership from idea through deployment and ongoing improvements.",
+    outcomes: [
+      "Launched on the App Store and growing, with Google Play on the way.",
+      "Reached around £1,000 in monthly revenue.",
+      "Owned every stage: product, design, engineering, billing, and release.",
     ],
-    featured: true,
-  },
-  {
-    slug: "gogrow",
-    name: "GoGrow",
-    tagline: "Web platform with companion iOS app",
-    summary:
-      "Cross-platform product spanning a web application and iOS experience, with API integration, testing, and ongoing feature delivery.",
-    outcome: "Delivered web + iOS delivery with API-driven features and release cadence.",
-    role: "Lead developer",
-    timeline: "2023 – Present",
-    liveUrl: "https://getgogrow.app/",
-    thumbnail: "/projects/gogrow-live.png",
-    gallery: [
-      "/projects/gogrow-live.png",
-      "/projects/gogrow-2.webp",
-      "/projects/gogrow-3.webp",
-    ],
-    stacks: [
-      {
-        label: "Client",
-        items: ["React", "TypeScript", "React Native", "Expo"],
-      },
-      {
-        label: "Services",
-        items: ["REST APIs", "SQL", "Automated & manual testing"],
-      },
-    ],
-    built: [
-      "Maintained the web platform and iOS application from feature design through release.",
-      "Integrated backend APIs for user-facing flows and data synchronisation.",
-      "Implemented testing across functional, regression, and device matrices before deployment.",
-      "Shipped iterative improvements based on usage feedback and stakeholder priorities.",
-    ],
-    challenges: [
-      {
-        title: "Keeping web and mobile in sync",
-        body: "Shared business logic and API contracts need to stay consistent across React and React Native clients. I standardised API consumption patterns and release checklists to reduce drift between platforms.",
-      },
-      {
-        title: "Reliable releases",
-        body: "With multiple surfaces in production, regressions are costly. I combined targeted automated tests with structured manual passes on critical paths before each deployment.",
-      },
-    ],
-    results: [
-      "Sustained dual-platform delivery with integrated APIs and testing discipline.",
-      "Improved stability of release cycles through repeatable QA workflows.",
-    ],
-    featured: true,
   },
   {
     slug: "snappd",
+    theme: "snappd",
     name: "Snappd",
-    tagline: "Digital wedding scrapbook for guests",
+    eyebrow: "Event photo scrapbooks",
+    headline: "Snap it. Scrapbook it.",
     summary:
-      "Guest photo-sharing experience for a live event—upload, browse, and preserve memories with a mobile-friendly UI.",
-    outcome: "Shipped and hosted a event-ready guest experience with photo uploads.",
-    role: "Solo developer",
-    timeline: "2024",
-    liveUrl: undefined,
-    thumbnail: "/projects/snappd-1.webp",
-    gallery: [
-      "/projects/snappd-1.webp",
-      "/projects/snappd-2.webp",
-      "/projects/snappd-3.webp",
+      "Guests scan a QR code, snap photos on their phone, and the host gets a beautiful digital scrapbook, curated by them. No app for guests, one-time payment, ready in two minutes.",
+    highlights: [
+      "No app download: guests upload straight from their camera",
+      "Host approves every photo before it appears",
+      "First product built for segregated events, with separate men's and women's scrapbooks",
     ],
-    stacks: [
-      {
-        label: "Frontend",
-        items: ["React", "TypeScript", "Responsive UI"],
-      },
-      {
-        label: "Delivery",
-        items: ["Media uploads", "Hosting", "Production support"],
-      },
+    stack: ["Next.js", "TypeScript", "Payments", "Image uploads", "QR codes"],
+    links: [
+      { label: "snappd.app", href: "https://snappd.app/", icon: "fas fa-globe" },
     ],
+    desktopImage: "/projects/snappd.png",
+    phoneImage: "/projects/snappd-phone.png",
+    role: "Founder and developer",
+    platform: "Web app",
+    overview:
+      "Snappd started as a digital scrapbook for my own wedding, so guests could share photos and memories in one place. It's now a product for weddings, Eid gatherings, birthdays, graduations, and corporate events, priced from £29.",
     built: [
-      "Designed and built a scrapbook-style gallery for wedding guests.",
-      "Implemented upload flows optimised for phones on event-day networks.",
-      "Deployed and monitored the app through the live event window.",
-      "Handled post-event tweaks based on real guest usage.",
+      "Event setup: pick a plan, name the event, and get unique QR codes instantly.",
+      "A guest upload flow that runs in the phone browser, with no account or app.",
+      "A moderation dashboard where hosts approve favourites before they go public.",
+      "Segregated plans with two separate scrapbooks and QR codes, one per side.",
+      "Scrapbooks that stay live, with the option to download every photo.",
     ],
-    challenges: [
+    decisions: [
       {
-        title: "Event-day reliability",
-        body: "Traffic spikes and mobile networks are unpredictable at venues. I prioritised lightweight pages, optimistic UI where safe, and clear recovery when uploads fail.",
+        title: "Zero friction for guests",
+        body: "Nobody downloads an app at a wedding. Scanning a QR code and uploading from the camera roll keeps participation high, which is what makes the scrapbook worth having.",
       },
       {
-        title: "Low-friction guest onboarding",
-        body: "Guests should participate without accounts or tutorials. The interface favours QR access, minimal steps, and immediate visual feedback when photos land in the shared album.",
+        title: "Built for segregated events",
+        body: "Many Islamic weddings and Eid gatherings celebrate men and women separately. Snappd supports that directly with two scrapbooks and two QR codes, a gap other photo-sharing tools don't cover.",
       },
     ],
-    results: [
-      "Successfully supported a real-world event with guest uploads and browsing.",
-      "Validated rapid solo delivery from concept to production under a fixed deadline.",
-      "Live event deployment has since been retired; case study documents the build and outcomes.",
+    outcomes: [
+      "Used at real weddings and parties; one couple collected over 300 guest photos.",
+      "Two paid plans: Basic from £29 and Segregated at £49.",
+      "Grew from a personal wedding project into a live product.",
     ],
-    featured: true,
+  },
+  {
+    slug: "gogrow",
+    theme: "gogrow",
+    name: "GoGrow",
+    eyebrow: "Available on iPhone",
+    headline: "Height habits for growing kids.",
+    summary:
+      "A personalised adult-height estimate, then a daily loop of move, food, and sleep habits for kids, with streaks, a coach, and a community to keep them going.",
+    highlights: [
+      "Live on the App Store",
+      "Daily habit loop: move, food, sleep, with streaks and achievements",
+      "Web platform plus iOS app",
+    ],
+    stack: ["iOS", "Web platform", "API integration", "Testing"],
+    links: [
+      { label: "getgogrow.app", href: "https://getgogrow.app/", icon: "fas fa-globe" },
+    ],
+    desktopImage: "/projects/gogrow.png",
+    phoneImage: "/projects/gogrow-phone.png",
+    role: "Developer",
+    platform: "iOS app and web",
+    overview:
+      "GoGrow turns healthy routines into a simple daily game for kids. I built and maintain both the web platform and the iOS app, covering development, API integration, testing, deployment, and ongoing improvements.",
+    built: [
+      "The iOS app: daily habit logging, streaks, and achievements.",
+      "The web platform and marketing site.",
+      "API integration between the app and backend services.",
+      "Testing and release for each update, plus ongoing improvements.",
+    ],
+    decisions: [
+      {
+        title: "Small daily wins",
+        body: "Kids stick with things that feel quick and rewarding. The home screen is a single tap to log a habit, with streaks and achievements doing the motivating.",
+      },
+      {
+        title: "One product, two platforms",
+        body: "GoGrow runs as both a web platform and an iPhone app, so every change is built, tested, and shipped across both.",
+      },
+    ],
+    outcomes: [
+      "Live on iPhone with a companion web platform.",
+      "Ongoing releases and improvements.",
+    ],
   },
 ];
 
@@ -160,8 +148,8 @@ export const archiveProjects: ArchiveProject[] = [
     liveUrl: "https://tausifmeah.co.uk/react-templates-page/",
   },
   {
-    name: "Travel Website (React)",
-    description: "Wales-focused travel booking UI built with React.",
+    name: "Travel Website",
+    description: "Wales-focused travel booking site built with React.",
     stack: ["React", "HTML", "CSS", "JavaScript"],
     image: "/archive/trvlwales.png",
     githubUrl: "https://github.com/Tmeah01/react-travel",
@@ -169,7 +157,7 @@ export const archiveProjects: ArchiveProject[] = [
   },
   {
     name: "Number Guesser",
-    description: "Retro number guessing game with score tracking.",
+    description: "Retro number guessing game with high-score tracking.",
     stack: ["HTML", "CSS", "JavaScript"],
     image: "/archive/numberguesser.png",
     githubUrl: "https://github.com/Tmeah/Number-guesser",
@@ -177,7 +165,7 @@ export const archiveProjects: ArchiveProject[] = [
   },
   {
     name: "E-commerce Store",
-    description: "Book storefront with featured and latest product sections.",
+    description: "Book storefront with featured and latest book sections.",
     stack: ["HTML", "CSS", "JavaScript"],
     image: "/archive/e-commerce.png",
     githubUrl: "https://github.com/Tmeah/e-commerce",
@@ -185,7 +173,7 @@ export const archiveProjects: ArchiveProject[] = [
   },
   {
     name: "Dice Game",
-    description: "Two-player dice race to 100 with hold and risk mechanics.",
+    description: "Two-player race to 100. Be careful of the 1s.",
     stack: ["HTML", "CSS", "JavaScript"],
     image: "/archive/dice.png",
     githubUrl: "https://github.com/Tmeah/Dice-game",
@@ -193,23 +181,20 @@ export const archiveProjects: ArchiveProject[] = [
   },
 ];
 
-export function getProjectBySlug(slug: string): FlagshipProject | undefined {
-  return flagshipProjects.find((project) => project.slug === slug);
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
 }
 
 export function getAdjacentProjects(slug: string): {
-  prev?: FlagshipProject;
-  next?: FlagshipProject;
+  prev?: Project;
+  next?: Project;
 } {
-  const index = flagshipProjects.findIndex((project) => project.slug === slug);
+  const index = projects.findIndex((project) => project.slug === slug);
   if (index === -1) {
     return {};
   }
   return {
-    prev: index > 0 ? flagshipProjects[index - 1] : undefined,
-    next:
-      index < flagshipProjects.length - 1
-        ? flagshipProjects[index + 1]
-        : undefined,
+    prev: index > 0 ? projects[index - 1] : undefined,
+    next: index < projects.length - 1 ? projects[index + 1] : undefined,
   };
 }

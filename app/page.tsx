@@ -1,9 +1,5 @@
-import { LiveSite } from "@/components/home/live-site";
+import { HomePage } from "@/components/home/home-page";
 
-export default function HomePage() {
-  return (
-    <main id="main-content">
-      <LiveSite />
-    </main>
-  );
+export default function Page() {
+  return <HomePage />;
 }

@@ -1,177 +1,134 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { ButtonLink } from "@/components/ui/button-link";
-import { Separator } from "@/components/ui/separator";
-import type { FlagshipProject } from "@/lib/content/types";
+import type { Project } from "@/lib/content/types";
 
 type CaseStudyLayoutProps = {
-  project: FlagshipProject;
-  prev?: FlagshipProject;
-  next?: FlagshipProject;
+  project: Project;
+  prev?: Project;
+  next?: Project;
 };
 
 export function CaseStudyLayout({ project, prev, next }: CaseStudyLayoutProps) {
   return (
-    <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
-      <ButtonLink href="/#projects" variant="ghost" className="mb-8 -ml-2">
-        <ArrowLeft className="size-4" />
-        Back to projects
-      </ButtonLink>
+    <article className="inner case">
+      <Link href="/#projects" className="back-link">
+        <i className="fas fa-arrow-left" aria-hidden /> Back to projects
+      </Link>
 
-      <header className="space-y-4">
-        <p className="text-sm font-semibold uppercase tracking-wider text-brand">
-          Case study
-        </p>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          {project.name}
-        </h1>
-        <p className="text-xl text-muted-foreground">{project.tagline}</p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          {project.liveUrl ? (
-            <ButtonLink
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              View live
-              <ArrowUpRight className="size-4" />
-            </ButtonLink>
-          ) : null}
-          {project.githubUrl ? (
-            <ButtonLink
-              href={project.githubUrl}
-              variant="outline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </ButtonLink>
-          ) : null}
+      <header className={`case__band case__band--${project.theme}`}>
+        <div className="case__band-text">
+          <p className="case__eyebrow">Case study · {project.eyebrow}</p>
+          <h1 className="case__title">{project.name}</h1>
+          <p className="case__headline">{project.headline}</p>
+          <dl className="case__meta">
+            <div>
+              <dt>Role</dt>
+              <dd>{project.role}</dd>
+            </div>
+            <div>
+              <dt>Platform</dt>
+              <dd>{project.platform}</dd>
+            </div>
+          </dl>
+          <div className="case__links">
+            {project.links.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                <i className={link.icon} aria-hidden /> {link.label}
+              </a>
+            ))}
+          </div>
         </div>
-        <dl className="grid gap-4 rounded-xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
-          <div>
-            <dt className="text-xs uppercase tracking-wide text-muted-foreground">
-              Role
-            </dt>
-            <dd className="mt-1 font-medium">{project.role}</dd>
-          </div>
-          <div>
-            <dt className="text-xs uppercase tracking-wide text-muted-foreground">
-              Timeline
-            </dt>
-            <dd className="mt-1 font-medium">{project.timeline}</dd>
-          </div>
-          <div>
-            <dt className="text-xs uppercase tracking-wide text-muted-foreground">
-              Outcome
-            </dt>
-            <dd className="mt-1 font-medium text-brand">{project.outcome}</dd>
-          </div>
-        </dl>
+        <div className="case__band-visual">
+          <Image
+            src={project.phoneImage}
+            alt={`${project.name} on a phone`}
+            width={390}
+            height={780}
+            sizes="220px"
+            priority
+          />
+        </div>
       </header>
 
-      <section className="mt-10 space-y-4">
-        <h2 className="text-2xl font-semibold">Overview</h2>
-        <p className="leading-relaxed text-muted-foreground">{project.summary}</p>
+      <section className="case__section">
+        <h2>Overview</h2>
+        <p>{project.overview}</p>
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Stack</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {project.stacks.map((group) => (
-            <div
-              key={group.label}
-              className="rounded-xl border border-border p-4"
-            >
-              <p className="text-sm font-semibold">{group.label}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <Badge key={item} variant="secondary">
-                    {item}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">What I built</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
+      <section className="case__section">
+        <h2>What I built</h2>
+        <ul className="case__list">
           {project.built.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </section>
 
-      <section className="mt-10 space-y-6">
-        <h2 className="text-2xl font-semibold">Challenges & decisions</h2>
-        {project.challenges.map((item) => (
-          <div key={item.title}>
-            <h3 className="text-lg font-medium">{item.title}</h3>
-            <p className="mt-2 leading-relaxed text-muted-foreground">
-              {item.body}
-            </p>
-          </div>
-        ))}
-      </section>
-
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Screenshots</h2>
-        <div className="mt-4 grid gap-4">
-          {project.gallery.map((src, index) => (
-            <div
-              key={src}
-              className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border"
-            >
-              <Image
-                src={src}
-                alt={`${project.name} screenshot ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 896px) 100vw, 896px"
-              />
+      <section className="case__section">
+        <h2>Key decisions</h2>
+        <div className="case__decisions">
+          {project.decisions.map((item) => (
+            <div key={item.title} className="case__decision">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Results</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
-          {project.results.map((item) => (
+      <section className="case__section">
+        <h2>Stack</h2>
+        <ul className="case__stack">
+          {project.stack.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </section>
 
-      <Separator className="my-12" />
+      <section className="case__section">
+        <h2>Outcomes</h2>
+        <ul className="case__list">
+          {project.outcomes.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
 
-      <nav
-        className="flex flex-col gap-4 sm:flex-row sm:justify-between"
-        aria-label="Case study pagination"
-      >
+      <section className="case__section">
+        <h2>On the web</h2>
+        <figure className="case__browser">
+          <div className="case__browser-bar" aria-hidden>
+            <span />
+            <span />
+            <span />
+          </div>
+          <Image
+            src={project.desktopImage}
+            alt={`${project.name} website`}
+            width={1440}
+            height={900}
+            sizes="(max-width: 1000px) 100vw, 940px"
+          />
+        </figure>
+      </section>
+
+      <nav className="case__pager" aria-label="More projects">
         {prev ? (
-          <Link
-            href={`/projects/${prev.slug}/`}
-            className="text-sm font-medium hover:text-brand"
-          >
-            ← {prev.name}
+          <Link href={`/projects/${prev.slug}/`}>
+            <i className="fas fa-arrow-left" aria-hidden /> {prev.name}
           </Link>
         ) : (
           <span />
         )}
         {next ? (
-          <Link
-            href={`/projects/${next.slug}/`}
-            className="text-sm font-medium hover:text-brand sm:text-right"
-          >
-            {next.name} →
+          <Link href={`/projects/${next.slug}/`}>
+            {next.name} <i className="fas fa-arrow-right" aria-hidden />
           </Link>
-        ) : null}
+        ) : (
+          <Link href="/archive/">
+            Earlier work <i className="fas fa-arrow-right" aria-hidden />
+          </Link>
+        )}
       </nav>
     </article>
   );

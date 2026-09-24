@@ -1,38 +1,34 @@
 export const siteConfig = {
   name: "Tausif Meah",
   title: "Full Stack Developer",
-  location: "Wales, United Kingdom",
-  availability:
-    "Open to full-time and contract roles across web, mobile, and cloud-backed products.",
+  location: "Wales, UK",
   email: "tausifmeah@gmail.com",
-  phone: "+447375134616",
   url: "https://tausifmeah.co.uk",
   cvPath: "/cv/Tausif-Meah-CV-2026.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/tausif-meah/",
     github: "https://github.com/Tmeah",
   },
-  nav: [
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ],
 } as const;
 
-export const heroCopy = {
-  greeting: "Hey, I'm Tausif.",
-  headline: "Full Stack Developer shipping web and mobile products end to end.",
-  subheadline:
-    "I build React and TypeScript experiences, integrate APIs and payments, and deploy reliable apps—from Cloudflare Workers and WordPress to iOS with Expo.",
+export const nowCopy = {
+  current: { role: "Full Stack Developer", company: "Pobl Tech" },
+  previous: { role: "GCP Cloud Engineer", company: "Revolent" },
+  degree: "First-Class BSc Software Engineering",
 } as const;
 
 export const aboutCopy = {
-  bio: "I'm a software engineer based in Wales with a First-Class BSc in Software Engineering from Cardiff Metropolitan University. I work across the stack at Pobl Tech, delivering client projects from design through testing and deployment, and I ship my own products on the side.",
-  education: {
-    school: "Cardiff Metropolitan University",
-    degree: "BSc Software Engineering, First-Class Honours",
-    period: "2020 – 2023",
-  },
+  intro:
+    "I'm a full stack developer based in Wales. At Pobl Tech I deliver web and mobile projects end to end, from design and development through testing and deployment. Outside work I build and ship my own products: Viralz, GoGrow, and Snappd.",
+  education:
+    "BSc Software Engineering, First-Class Honours, Cardiff Metropolitan University (2020 – 2023).",
 } as const;
+
+export const skillLogos = [
+  { name: "TypeScript", src: "/skills/typescript-original.svg", mono: false },
+  { name: "React", src: "/skills/react-original.svg", mono: false },
+  { name: "Next.js", src: "/skills/nextjs-original.svg", mono: true },
+  { name: "React Native", src: "/skills/react-original.svg", mono: false },
+  { name: "PHP", src: "/skills/php-original.svg", mono: false },
+  { name: "Cloudflare", src: "/skills/cloudflare-original.svg", mono: false },
+] as const;
