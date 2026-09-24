@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { DeviceFrame } from "@/components/site/device-frame";
 import type { Project, ProjectTheme } from "@/lib/content/types";
 
 type ProjectShowcaseProps = {
@@ -57,15 +57,12 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
         </div>
       </div>
       <div className="showcase__visual">
-        <div className={themeDetails.framed ? "showcase__device" : "showcase__mockup"}>
-          <Image
-            src={project.phoneImage}
-            alt={`${project.name} app screenshot`}
-            width={390}
-            height={780}
-            sizes="(max-width: 768px) 60vw, 300px"
-          />
-        </div>
+        <DeviceFrame
+          src={project.phoneImage}
+          alt={`${project.name} app screenshot`}
+          theme={project.theme}
+          sizes="190px"
+        />
       </div>
     </li>
   );
@@ -75,7 +72,6 @@ type ThemeDetails = {
   brandMark: ReactNode;
   headline: ReactNode;
   decorations: ReactNode;
-  framed: boolean;
 };
 
 function getThemeDetails(theme: ProjectTheme): ThemeDetails {
@@ -93,7 +89,6 @@ function getThemeDetails(theme: ProjectTheme): ThemeDetails {
           </>
         ),
         decorations: <span className="showcase__glow" aria-hidden />,
-        framed: false,
       };
     case "snappd":
       return {
@@ -117,7 +112,6 @@ function getThemeDetails(theme: ProjectTheme): ThemeDetails {
             </span>
           </>
         ),
-        framed: true,
       };
     case "gogrow":
       return {
@@ -128,7 +122,6 @@ function getThemeDetails(theme: ProjectTheme): ThemeDetails {
           </>
         ),
         decorations: <span className="showcase__glow" aria-hidden />,
-        framed: false,
       };
     default: {
       const exhaustive: never = theme;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DeviceFrame } from "@/components/site/device-frame";
 import type { Project } from "@/lib/content/types";
 
 type CaseStudyLayoutProps = {
@@ -39,12 +40,11 @@ export function CaseStudyLayout({ project, prev, next }: CaseStudyLayoutProps) {
           </div>
         </div>
         <div className="case__band-visual">
-          <Image
+          <DeviceFrame
             src={project.phoneImage}
             alt={`${project.name} on a phone`}
-            width={390}
-            height={780}
-            sizes="220px"
+            theme={project.theme}
+            sizes="200px"
             priority
           />
         </div>

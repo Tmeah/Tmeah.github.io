@@ -1,3 +1,7 @@
+.case__band-visual {
+  width: 200px;
+}
+
 .case__band {
   position: relative;
   display: grid;
@@ -10,21 +14,7 @@
   box-shadow: var(--shadow);
 }
 
-.case__band-visual img {
-  width: 220px;
-  height: auto;
-}
-
-.case__band--viralz .case__band-visual img {
-  border-radius: 14% / 7%;
-}
-
-.case__band--gogrow .case__band-visual img {
-  border-radius: 13% 13% 0 0 / 8% 8% 0 0;
-  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
-}
-
-.case__eyebrow {
+.case__band--viralz .case__band--gogrow .case__eyebrow {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -119,15 +109,7 @@
   color: #b0697b;
 }
 
-.case__band--snappd .case__band-visual img {
-  padding: 8px;
-  border-radius: 28px;
-  background: #fff;
-  box-shadow: 0 20px 50px rgba(91, 74, 69, 0.22);
-  transform: rotate(2deg);
-}
-
-.dark .case__band--snappd {
+.case__band--snappd .dark .case__band--snappd {
   background-color: #2b2522;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
@@ -135,11 +117,7 @@
   color: #efe4dc;
 }
 
-.dark .case__band--snappd .case__band-visual img {
-  background: #3a322e;
-}
-
-.case__band--gogrow {
+.dark .case__band--snappd .case__band--gogrow {
   background: radial-gradient(circle at 85% 50%, rgba(94, 224, 230, 0.2), transparent 55%), #0a0a0a;
   color: #e6f2f2;
   font-family: var(--font-outfit), sans-serif;
@@ -299,8 +277,8 @@
   }
 
   .case__band-visual {
-    display: flex;
-    justify-content: center;
+    width: 190px;
+    margin: 0 auto;
   }
 
   .case__title {

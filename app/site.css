@@ -642,8 +642,10 @@ textarea.input {
 .projects__list {
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding: 56px 0 40px;
+  gap: 48px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 0 32px;
 }
 
 /* Footer */
