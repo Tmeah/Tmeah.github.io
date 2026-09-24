@@ -14,7 +14,7 @@
   box-shadow: var(--shadow);
 }
 
-.case__band--viralz .case__band--gogrow .case__eyebrow {
+.case__eyebrow {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -109,7 +109,7 @@
   color: #b0697b;
 }
 
-.case__band--snappd .dark .case__band--snappd {
+.dark .case__band--snappd {
   background-color: #2b2522;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
@@ -117,7 +117,7 @@
   color: #efe4dc;
 }
 
-.dark .case__band--snappd .case__band--gogrow {
+.case__band--gogrow {
   background: radial-gradient(circle at 85% 50%, rgba(94, 224, 230, 0.2), transparent 55%), #0a0a0a;
   color: #e6f2f2;
   font-family: var(--font-outfit), sans-serif;
