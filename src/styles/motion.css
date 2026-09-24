@@ -139,8 +139,7 @@ html.theme-switching::view-transition-new(root) {
 .case-next,
 .case-next__arrow,
 .case__cta,
-.showcase__cta,
-.nav__menu {
+.showcase__cta {
   transition-timing-function: var(--ease-out);
 }
 

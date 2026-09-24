@@ -1,10 +1,10 @@
 import { siteConfig } from "@/content/site";
 
 type SiteFooterProps = {
-  onOpenPanel?: () => void;
+  onOpenContact: () => void;
 };
 
-export function SiteFooter({ onOpenPanel }: SiteFooterProps) {
+export function SiteFooter({ onOpenContact }: SiteFooterProps) {
   return (
     <footer>
       <div className="row footer__row">
@@ -25,7 +25,7 @@ export function SiteFooter({ onOpenPanel }: SiteFooterProps) {
             href={siteConfig.social.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="footer__social--link link__hover--effect link__hover--effect--white"
+            className="footer__social--link"
           >
             LinkedIn
           </a>
@@ -33,7 +33,7 @@ export function SiteFooter({ onOpenPanel }: SiteFooterProps) {
             href={siteConfig.social.github}
             target="_blank"
             rel="noreferrer"
-            className="footer__social--link link__hover--effect link__hover--effect--white"
+            className="footer__social--link"
           >
             GitHub
           </a>
@@ -41,36 +41,17 @@ export function SiteFooter({ onOpenPanel }: SiteFooterProps) {
             href={siteConfig.cvPath}
             target="_blank"
             rel="noreferrer"
-            className="footer__social--link link__hover--effect link__hover--effect--white"
+            className="footer__social--link"
           >
             CV
           </a>
-          {onOpenPanel ? (
-            <button
-              type="button"
-              onClick={onOpenPanel}
-              className="footer__social--link link__hover--effect link__hover--effect--white"
-            >
-              Contact
-            </button>
-          ) : (
-            <a
-              href="/#contact"
-              className="footer__social--link link__hover--effect link__hover--effect--white"
-            >
-              Contact
-            </a>
-          )}
-          <a
-            href="/projects/"
-            className="footer__social--link link__hover--effect link__hover--effect--white"
-          >
+          <button type="button" onClick={onOpenContact} className="footer__social--link">
+            Contact
+          </button>
+          <a href="/projects/" className="footer__social--link">
             Case Studies
           </a>
-          <a
-            href="/archive/"
-            className="footer__social--link link__hover--effect link__hover--effect--white"
-          >
+          <a href="/archive/" className="footer__social--link">
             Archive
           </a>
         </div>

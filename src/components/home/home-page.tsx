@@ -1,58 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
-import { AboutPanel } from "@/components/home/about-panel";
 import { NowStrip } from "@/components/home/now-strip";
 import { ProjectShowcase } from "@/components/home/project-showcase";
+import { AboutDialog } from "@/components/site/about-dialog";
 import { ShapeField } from "@/components/site/shape-field";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
+import { useAboutDialog } from "@/components/site/use-about-dialog";
 import { projects } from "@/content/projects";
 import { siteConfig } from "@/content/site";
 
-const panelHashes = new Set(["#about", "#contact"]);
-
 export function HomePage() {
-  const [panelOpen, setPanelOpen] = useState(false);
-
-  const openPanel = useCallback(() => setPanelOpen(true), []);
-  const togglePanel = useCallback(() => setPanelOpen((open) => !open), []);
-  const closePanel = useCallback(() => setPanelOpen(false), []);
-
-  useEffect(() => {
-    function syncFromHash() {
-      if (panelHashes.has(window.location.hash)) {
-        setPanelOpen(true);
-      }
-    }
-    const frame = requestAnimationFrame(syncFromHash);
-    window.addEventListener("hashchange", syncFromHash);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("hashchange", syncFromHash);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!panelOpen) {
-      return;
-    }
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setPanelOpen(false);
-      }
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [panelOpen]);
+  const { section, openAbout, openContact, close } = useAboutDialog();
 
   return (
-    <div className={`page${panelOpen ? " modal--open" : ""}`} id="top">
+    <div className="page" id="top">
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
       <ShapeField />
       <div className="page__content">
         <section id="landing-page">
-          <SiteNav onOpenPanel={togglePanel} />
+          <SiteNav onOpenAbout={openAbout} onOpenContact={openContact} />
           <header className="header" id="main-content">
             <div className="header__content">
               <h1 className="about__me__info--title">Hey</h1>
@@ -64,7 +31,7 @@ export function HomePage() {
                 building web and mobile products, from design to deployment.
                 <br />
                 Here&apos;s a bit more{" "}
-                <button type="button" className="text--blue click" onClick={openPanel}>
+                <button type="button" className="text--blue click" onClick={openAbout}>
                   about me.
                 </button>
               </p>
@@ -73,7 +40,7 @@ export function HomePage() {
                   type="button"
                   className="about__me_link"
                   aria-label="Contact me"
-                  onClick={openPanel}
+                  onClick={openContact}
                 >
                   <i className="far fa-envelope" aria-hidden />
                 </button>
@@ -112,11 +79,10 @@ export function HomePage() {
             type="button"
             className="btn__mail click"
             aria-label="Contact me"
-            onClick={openPanel}
+            onClick={openContact}
           >
             <i className="fas fa-envelope" aria-hidden />
           </button>
-          <AboutPanel open={panelOpen} onClose={closePanel} />
         </section>
 
         <section id="projects">
@@ -142,8 +108,9 @@ export function HomePage() {
           </div>
         </section>
 
-        <SiteFooter onOpenPanel={openPanel} />
+        <SiteFooter onOpenContact={openContact} />
       </div>
+      <AboutDialog section={section} onClose={close} />
     </div>
   );
 }
