@@ -259,6 +259,108 @@ i:hover {
   background: rgba(127, 127, 127, 0.15);
 }
 
+/* Case studies dropdown */
+
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav__dropdown-toggle i {
+  font-size: 10px;
+  transition: transform 200ms ease;
+}
+
+.nav__dropdown--open .nav__dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+.nav__menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 70;
+  width: 280px;
+  padding: 10px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+}
+
+.nav__dropdown--open .nav__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.nav__menu-item:hover,
+.nav__menu-item:focus-visible {
+  background: rgba(127, 127, 127, 0.12);
+}
+
+.nav__menu-dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.nav__menu-dot--viralz {
+  background: #ff2d55;
+  box-shadow: 0 0 10px rgba(255, 45, 85, 0.6);
+}
+
+.nav__menu-dot--snappd {
+  background: linear-gradient(135deg, #fbc36b, #e8577e);
+}
+
+.nav__menu-dot--gogrow {
+  background: #5ee0e6;
+  box-shadow: 0 0 10px rgba(94, 224, 230, 0.6);
+}
+
+.nav__menu-name {
+  display: block;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.nav__menu-eyebrow {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.nav__menu-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding: 12px;
+  border-top: 1px solid rgba(127, 127, 127, 0.2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
 /* Landing */
 
 #landing-page {
@@ -886,6 +988,11 @@ footer {
 
   .nav__link--hide-sm {
     display: none;
+  }
+
+  .nav__menu {
+    right: -64px;
+    width: min(280px, calc(100vw - 32px));
   }
 
   .about__me__info--title {

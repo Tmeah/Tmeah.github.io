@@ -17,6 +17,7 @@ export default defineConfig({
       input: {
         home: fromRoot("./index.html"),
         archive: fromRoot("./archive/index.html"),
+        caseStudies: fromRoot("./projects/index.html"),
         viralz: fromRoot("./projects/viralz/index.html"),
         snappd: fromRoot("./projects/snappd/index.html"),
         gogrow: fromRoot("./projects/gogrow/index.html"),

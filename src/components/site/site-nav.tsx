@@ -1,3 +1,4 @@
+import { CaseStudiesMenu } from "@/components/site/case-studies-menu";
 import { ThemeButton } from "@/components/site/theme-button";
 
 type SiteNavProps = {
@@ -24,7 +25,7 @@ export function SiteNav({ onOpenPanel }: SiteNavProps) {
             About Me
           </PanelLink>
         </li>
-        <li className="nav__link">
+        <li className="nav__link nav__link--hide-sm">
           <a
             href="/#projects"
             className="nav__link--anchor link__hover--effect"
@@ -32,6 +33,7 @@ export function SiteNav({ onOpenPanel }: SiteNavProps) {
             Projects
           </a>
         </li>
+        <CaseStudiesMenu />
         <li className="nav__link">
           <PanelLink
             onOpenPanel={onOpenPanel}

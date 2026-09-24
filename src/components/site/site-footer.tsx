@@ -62,6 +62,12 @@ export function SiteFooter({ onOpenPanel }: SiteFooterProps) {
             </a>
           )}
           <a
+            href="/projects/"
+            className="footer__social--link link__hover--effect link__hover--effect--white"
+          >
+            Case Studies
+          </a>
+          <a
             href="/archive/"
             className="footer__social--link link__hover--effect link__hover--effect--white"
           >

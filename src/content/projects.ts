@@ -185,16 +185,7 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
-export function getAdjacentProjects(slug: string): {
-  prev?: Project;
-  next?: Project;
-} {
+export function getNextProject(slug: string): Project {
   const index = projects.findIndex((project) => project.slug === slug);
-  if (index === -1) {
-    return {};
-  }
-  return {
-    prev: index > 0 ? projects[index - 1] : undefined,
-    next: index < projects.length - 1 ? projects[index + 1] : undefined,
-  };
+  return projects[(index + 1) % projects.length];
 }
