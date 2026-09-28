@@ -101,7 +101,7 @@ export const projects: Project[] = [
     theme: "gogrow",
     name: "GoGrow",
     eyebrow: "Available on iPhone",
-    note: "web and iOS, I handle every release",
+    note: "my idea, built end to end",
     headline: "Height habits for growing kids.",
     summary:
       "A personalised adult-height estimate, then a daily loop of move, food, and sleep habits for kids, with streaks, a coach, and a community to keep them going.",
@@ -115,11 +115,12 @@ export const projects: Project[] = [
     desktopImage: "/projects/gogrow.webp",
     phoneImage: "/projects/gogrow-phone.webp",
     phoneImageSize: { width: 436, height: 951 },
-    role: "Developer",
+    role: "Creator and developer",
     platform: "iOS app and web",
     overview:
-      "GoGrow turns healthy routines into a simple daily game for kids. I built and maintain both the web platform and the iOS app, covering development, API integration, testing, deployment, and ongoing improvements.",
+      "GoGrow turns healthy routines into a simple daily game for kids. The concept is mine, and I built it end to end: product design, the iOS app, the web platform, the API, testing, and every release since launch.",
     built: [
+      "The concept and product design, from the height estimate to the daily habit loop.",
       "The iOS app: daily habit logging, streaks, and achievements.",
       "The web platform and marketing site.",
       "API integration between the app and backend services.",
