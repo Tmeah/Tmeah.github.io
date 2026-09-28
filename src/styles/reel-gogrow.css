@@ -1,0 +1,480 @@
+@property --gg-n {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 120;
+}
+
+@property --gg-s {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+.reel--gogrow {
+  --reel-accent: #5ee0e6;
+  background: #0a0a0a;
+}
+
+.gg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #e6f2f2;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.gg-glow {
+  position: absolute;
+  left: 50em;
+  top: -20em;
+  width: 70em;
+  height: 70em;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(94, 224, 230, 0.22), transparent 62%);
+}
+
+.gg-teal {
+  color: #5ee0e6;
+}
+
+.gg-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.gg-kicker {
+  font-family: var(--font-mono);
+  font-size: 1.3em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5ee0e6;
+}
+
+.gg-big {
+  margin-top: 0.35em;
+  font-size: 6.6em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Mark */
+
+.gg-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 11em;
+  height: 11em;
+}
+
+.gg-mark svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.gg-mark__track {
+  fill: #111;
+  stroke: rgba(94, 224, 230, 0.15);
+  stroke-width: 5;
+}
+
+.gg-mark__ring {
+  fill: none;
+  stroke: #5ee0e6;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  filter: drop-shadow(0 0 6px rgba(94, 224, 230, 0.8));
+}
+
+.gg-mark__g {
+  position: relative;
+  font-size: 5.6em;
+  font-weight: 700;
+  line-height: 1;
+  color: #5ee0e6;
+}
+
+/* Scene 1 */
+
+.gg-s1,
+.gg-s5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gg-title {
+  margin-top: 0.3em;
+  font-size: 10.5em;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #5ee0e6;
+}
+
+.gg-title .gg-serif {
+  color: #e6f2f2;
+}
+
+/* Scene 2 */
+
+.gg-copy {
+  position: absolute;
+  left: 8em;
+  top: 17em;
+}
+
+.gg-note {
+  margin-top: 1.4em;
+  font-size: 1.9em;
+  color: #8fa3a3;
+}
+
+.gg-ruler {
+  position: absolute;
+  left: 66em;
+  top: 6em;
+  width: 4em;
+  height: 44em;
+  background:
+    repeating-linear-gradient(to top, rgba(230, 242, 242, 0.5) 0 0.14em, transparent 0.14em 2.2em) right / 2.6em 100% no-repeat,
+    repeating-linear-gradient(to top, rgba(230, 242, 242, 0.25) 0 0.1em, transparent 0.1em 0.55em) right / 1.2em 100% no-repeat;
+  border-right: 0.14em solid rgba(230, 242, 242, 0.5);
+}
+
+.gg-bar {
+  position: absolute;
+  left: 73em;
+  top: 8em;
+  width: 9em;
+  height: 42em;
+  border-radius: 3em;
+  background: linear-gradient(to top, #127b80, #5ee0e6);
+  box-shadow: 0 0 5em rgba(94, 224, 230, 0.35);
+}
+
+.gg-target {
+  position: absolute;
+  left: 64em;
+  top: 8em;
+  width: 28em;
+  border-top: 0.2em dashed rgba(94, 224, 230, 0.7);
+  transform-origin: left;
+}
+
+.gg-marker {
+  position: absolute;
+  left: 71em;
+  top: 6.2em;
+  display: flex;
+  align-items: center;
+}
+
+.gg-marker__line {
+  width: 11em;
+  height: 0.25em;
+  background: #fff;
+  border-radius: 1em;
+}
+
+.gg-marker__bubble {
+  margin-left: 1em;
+  padding: 0.35em 0.8em;
+  border-radius: 0.8em;
+  background: #fff;
+  color: #062b2d;
+  font-size: 2.8em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.gg-marker__num::after {
+  counter-reset: gg-n var(--gg-n);
+  content: counter(gg-n);
+}
+
+/* Scene 3 */
+
+.gg-words {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5cqw;
+  display: flex;
+  justify-content: center;
+  gap: 0.35em;
+  font-size: 6em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.gg-words span {
+  display: block;
+}
+
+.gg-word--move {
+  color: #f59e0b;
+}
+
+.gg-word--food {
+  color: #f43f7a;
+}
+
+.gg-word--sleep {
+  color: #a78bfa;
+}
+
+.gg-habits {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15.5em;
+  display: flex;
+  justify-content: center;
+  gap: 7em;
+}
+
+.gg-habit {
+  --habit: #f59e0b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gg-habit--2 {
+  --habit: #f43f7a;
+}
+
+.gg-habit--3 {
+  --habit: #a78bfa;
+}
+
+.gg-habit__dial {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 16em;
+  height: 16em;
+}
+
+.gg-habit__dial svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.gg-habit__track {
+  fill: #121414;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 7;
+}
+
+.gg-habit__progress {
+  fill: none;
+  stroke: var(--habit);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  filter: drop-shadow(0 0 6px var(--habit));
+}
+
+.gg-habit__dial > i {
+  position: relative;
+  font-size: 4.6em;
+  color: var(--habit);
+}
+
+.gg-habit__check {
+  position: absolute;
+  right: 0.6em;
+  top: 0.6em;
+  display: grid;
+  place-items: center;
+  width: 3.6em;
+  height: 3.6em;
+  border-radius: 50%;
+  background: var(--habit);
+  color: #0a0a0a;
+  font-size: 1em;
+  box-shadow: 0 0 2em var(--habit);
+}
+
+.gg-habit__check i {
+  font-size: 1.5em;
+}
+
+.gg-habit__name {
+  margin-top: 0.7em;
+  font-size: 2.6em;
+  font-weight: 600;
+}
+
+.gg-habit__value {
+  font-size: 1.8em;
+  color: #8fa3a3;
+}
+
+.gg-streak {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45cqw;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  margin-inline: auto;
+  padding: 0.5em 1.1em;
+  border-radius: 99em;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  font-size: 2.4em;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fcd34d;
+}
+
+.gg-streak__num::after {
+  counter-reset: gg-s var(--gg-s);
+  content: counter(gg-s);
+}
+
+/* Scene 4 */
+
+.gg-copy--app {
+  top: 15em;
+}
+
+.gg-phone {
+  position: absolute;
+  left: 60em;
+  top: 4em;
+  width: 21em;
+  padding: 0.7em;
+  border-radius: 3.4em;
+  background: #151515;
+  box-shadow:
+    0 0 0 0.12em rgba(94, 224, 230, 0.4),
+    0 0 6em rgba(94, 224, 230, 0.25),
+    0 3em 6em rgba(0, 0, 0, 0.7);
+}
+
+.gg-phone img {
+  width: 100%;
+  height: auto;
+  border-radius: 2.8em;
+}
+
+.gg-float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.8em 1.3em;
+  border-radius: 1.2em;
+  background: rgba(18, 20, 20, 0.95);
+  border: 1px solid rgba(94, 224, 230, 0.3);
+  box-shadow: 0 1.5em 3em rgba(0, 0, 0, 0.6);
+  font-size: 2em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gg-float i {
+  color: #5ee0e6;
+}
+
+.gg-float--1 {
+  left: 49cqw;
+  top: 9cqw;
+}
+
+.gg-float--2 {
+  left: 80cqw;
+  top: 20cqw;
+}
+
+.gg-float--2 i {
+  color: #fcd34d;
+}
+
+.gg-float--3 {
+  left: 50cqw;
+  top: 40cqw;
+}
+
+.gg-float--3 i {
+  color: #f59e0b;
+}
+
+/* Scene 5 */
+
+.gg-lockup {
+  display: flex;
+  align-items: center;
+  gap: 2.4em;
+}
+
+.gg-end-word {
+  font-size: 12em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.gg-url {
+  margin-top: 1.1em;
+  font-size: 2.8em;
+  font-weight: 600;
+  color: #5ee0e6;
+}
+
+.gg-store {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.6em;
+  font-size: 2em;
+  color: #cfdede;
+}
+
+.gg-credit {
+  margin-top: 2em;
+  font-family: var(--font-mono);
+  font-size: 1.2em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6f8585;
+}
+
+.gg-wipe {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: linear-gradient(to top, #127b80, #5ee0e6 96%, #e6ffff);
+  transform: translateY(101%);
+}
+
+.gg-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  background: #0a0a0a;
+}

@@ -1,0 +1,450 @@
+@property --vz-n {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.reel--viralz {
+  --reel-accent: #ff2d55;
+  background: #000;
+}
+
+.vz {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  color: #f2f2f2;
+  font-family: var(--font-sans);
+}
+
+.vz-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.vz-glow--a {
+  left: 52em;
+  top: -26em;
+  width: 70em;
+  height: 70em;
+  background: radial-gradient(circle, rgba(255, 45, 85, 0.42), transparent 62%);
+}
+
+.vz-glow--b {
+  left: -24em;
+  top: 18em;
+  width: 62em;
+  height: 62em;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28), transparent 62%);
+}
+
+.vz-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 0.1em, transparent 0.12em);
+  background-size: 3.2em 3.2em;
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+}
+
+.vz-pink {
+  color: #ff2d55;
+}
+
+.vz-kicker {
+  font-family: var(--font-mono);
+  font-size: 1.3em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ff8aa3;
+}
+
+/* Scene 1 */
+
+.vz-s1,
+.vz-s5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vz-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22em;
+  height: 22em;
+  margin: -11em 0 0 -11em;
+  border-radius: 50%;
+  border: 0.3em solid #ff2d55;
+  box-shadow: 0 0 3em rgba(255, 45, 85, 0.6), inset 0 0 3em rgba(255, 45, 85, 0.4);
+}
+
+.vz-burst--2 {
+  border-color: #b44cff;
+  box-shadow: 0 0 3em rgba(180, 76, 255, 0.6);
+}
+
+.vz-lockup {
+  display: flex;
+  align-items: center;
+  gap: 2.6em;
+}
+
+.vz-icon {
+  display: grid;
+  place-items: center;
+  width: 11em;
+  height: 11em;
+  border-radius: 2.8em;
+  border: 0.32em solid #ff2d55;
+  background: #0d0d0d;
+  color: #ff2d55;
+  box-shadow:
+    0 0 4em rgba(255, 45, 85, 0.65),
+    inset 0 0 2em rgba(255, 45, 85, 0.25);
+}
+
+.vz-icon i {
+  font-size: 4.6em;
+}
+
+.vz-word {
+  display: flex;
+  overflow: hidden;
+  padding: 0.08em 0.02em 0;
+  font-family: var(--font-spartan), sans-serif;
+  font-size: 13em;
+  font-weight: 700;
+  line-height: 0.95;
+  color: #ff2d55;
+  text-shadow: 0 0 0.3em rgba(255, 45, 85, 0.35);
+}
+
+.vz-word span {
+  display: block;
+}
+
+.vz-tag {
+  margin-top: 1em;
+  font-size: 2.8em;
+  letter-spacing: -0.02em;
+  color: #d4d4d4;
+}
+
+/* Scene 2 */
+
+.vz-copy {
+  position: absolute;
+  left: 8em;
+  top: 18em;
+}
+
+.vz-big {
+  margin-top: 0.35em;
+  font-family: var(--font-spartan), sans-serif;
+  font-size: 7.2em;
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.vz-phone {
+  position: absolute;
+  left: 60em;
+  top: 5.5em;
+  width: 20em;
+  padding: 0.7em;
+  border-radius: 3.4em;
+  background: #111;
+  box-shadow:
+    0 0 0 0.25em #ff2d55,
+    0 0 5em rgba(255, 45, 85, 0.5),
+    0 3em 6em rgba(0, 0, 0, 0.7);
+}
+
+.vz-phone img {
+  width: 100%;
+  height: auto;
+  border-radius: 2.8em;
+}
+
+.vz-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.9em 1.3em 0.9em 0.9em;
+  border-radius: 1.2em;
+  background: rgba(22, 22, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1.5em 3em rgba(0, 0, 0, 0.6);
+  font-size: 1.7em;
+  white-space: nowrap;
+  color: #cfcfcf;
+}
+
+.vz-chip b {
+  font-weight: 700;
+  color: #fff;
+}
+
+.vz-chip i {
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+
+.vz-chip--1 {
+  left: 45cqw;
+  top: 13cqw;
+}
+
+.vz-chip--1 i {
+  background: rgba(74, 222, 128, 0.16);
+  color: #4ade80;
+}
+
+.vz-chip--2 {
+  left: 76cqw;
+  top: 10cqw;
+}
+
+.vz-chip--2 i {
+  background: rgba(192, 132, 252, 0.16);
+  color: #c084fc;
+}
+
+.vz-chip--3 {
+  left: 47cqw;
+  top: 38cqw;
+}
+
+.vz-chip--3 i {
+  background: rgba(250, 204, 21, 0.16);
+  color: #facc15;
+}
+
+.vz-chip--4 {
+  left: 77cqw;
+  top: 34cqw;
+}
+
+.vz-chip--4 i {
+  background: rgba(45, 212, 191, 0.16);
+  color: #2dd4bf;
+}
+
+/* Scene 3 */
+
+.vz-stat {
+  position: absolute;
+  left: 8em;
+  top: 12em;
+}
+
+.vz-count {
+  margin-top: 0.1em;
+  font-family: var(--font-spartan), sans-serif;
+  font-size: 17em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.vz-count__num {
+  display: inline-block;
+  padding-top: 0.1em;
+  background: linear-gradient(95deg, #ff5e87, #ff2d55 45%, #b44cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vz-count__num::after {
+  counter-reset: vz-n var(--vz-n);
+  content: counter(vz-n) "K";
+}
+
+.vz-count__label {
+  font-size: 2.4em;
+  color: #bdbdbd;
+}
+
+.vz-chart {
+  position: absolute;
+  left: 52em;
+  top: 7em;
+  width: 40em;
+  height: auto;
+  overflow: visible;
+}
+
+.vz-chart__grid {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+}
+
+.vz-chart__line {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  filter: drop-shadow(0 0 10px rgba(255, 45, 85, 0.7));
+}
+
+.vz-chart__dot {
+  fill: #fff;
+  stroke: #ff2d55;
+  stroke-width: 6;
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: drop-shadow(0 0 12px rgba(255, 45, 85, 0.9));
+}
+
+.vz-insight {
+  position: absolute;
+  left: 52em;
+  top: 34.5em;
+  width: 40em;
+  padding: 1.8em 2.1em;
+  border-radius: 1.6em;
+  background: linear-gradient(135deg, rgba(255, 45, 85, 0.2), rgba(139, 92, 246, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2em 4em rgba(0, 0, 0, 0.6);
+}
+
+.vz-insight__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-size: 1.25em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff8aa3;
+}
+
+.vz-insight__text {
+  margin-top: 0.6em;
+  font-size: 2.2em;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+/* Scene 4 */
+
+.vz-words {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4.2cqw;
+  display: flex;
+  justify-content: center;
+  gap: 0.3em;
+  font-family: var(--font-spartan), sans-serif;
+  font-size: 6.6em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.vz-words span {
+  display: block;
+}
+
+.vz-words span:last-child {
+  color: #ff2d55;
+}
+
+.vz-desk {
+  position: absolute;
+  left: 18em;
+  top: 17em;
+  width: 64em;
+  border-radius: 1.2em;
+  overflow: hidden;
+  background: #111;
+  transform-origin: 50% 0;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 4em 8em rgba(0, 0, 0, 0.85),
+    0 0 9em rgba(255, 45, 85, 0.28);
+}
+
+.vz-desk__bar {
+  display: flex;
+  gap: 0.6em;
+  padding: 0.9em 1.2em;
+  background: #1c1c1e;
+}
+
+.vz-desk__bar i {
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  background: #3a3a3c;
+}
+
+.vz-desk img {
+  width: 100%;
+  height: auto;
+}
+
+/* Scene 5 */
+
+.vz-lockup--end .vz-icon {
+  width: 9em;
+  height: 9em;
+  border-radius: 2.3em;
+}
+
+.vz-lockup--end .vz-icon i {
+  font-size: 3.8em;
+}
+
+.vz-end-word {
+  font-family: var(--font-spartan), sans-serif;
+  font-size: 11em;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 0.1em;
+  color: #ff2d55;
+}
+
+.vz-url {
+  margin-top: 1.2em;
+  font-size: 2.6em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.vz-credit {
+  margin-top: 1.4em;
+  font-family: var(--font-mono);
+  font-size: 1.2em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+
+.vz-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255, 45, 85, 0.55), rgba(255, 45, 85, 0.1) 70%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.vz-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  background: #000;
+}

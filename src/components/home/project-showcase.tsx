@@ -1,15 +1,16 @@
 import { useRef, type MouseEvent, type ReactNode } from "react";
-import { DeviceFrame } from "@/components/site/device-frame";
+import { ProjectReel } from "@/components/reels/project-reel";
 import type { Project, ProjectTheme } from "@/content/types";
 
 type ProjectShowcaseProps = {
   project: Project;
-  reverse: boolean;
+  index: number;
 };
 
-export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
+export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
   const themeDetails = getThemeDetails(project.theme);
   const caseStudyLink = useRef<HTMLAnchorElement>(null);
+  const reverse = index % 2 === 1;
 
   function openCaseStudy(event: MouseEvent<HTMLLIElement>) {
     const clickedControl = (event.target as Element).closest("a, button");
@@ -34,12 +35,18 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
       onClick={openCaseStudy}
     >
       {themeDetails.decorations}
-      <div className="showcase__text">
+      <div className="showcase__media">
+        <ProjectReel theme={project.theme} />
+      </div>
+      <div className="showcase__body">
+        <p className="showcase__meta">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span>{project.eyebrow}</span>
+        </p>
         <p className="showcase__brand">
           {themeDetails.brandMark}
           {project.name}
         </p>
-        <p className="showcase__eyebrow">{project.eyebrow}</p>
         <h3 className="showcase__headline">{themeDetails.headline}</h3>
         <p className="showcase__summary">{project.summary}</p>
         <ul className="showcase__highlights">
@@ -50,18 +57,14 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
             </li>
           ))}
         </ul>
-        <ul className="showcase__stack" aria-label="Tech stack">
-          {project.stack.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <p className="showcase__stack">{project.stack.join(" · ")}</p>
         <div className="showcase__actions">
           <a
             ref={caseStudyLink}
             href={`/projects/${project.slug}/`}
             className="showcase__cta"
           >
-            Case study
+            Read the case study <i className="fas fa-arrow-right" aria-hidden />
           </a>
           {project.links.map((link) => (
             <a
@@ -71,18 +74,10 @@ export function ProjectShowcase({ project, reverse }: ProjectShowcaseProps) {
               rel="noreferrer"
               className="showcase__link"
             >
-              <i className={link.icon} aria-hidden />
-              {link.label}
+              {link.label} <i className="fas fa-arrow-up-right-from-square" aria-hidden />
             </a>
           ))}
         </div>
-      </div>
-      <div className="showcase__visual">
-        <DeviceFrame
-          src={project.phoneImage}
-          alt={`${project.name} app screenshot`}
-          theme={project.theme}
-        />
       </div>
     </li>
   );
@@ -126,9 +121,6 @@ function getThemeDetails(theme: ProjectTheme): ThemeDetails {
             </span>
             <span className="doodle doodle--heart" aria-hidden>
               ♡
-            </span>
-            <span className="doodle doodle--star" aria-hidden>
-              ✳
             </span>
           </>
         ),

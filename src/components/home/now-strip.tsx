@@ -2,22 +2,23 @@ import { nowCopy } from "@/content/site";
 
 export function NowStrip() {
   return (
-    <section className="now" aria-label="Current role">
-      <span className="now__item">
-        <strong>Currently:</strong> {nowCopy.current.role} at{" "}
-        <span className="text--blue">{nowCopy.current.company}</span>
-      </span>
-      <span className="now__sep" aria-hidden>
-        ·
-      </span>
-      <span className="now__item">
-        <strong>Previously:</strong> {nowCopy.previous.role} at{" "}
-        <span className="text--blue">{nowCopy.previous.company}</span>
-      </span>
-      <span className="now__sep" aria-hidden>
-        ·
-      </span>
-      <span className="now__item">{nowCopy.degree}</span>
+    <section className="now" aria-label="At a glance">
+      <div className="now__item">
+        <p className="label">Currently</p>
+        <p className="now__value">
+          {nowCopy.current.role} <span>at {nowCopy.current.company}</span>
+        </p>
+      </div>
+      <div className="now__item">
+        <p className="label">Previously</p>
+        <p className="now__value">
+          {nowCopy.previous.role} <span>at {nowCopy.previous.company}</span>
+        </p>
+      </div>
+      <div className="now__item">
+        <p className="label">Education</p>
+        <p className="now__value">{nowCopy.degree}</p>
+      </div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-const phoneTransitionName = "project-phone";
+const reelTransitionName = "project-reel";
 
 type WindowWithNavigation = Window & {
   navigation?: { activation?: NavigationActivation | null };
@@ -12,38 +12,38 @@ function projectSlug(url: string | null | undefined) {
   return match ? match[1] : null;
 }
 
-function visiblePhone(slug: string | null) {
+function visibleReel(slug: string | null) {
   if (!slug) {
     return null;
   }
-  const phone = document.querySelector<HTMLElement>(`.device--${slug}`);
-  if (!phone) {
+  const reel = document.querySelector<HTMLElement>(`[data-reel="${slug}"]`);
+  if (!reel) {
     return null;
   }
-  const rect = phone.getBoundingClientRect();
-  return rect.bottom > 0 && rect.top < window.innerHeight ? phone : null;
+  const rect = reel.getBoundingClientRect();
+  return rect.bottom > 0 && rect.top < window.innerHeight ? reel : null;
 }
 
-function namePhoneFor(slug: string | null, transition: ViewTransition) {
-  const phone = visiblePhone(slug);
-  if (!phone) {
+function nameReelFor(slug: string | null, transition: ViewTransition) {
+  const reel = visibleReel(slug);
+  if (!reel) {
     return;
   }
-  phone.style.viewTransitionName = phoneTransitionName;
+  reel.style.viewTransitionName = reelTransitionName;
   transition.finished.finally(() => {
-    phone.style.viewTransitionName = "";
+    reel.style.viewTransitionName = "";
   });
 }
 
-// Pairs the phone on a project card with the phone in that project's case study
-// header, so it glides between pages instead of cross-fading.
+// Pairs the reel on a project card with the reel in that project's case study
+// header, so it grows into place instead of cross-fading.
 export function setupPageTransitions() {
   window.addEventListener("pageswap", (event) => {
     if (!event.viewTransition) {
       return;
     }
     const slug = projectSlug(event.activation?.entry.url) ?? projectSlug(location.href);
-    namePhoneFor(slug, event.viewTransition);
+    nameReelFor(slug, event.viewTransition);
   });
 
   window.addEventListener("pagereveal", (event) => {
@@ -52,6 +52,6 @@ export function setupPageTransitions() {
     }
     const from = (window as WindowWithNavigation).navigation?.activation?.from;
     const slug = projectSlug(location.href) ?? projectSlug(from?.url);
-    namePhoneFor(slug, event.viewTransition);
+    nameReelFor(slug, event.viewTransition);
   });
 }

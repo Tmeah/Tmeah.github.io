@@ -1,6 +1,6 @@
 import type { Plugin } from "vite";
 
-const defaultBackground = "html{background:#f5f5f5}html.dark{background:#242424}";
+const defaultBackground = "html{background:#f5f5f3}html.dark{background:#0e0e10}";
 
 const caseStudyBackgrounds: Record<string, string> = {
   viralz: "html{background:#000}",

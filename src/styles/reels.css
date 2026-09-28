@@ -1,0 +1,130 @@
+@property --reel-second {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.reel {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  container-type: inline-size;
+  border-radius: inherit;
+  isolation: isolate;
+  user-select: none;
+}
+
+.reel__canvas {
+  position: absolute;
+  inset: 0;
+  font-size: 1cqw;
+  line-height: 1.2;
+}
+
+.reel__canvas * {
+  box-sizing: border-box;
+}
+
+.reel__canvas img {
+  display: block;
+  max-width: none;
+}
+
+.reel__chrome {
+  --reel-chrome: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 1.15em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--reel-chrome);
+}
+
+.reel__tag {
+  position: absolute;
+  top: 2.4em;
+  left: 2.8em;
+  color: var(--reel-chrome-strong, #fff);
+}
+
+.reel__tag span {
+  color: var(--reel-chrome);
+}
+
+.reel__time {
+  position: absolute;
+  top: 2.4em;
+  right: 2.8em;
+  font-variant-numeric: tabular-nums;
+}
+
+.reel__second::after {
+  counter-reset: reel-second var(--reel-second);
+  content: counter(reel-second, decimal-leading-zero);
+}
+
+.reel__progress {
+  position: absolute;
+  left: 2.4em;
+  right: 2.4em;
+  bottom: 2em;
+  height: 0.18em;
+  border-radius: 1em;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--reel-chrome) 30%, transparent);
+}
+
+.reel__progress span {
+  display: block;
+  height: 100%;
+  background: var(--reel-accent, #fff);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.reels-solo {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.reels-solo .reel {
+  width: min(100vw, 100vh * 16 / 9);
+}
+
+.reels-index {
+  display: grid;
+  gap: 32px;
+  width: min(1100px, 100% - 48px);
+  margin: 48px auto;
+}
+
+.reels-index__item {
+  display: grid;
+  gap: 12px;
+}
+
+.reels-index__item .reel {
+  border-radius: 20px;
+}
+
+.reel-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.reel-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.reel-line > span {
+  display: block;
+}

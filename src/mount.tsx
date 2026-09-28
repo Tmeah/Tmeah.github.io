@@ -6,6 +6,10 @@ import { ScrollReveal } from "@/components/site/scroll-reveal";
 import "@/styles/site.css";
 import "@/styles/showcase.css";
 import "@/styles/case-study.css";
+import "@/styles/reels.css";
+import "@/styles/reel-viralz.css";
+import "@/styles/reel-snappd.css";
+import "@/styles/reel-gogrow.css";
 import "@/styles/motion.css";
 
 export function mount(page: ReactNode) {

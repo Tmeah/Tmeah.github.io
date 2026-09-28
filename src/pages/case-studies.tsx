@@ -6,24 +6,23 @@ import { mount } from "@/mount";
 function CaseStudiesPage() {
   return (
     <InnerPage>
-      <div className="inner">
-        <a href="/#projects" className="back-link">
-          <i className="fas fa-arrow-left" aria-hidden /> Back home
+      <header className="page-head wrap">
+        <a href="/" className="back-link">
+          <i className="fas fa-arrow-left" aria-hidden /> Home
         </a>
-        <h1 className="archive__title">
-          Case <span className="text--blue">studies</span>
+        <p className="label">Case studies · {projects.length} products</p>
+        <h1 className="page-head__title">
+          How I <span className="accent">build</span>
         </h1>
-        <p className="archive__lede">
-          How I designed, built, and shipped my own products: what they do,
-          the decisions behind them, and how they turned out.
+        <p className="page-head__lede">
+          How I built and shipped three live products: what they do, the
+          decisions behind them, and how they turned out.
         </p>
+      </header>
+      <div className="inner wrap">
         <ul className="projects__list">
           {projects.map((project, index) => (
-            <ProjectShowcase
-              key={project.slug}
-              project={project}
-              reverse={index % 2 === 1}
-            />
+            <ProjectShowcase key={project.slug} project={project} index={index} />
           ))}
         </ul>
       </div>

@@ -1,12 +1,15 @@
 import { useLayoutEffect } from "react";
 
 const revealTargets = [
-  ".section__title",
-  ".section__lede",
+  ".section__head",
   ".projects__list > li",
+  ".experience__row",
+  ".cta__title",
+  ".cta__row",
   ".archive__card",
+  ".case-hero__facts",
   ".case-story__section",
-  ".case-showcase__stage",
+  ".case-screens",
   ".case-next-wrap",
 ].join(", ");
 

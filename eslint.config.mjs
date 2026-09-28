@@ -4,7 +4,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist/**", "legacy/**", "node_modules/**"] },
+  { ignores: ["dist/**", "legacy/**", "node_modules/**", ".reel-frames/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   reactHooks.configs.flat.recommended,
@@ -12,6 +12,12 @@ export default tseslint.config(
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       globals: globals.browser,
+    },
+  },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.browser },
     },
   },
 );

@@ -23,6 +23,7 @@ export default defineConfig({
         snappd: fromRoot("./projects/snappd/index.html"),
         gogrow: fromRoot("./projects/gogrow/index.html"),
         notFound: fromRoot("./404.html"),
+        reels: fromRoot("./reels/index.html"),
       },
     },
   },
