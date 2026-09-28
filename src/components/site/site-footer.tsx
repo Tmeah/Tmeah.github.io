@@ -15,6 +15,7 @@ export function SiteFooter({ onOpenContact }: SiteFooterProps) {
             <p className="footer__role">
               {siteConfig.title} · {siteConfig.location}
             </p>
+            <p className="note footer__made">designed and built by hand, in Wales</p>
           </div>
         </div>
         <div className="footer__cols">
@@ -80,7 +81,7 @@ export function SiteFooter({ onOpenContact }: SiteFooterProps) {
           </div>
         </div>
       </div>
-      <div className="wrap footer__bottom label">
+      <div className="wrap footer__bottom">
         <span>
           &copy; {new Date().getFullYear()} {siteConfig.name}
         </span>

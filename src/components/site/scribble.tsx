@@ -23,7 +23,7 @@ export function Scribble({ children, mark = "underline" }: ScribbleProps) {
   return (
     <span className={`scribble scribble--${mark}`}>
       {children}
-      <svg className="scribble__mark" viewBox={viewBox} preserveAspectRatio="none" aria-hidden>
+      <svg className="scribble__mark drawn" viewBox={viewBox} preserveAspectRatio="none" aria-hidden>
         <path d={d} pathLength={1} />
       </svg>
     </span>

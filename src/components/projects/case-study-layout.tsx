@@ -1,5 +1,6 @@
 import { ProjectReel } from "@/components/reels/project-reel";
 import { DeviceFrame } from "@/components/site/device-frame";
+import { MarginNote } from "@/components/site/margin-note";
 import { projects } from "@/content/projects";
 import type { Project } from "@/content/types";
 
@@ -20,13 +21,16 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
         <a href="/projects/" className="back-link">
           <i className="fas fa-arrow-left" aria-hidden /> All case studies
         </a>
-        <p className="label case-hero__label">
-          Case study {number} · {project.eyebrow}
+        <p className="note case-hero__label">
+          case study {number} · {project.eyebrow.toLowerCase()}
         </p>
         <div className="case-hero__head">
           <h1 className="case__title">{project.name}</h1>
           <p className="case__headline">{project.headline}</p>
         </div>
+        <MarginNote arrow="down" className="case-hero__reel-note">
+          made this reel in code, no After Effects
+        </MarginNote>
         <div className="case-hero__reel">
           <ProjectReel theme={project.theme} />
         </div>
@@ -60,7 +64,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
       <div className="case-story wrap">
         <section className="case-story__section">
           <header className="case-story__aside">
-            <p className="label">(01)</p>
+            <p className="note">01</p>
             <h2 className="case-story__title">
               The <span>idea</span>
             </h2>
@@ -70,7 +74,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
 
         <section className="case-story__section">
           <header className="case-story__aside">
-            <p className="label">(02)</p>
+            <p className="note">02</p>
             <h2 className="case-story__title">
               What I <span>built</span>
             </h2>
@@ -78,7 +82,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
           <ol className="case-story__list">
             {project.built.map((item, index) => (
               <li key={item}>
-                <span className="label">{twoDigits(index + 1)}</span>
+                <span className="note">{twoDigits(index + 1)}</span>
                 <p>{item}</p>
               </li>
             ))}
@@ -87,7 +91,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
 
         <section className="case-story__section">
           <header className="case-story__aside">
-            <p className="label">(03)</p>
+            <p className="note">03</p>
             <h2 className="case-story__title">
               Key <span>decisions</span>
             </h2>
@@ -104,7 +108,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
 
         <section className="case-story__section">
           <header className="case-story__aside">
-            <p className="label">(04)</p>
+            <p className="note">04</p>
             <h2 className="case-story__title">
               The <span>result</span>
             </h2>

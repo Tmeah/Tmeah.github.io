@@ -10,7 +10,7 @@ function ArchivePage() {
         <a href="/#projects" className="back-link">
           <i className="fas fa-arrow-left" aria-hidden /> Selected work
         </a>
-        <p className="label">Archive · {archiveProjects.length} projects</p>
+        <p className="note">from when I was just starting out</p>
         <h1 className="page-head__title">
           Earlier <Scribble>work</Scribble>
         </h1>

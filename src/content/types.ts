@@ -18,6 +18,7 @@ export type Project = {
   theme: ProjectTheme;
   name: string;
   eyebrow: string;
+  note: string;
   headline: string;
   summary: string;
   highlights: string[];

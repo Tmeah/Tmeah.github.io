@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ThemeButton } from "@/components/site/theme-button";
 
 type SiteNavProps = {
@@ -10,34 +9,12 @@ function isCaseStudiesPage() {
   return window.location.pathname.startsWith("/projects/");
 }
 
-function useScrolled() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 8);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return scrolled;
-}
-
 export function SiteNav({ onOpenAbout, onOpenContact }: SiteNavProps) {
-  const scrolled = useScrolled();
-
   return (
-    <nav className="nav" aria-label="Primary" data-scrolled={scrolled || undefined}>
+    <nav className="nav" aria-label="Primary">
       <div className="nav__inner wrap">
         <a href="/" className="nav__logo" aria-label="Tausif Meah, home">
-          <img
-            src="/brand/logo-white.jpg"
-            alt=""
-            width={44}
-            height={44}
-          />
+          <img src="/brand/logo-white.jpg" alt="" width={44} height={44} />
           <span className="nav__name">Tausif Meah</span>
         </a>
         <ul className="nav-list">
@@ -48,7 +25,7 @@ export function SiteNav({ onOpenAbout, onOpenContact }: SiteNavProps) {
           </li>
           <li className="nav__link--hide-sm">
             <a href="/#projects" className="nav__link--anchor">
-              Work
+              Projects
             </a>
           </li>
           <li>

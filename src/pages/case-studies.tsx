@@ -11,9 +11,9 @@ function CaseStudiesPage() {
         <a href="/" className="back-link">
           <i className="fas fa-arrow-left" aria-hidden /> Home
         </a>
-        <p className="label">Case studies · {projects.length} products</p>
+        <p className="note">the long versions, with all the decisions</p>
         <h1 className="page-head__title">
-          How I <Scribble mark="circle">build</Scribble>
+          Case <Scribble mark="circle">studies</Scribble>
         </h1>
         <p className="page-head__lede">
           How I built and shipped three live products: what they do, the

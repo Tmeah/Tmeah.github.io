@@ -6,6 +6,7 @@ export const projects: Project[] = [
     theme: "viralz",
     name: "Viralz",
     eyebrow: "TikTok analytics platform",
+    note: "my first paid app, now making around £1k a month",
     headline: "Analyze your TikTok performance like a pro.",
     summary:
       "An AI-powered TikTok analytics app. Creators get deep insights into their content, track performance over time, and get guidance on what to post next.",
@@ -51,6 +52,7 @@ export const projects: Project[] = [
     theme: "snappd",
     name: "Snappd",
     eyebrow: "Event photo scrapbooks",
+    note: "started life as the scrapbook for my own wedding ♡",
     headline: "Snap it. Scrapbook it.",
     summary:
       "Guests scan a QR code, snap photos on their phone, and the host gets a beautiful digital scrapbook, curated by them. No app for guests, one-time payment, ready in two minutes.",
@@ -97,6 +99,7 @@ export const projects: Project[] = [
     theme: "gogrow",
     name: "GoGrow",
     eyebrow: "Available on iPhone",
+    note: "web and iOS, I ship every release",
     headline: "Height habits for growing kids.",
     summary:
       "A personalised adult-height estimate, then a daily loop of move, food, and sleep habits for kids, with streaks, a coach, and a community to keep them going.",

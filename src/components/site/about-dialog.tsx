@@ -124,8 +124,7 @@ export function AboutDialog({ section, onClose }: AboutDialogProps) {
           aria-labelledby="about-dialog-contact-title"
         >
           <p className="about-dialog__status">
-            <span className="about-dialog__status-dot" aria-hidden />
-            Open to new opportunities
+            <i className="fas fa-check" aria-hidden /> open to new opportunities
           </p>
           <h2 className="about-dialog__name" id="about-dialog-contact-title">
             Let&apos;s have a chat!

@@ -1,6 +1,7 @@
 import { NowStrip } from "@/components/home/now-strip";
 import { ProjectShowcase } from "@/components/home/project-showcase";
 import { AboutDialog } from "@/components/site/about-dialog";
+import { MarginNote } from "@/components/site/margin-note";
 import { Scribble } from "@/components/site/scribble";
 import { ShapeField } from "@/components/site/shape-field";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -23,21 +24,20 @@ export function HomePage() {
         <SiteNav onOpenAbout={openAbout} onOpenContact={openContact} />
 
         <header className="hero wrap" id="main-content">
-          <p className="hero__status">
-            <span className="status-dot" aria-hidden />
-            <span>
-              <strong>{nowCopy.current.role}</strong> at {nowCopy.current.company}
-              <span className="hero__status-extra"> · {siteConfig.location}</span>
-            </span>
-          </p>
-          <h1 className="hero__title">
-            <span className="hero__line">
-              <span>Hey</span>
-            </span>
-            <span className="hero__line hero__line--accent">
-              <span>I&apos;m Tausif.</span>
-            </span>
-          </h1>
+          <p className="note hero__hi">hello there, thanks for stopping by</p>
+          <div className="hero__heading">
+            <h1 className="hero__title">
+              <span className="hero__line">
+                <span>Hey</span>
+              </span>
+              <span className="hero__line hero__line--accent">
+                <span>I&apos;m Tausif.</span>
+              </span>
+            </h1>
+            <MarginNote arrow="left" className="hero__note">
+              that&apos;s me, building stuff at {nowCopy.current.company} in Wales
+            </MarginNote>
+          </div>
           <div className="hero__foot">
             <p className="hero__lede">
               I&apos;m a <strong>full stack developer</strong> who designs, builds, and
@@ -102,9 +102,9 @@ export function HomePage() {
           <section className="section wrap" id="projects" aria-labelledby="work-title">
             <div className="section__head">
               <div>
-                <p className="label">(01) Selected work</p>
+                <p className="note">01 · the good stuff</p>
                 <h2 className="section__title" id="work-title">
-                  Things I&apos;ve <Scribble>shipped</Scribble>
+                  Some of my <Scribble>projects</Scribble>
                 </h2>
               </div>
               <p className="section__lede">
@@ -122,7 +122,7 @@ export function HomePage() {
           <section className="section wrap" id="experience" aria-labelledby="experience-title">
             <div className="section__head">
               <div>
-                <p className="label">(02) Experience</p>
+                <p className="note">02 · the day jobs</p>
                 <h2 className="section__title" id="experience-title">
                   Where I&apos;ve <Scribble mark="circle">worked</Scribble>
                 </h2>
@@ -138,7 +138,7 @@ export function HomePage() {
             <ol className="experience">
               {experience.map((job) => (
                 <li key={job.company} className="experience__row">
-                  <p className="experience__period label">{job.period}</p>
+                  <p className="experience__period note">{job.period}</p>
                   <div>
                     <h3 className="experience__role">{job.role}</h3>
                     <p className="experience__company">{job.company}</p>
@@ -154,11 +154,11 @@ export function HomePage() {
           </section>
 
           <section className="section cta wrap" aria-labelledby="cta-title">
-            <p className="label">(03) Contact</p>
+            <p className="note">03 · say hello</p>
             <h2 className="cta__title" id="cta-title">
-              Got an idea?
+              Fancy working
               <br />
-              Let&apos;s <Scribble>build it.</Scribble>
+              <Scribble>together?</Scribble>
             </h2>
             <div className="cta__row">
               <a href={`mailto:${siteConfig.email}`} className="cta__email">
