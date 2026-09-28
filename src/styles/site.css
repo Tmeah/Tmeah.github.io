@@ -730,44 +730,6 @@ p {
 
 /* Experience */
 
-.toolkit {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px 28px;
-}
-
-.toolkit__group {
-  padding-top: 18px;
-  border-top: 1.5px dashed var(--line-strong);
-}
-
-.toolkit__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.toolkit__chips li {
-  padding: 7px 13px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 80%, transparent);
-  font-size: 14.5px;
-  font-weight: 500;
-  line-height: 1.3;
-  transition:
-    transform 400ms var(--ease-out),
-    border-color 200ms ease,
-    color 200ms ease;
-}
-
-.toolkit__chips li:hover {
-  transform: translateY(-2px);
-  border-color: var(--blue);
-  color: var(--blue);
-}
-
 .experience {
   border-bottom: 1.5px dashed var(--line-strong);
 }
@@ -1151,22 +1113,37 @@ html:has(.about-dialog[open]) {
   color: var(--muted);
 }
 
-.about-dialog__toolkit {
-  display: grid;
-  gap: 6px;
-  font-size: 13.5px;
-  line-height: 1.45;
+.about-dialog__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.about-dialog__toolkit div {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 12px;
-}
-
-.about-dialog__toolkit dt {
+.about-dialog__skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--muted);
+  border: 1px solid var(--line);
+  transition: border-color 200ms ease, transform 300ms var(--ease-out);
+}
+
+.about-dialog__skill:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.about-dialog__skill img {
+  width: 18px;
+  height: 18px;
+}
+
+.dark .about-dialog__skill--mono img,
+.page--themed:not(.page--snappd) .about-dialog__skill--mono img {
+  filter: invert(1);
 }
 
 .about-dialog__links {
@@ -1447,10 +1424,6 @@ textarea.input {
 }
 
 @media (max-width: 1024px) {
-  .toolkit {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .hero__note {
     position: static;
     display: block;
@@ -1507,10 +1480,6 @@ textarea.input {
   }
 
   .section__head {
-    grid-template-columns: 1fr;
-  }
-
-  .toolkit {
     grid-template-columns: 1fr;
   }
 

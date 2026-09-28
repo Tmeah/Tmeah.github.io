@@ -2,7 +2,7 @@ import { useEffect, useRef, type MouseEvent } from "react";
 import { ContactForm } from "@/components/contact/contact-form";
 import type { AboutSection } from "@/components/site/use-about-dialog";
 import { experience } from "@/content/experience";
-import { aboutCopy, siteConfig, toolkit } from "@/content/site";
+import { aboutCopy, siteConfig, skillLogos } from "@/content/site";
 
 type AboutDialogProps = {
   section: AboutSection | null;
@@ -91,14 +91,17 @@ export function AboutDialog({ section, onClose }: AboutDialogProps) {
 
 
           <h3 className="about-dialog__heading">Toolkit</h3>
-          <dl className="about-dialog__toolkit">
-            {toolkit.map((group) => (
-              <div key={group.group}>
-                <dt>{group.group}</dt>
-                <dd>{group.items.join(", ")}</dd>
-              </div>
+          <ul className="about-dialog__skills">
+            {skillLogos.map((skill) => (
+              <li
+                key={skill.name}
+                className={`about-dialog__skill${skill.mono ? " about-dialog__skill--mono" : ""}`}
+              >
+                <img src={skill.src} alt="" width={20} height={20} />
+                {skill.name}
+              </li>
             ))}
-          </dl>
+          </ul>
 
           <div className="about-dialog__links">
             <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">
