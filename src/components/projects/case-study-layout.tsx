@@ -1,6 +1,5 @@
 import { ProjectReel } from "@/components/reels/project-reel";
 import { DeviceFrame } from "@/components/site/device-frame";
-import { MarginNote } from "@/components/site/margin-note";
 import { projects } from "@/content/projects";
 import type { Project } from "@/content/types";
 
@@ -28,9 +27,6 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
           <h1 className="case__title">{project.name}</h1>
           <p className="case__headline">{project.headline}</p>
         </div>
-        <MarginNote arrow="down" className="case-hero__reel-note">
-          animated in code
-        </MarginNote>
         <div className="case-hero__reel">
           <ProjectReel theme={project.theme} />
         </div>
