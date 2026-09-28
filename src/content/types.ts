@@ -33,8 +33,19 @@ export type Project = {
   outcomes: string[];
 };
 
+export type ArchiveStatus =
+  | "Live"
+  | "App Store"
+  | "In development"
+  | "Concept"
+  | "University"
+  | "Open source"
+  | "Private";
+
 export type ArchiveProject = {
   name: string;
+  accent: string;
+  status: ArchiveStatus;
   description: string;
   stack: string[];
   image?: string;

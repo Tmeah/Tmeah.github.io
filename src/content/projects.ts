@@ -135,6 +135,12 @@ export const projects: Project[] = [
   },
 ];
 
+const productAccents: Record<Project["theme"], string> = {
+  viralz: "#ff2d55",
+  snappd: "#e8577e",
+  gogrow: "#14a3aa",
+};
+
 export const archiveGroups: ArchiveGroup[] = [
   {
     id: "products",
@@ -145,16 +151,20 @@ export const archiveGroups: ArchiveGroup[] = [
         name: project.name,
         description: project.summary,
         stack: project.stack,
-        image: project.desktopImage,
+        accent: productAccents[project.theme],
+        status: "Live",
+        image: `/archive/covers/${project.slug}.webp`,
         caseStudyUrl: `/projects/${project.slug}/`,
         liveUrl: project.links[0]?.href,
       })),
       {
         name: "TikWave",
+        accent: "#8b5cf6",
+        status: "App Store",
+        image: "/archive/covers/tikwave.webp",
         description:
           "Subscription iPhone app for TikTok Shop sellers and creators: trending products ranked by sales, viral product videos, and product analysis with scores and competitor context.",
         stack: ["React Native", "Expo", "Supabase", "Cloudflare Workers", "RevenueCat", "OpenAI"],
-        image: "/archive/tikwave.webp",
         liveUrl: "https://apps.apple.com/gb/app/tikwave/id6758156484",
         liveLabel: "App Store",
       },
@@ -167,31 +177,39 @@ export const archiveGroups: ArchiveGroup[] = [
     projects: [
       {
         name: "Hifz Helper",
+        accent: "#059669",
+        status: "In development",
+        image: "/archive/covers/hifz-helper.webp",
         description:
-          "Quran revision companion for people who have memorised the Quran: daily juz logging, streaks, khatam progress, and achievements, with group khatams on the way. In development.",
+          "Quran revision companion for people who have memorised the Quran: daily juz logging, streaks, khatam progress, and achievements, with group khatams on the way.",
         stack: ["React Native", "Expo Router", "TypeScript", "NativeWind", "Zustand"],
-        image: "/archive/hifz-helper.webp",
       },
       {
         name: "Ramadan Apps",
+        accent: "#d97706",
+        status: "In development",
+        image: "/archive/covers/ramadan-apps.webp",
         description:
-          "Four apps for one Ramadan season: Khushu briefs you on each night's Taraweeh, Baraka plans your day around fasting, Suhba puts you in a small accountability circle, and Munaajat suggests duas for the moment. In development.",
+          "Four apps for one Ramadan season: Khushu briefs you on each night's Taraweeh, Baraka plans your day around fasting, Suhba puts you in a small accountability circle, and Munaajat suggests duas for the moment.",
         stack: ["React Native", "Expo", "TypeScript", "npm workspaces"],
-        image: "/archive/ramadan-apps.webp",
       },
       {
         name: "Room Decorator",
+        accent: "#2563eb",
+        status: "Private",
+        image: "/archive/covers/room-decorator.webp",
         description:
           "Browser-based 3D room planner: set the room size, add doors, windows, and wall blocks, then drag, rotate, and snap furniture to a grid. Undo, redo, and save to file.",
         stack: ["Three.js", "JavaScript", "HTML", "CSS"],
-        image: "/archive/room-decorator.webp",
       },
       {
         name: "Baseerah",
+        accent: "#047857",
+        status: "Concept",
+        image: "/archive/covers/baseerah.webp",
         description:
           "Concept site for a Muslim-led app agency: services, featured apps, and a contact form, with scroll animations throughout.",
         stack: ["Astro", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-        image: "/archive/baseerah.webp",
       },
     ],
   },
@@ -202,56 +220,70 @@ export const archiveGroups: ArchiveGroup[] = [
     projects: [
       {
         name: "Quran Academy",
+        accent: "#3f7d5a",
+        status: "Live",
+        image: "/archive/covers/quran-academy.webp",
         description:
           "Interest form for a weekend Quran class in Newport, with a password-protected admin page for replies.",
         stack: ["Next.js", "TypeScript", "Cloudflare Workers"],
-        image: "/archive/quran-academy.webp",
         liveUrl: "https://quran-academy.tausifmeah.workers.dev/",
       },
       {
         name: "Youth Club Register",
+        accent: "#6366f1",
+        status: "Private",
+        image: "/archive/covers/youth-club-register.webp",
         description:
           "Register for the Iqra Newport youth club: attendance and session payments for separate boys' and girls' sections, incident logging, and monthly reports with charts.",
         stack: ["React", "Firebase", "Chart.js", "React Bootstrap"],
-        image: "/archive/youth-club-register.webp",
       },
       {
         name: "SJ Concepts",
+        accent: "#e11d2a",
+        status: "Open source",
+        image: "/archive/covers/sj-concepts.webp",
         description:
           "Previous website for a car audio, security, and customisation specialist in Newport, with a gallery and shop managed through Contentful and Stripe checkout.",
         stack: ["React", "Contentful", "Stripe", "Netlify Functions", "Bootstrap"],
-        image: "/archive/sj-concepts.webp",
         githubUrl: "https://github.com/Tmeah/sjc-app-master",
       },
       {
         name: "Iqra Study",
+        accent: "#4f46e5",
+        status: "Open source",
+        image: "/archive/covers/iqra-study.webp",
         description:
           "Landing page for IqraStudy, an online platform for exploring the Quran, Hadith, and duas, with a pop-up contact form.",
         stack: ["React", "React Router", "CSS"],
-        image: "/archive/iqra-study.webp",
         githubUrl: "https://github.com/Tmeah/iqrastudy",
       },
       {
         name: "EduCam",
+        accent: "#0d9488",
+        status: "Private",
+        image: "/archive/covers/educam.webp",
         description:
           "Marketing site for a GCSE tutoring service offering small-group, pay-as-you-go, and one-to-one sessions, with pricing and FAQs.",
         stack: ["React", "React Bootstrap", "React Router"],
-        image: "/archive/educam.webp",
       },
       {
         name: "Iqra Community Centre Feedback Form",
+        accent: "#7c3aed",
+        status: "Live",
+        image: "/archive/covers/iqra-feedback.webp",
         description:
           "Feedback form for parents to rate their child's progress and the centre's service.",
         stack: ["HTML", "CSS"],
-        image: "/archive/iqra-feedback.webp",
         githubUrl: "https://github.com/Tmeah/survey-form",
         liveUrl: "https://tausifmeah.co.uk/survey-form/",
       },
       {
         name: "Portfolio for Jamil Rahman",
+        accent: "#8b3dff",
+        status: "Live",
+        image: "/archive/covers/jamil-portfolio.webp",
         description: "Personal portfolio site for a fellow software engineer.",
         stack: ["HTML", "CSS"],
-        image: "/archive/jamil-portfolio.webp",
         githubUrl: "https://github.com/Tmeah/Friend-eport",
         liveUrl: "https://tausifmeah.co.uk/Friend-eport/",
       },
@@ -264,18 +296,22 @@ export const archiveGroups: ArchiveGroup[] = [
     projects: [
       {
         name: "ChemInspect",
+        accent: "#6c5ce7",
+        status: "University",
+        image: "/archive/covers/cheminspect.webp",
         description:
           "Chemical database and emergency response training tool built with UKHSA: look up chemicals via PubChem, log spill incidents with live weather, and practise shelter-or-evacuate decisions using the SHORE framework.",
         stack: ["React", "Express", "MySQL", "PHP", "PubChem API"],
-        image: "/archive/cheminspect.webp",
         githubUrl: "https://github.com/Tmeah/Devolepment-project",
       },
       {
         name: "Game of Life",
+        accent: "#16a34a",
+        status: "University",
+        image: "/archive/covers/game-of-life.webp",
         description:
           "Conway's Game of Life in C++ for a university module: a randomly seeded 64 by 64 grid drawn with OpenGL, with each generation timed and an experiment in parallelising the update with Intel TBB.",
         stack: ["C++", "OpenGL", "FreeGLUT", "Intel TBB"],
-        image: "/archive/game-of-life.webp",
         githubUrl: "https://github.com/Tmeah/st20182639-game-of-life",
       },
     ],
@@ -287,49 +323,61 @@ export const archiveGroups: ArchiveGroup[] = [
     projects: [
       {
         name: "Calendar App",
+        accent: "#4285f4",
+        status: "Open source",
+        image: "/archive/covers/calendar-app.webp",
         description:
           "Google Calendar style month view: create, edit, and delete events, tag them with colour labels, and filter from the sidebar. Events are saved in the browser.",
         stack: ["React", "Tailwind CSS", "Day.js", "Context API"],
-        image: "/archive/calendar-app.webp",
         githubUrl: "https://github.com/Tmeah/react-calendar",
       },
       {
         name: "Travel Website",
+        accent: "#6366f1",
+        status: "Live",
+        image: "/archive/covers/travel.webp",
         description: "Wales-focused travel booking site built with React.",
         stack: ["React", "HTML", "CSS", "JavaScript"],
-        image: "/archive/trvlwales.webp",
         githubUrl: "https://github.com/Tmeah01/react-travel",
         liveUrl: "https://tmeah01.github.io/react-travel/",
       },
       {
         name: "React Templates Site",
+        accent: "#10b981",
+        status: "Live",
+        image: "/archive/covers/templates.webp",
         description: "Marketing page showcasing reusable React layout templates.",
         stack: ["HTML", "CSS", "JavaScript"],
-        image: "/archive/reactss.webp",
         githubUrl: "https://github.com/Tmeah/react-templates-page",
         liveUrl: "https://tausifmeah.co.uk/react-templates-page/",
       },
       {
         name: "E-commerce Store",
+        accent: "#8b5cf6",
+        status: "Live",
+        image: "/archive/covers/ecommerce.webp",
         description: "Book storefront with featured and latest book sections.",
         stack: ["HTML", "CSS", "JavaScript"],
-        image: "/archive/e-commerce.webp",
         githubUrl: "https://github.com/Tmeah/e-commerce",
         liveUrl: "https://tausifmeah.co.uk/e-commerce/",
       },
       {
         name: "Number Guesser",
+        accent: "#16a34a",
+        status: "Live",
+        image: "/archive/covers/number-guesser.webp",
         description: "Retro number guessing game with high-score tracking.",
         stack: ["HTML", "CSS", "JavaScript"],
-        image: "/archive/numberguesser.webp",
         githubUrl: "https://github.com/Tmeah/Number-guesser",
         liveUrl: "https://tausifmeah.co.uk/Number-guesser/",
       },
       {
         name: "Dice Game",
+        accent: "#ec4899",
+        status: "Live",
+        image: "/archive/covers/dice.webp",
         description: "Two-player race to 100. Be careful of the 1s.",
         stack: ["HTML", "CSS", "JavaScript"],
-        image: "/archive/dice.webp",
         githubUrl: "https://github.com/Tmeah/Dice-game",
         liveUrl: "https://tausifmeah.co.uk/Dice-game/",
       },

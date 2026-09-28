@@ -2,7 +2,8 @@ import { Icon } from "@/components/site/icon";
 import { InnerPage } from "@/components/site/inner-page";
 import { Scribble } from "@/components/site/scribble";
 import { archiveCount, archiveGroups } from "@/content/projects";
-import type { ArchiveProject } from "@/content/types";
+import type { CSSProperties } from "react";
+import type { ArchiveProject, ArchiveStatus } from "@/content/types";
 import { mount } from "@/mount";
 
 function ArchivePage() {
@@ -42,7 +43,7 @@ function ArchivePage() {
               </p>
               <h2 id={`${group.id}-title`}>{group.title}</h2>
             </div>
-            <ul className="archive__grid">
+            <ul className={`archive__grid${group.id === "products" ? " archive__grid--feature" : ""}`}>
               {group.projects.map((project) => (
                 <ArchiveCard key={project.name} project={project} />
               ))}
@@ -56,14 +57,14 @@ function ArchivePage() {
 
 function ArchiveCard({ project }: { project: ArchiveProject }) {
   return (
-    <li className="archive__card">
+    <li className="archive__card" style={{ "--accent": project.accent } as CSSProperties}>
       <div className="archive__thumb">
         {project.image ? (
           <img
             src={project.image}
             alt={`${project.name} screenshot`}
-            width={1200}
-            height={675}
+            width={1600}
+            height={1000}
             loading="lazy"
             decoding="async"
           />
@@ -73,20 +74,28 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
             <span className="note">{placeholderNote(project)}</span>
           </div>
         )}
+        <span className={`archive__status archive__status--${statusTone(project.status)}`}>
+          <span className="archive__status-dot" aria-hidden />
+          {project.status}
+        </span>
       </div>
       <div className="archive__body">
         <h3>{project.name}</h3>
         <p>{project.description}</p>
-        <p className="label">{project.stack.join(" · ")}</p>
+        <ul className="archive__stack" aria-label="Built with">
+          {project.stack.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
         <div className="archive__links">
           {project.caseStudyUrl ? (
             <a href={project.caseStudyUrl}>
-              <Icon name="arrow-right" /> Case study
+              Case study <Icon name="arrow-right" />
             </a>
           ) : null}
           {project.liveUrl ? (
             <a href={project.liveUrl} target="_blank" rel="noreferrer">
-              <Icon name="globe" /> {project.liveLabel ?? "Live"}
+              {project.liveLabel ?? "Live site"} <Icon name="arrow-up-right-from-square" />
             </a>
           ) : null}
           {project.githubUrl ? (
@@ -98,6 +107,25 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
       </div>
     </li>
   );
+}
+
+function statusTone(status: ArchiveStatus) {
+  switch (status) {
+    case "Live":
+    case "App Store":
+      return "live";
+    case "In development":
+      return "building";
+    case "Concept":
+    case "University":
+    case "Open source":
+    case "Private":
+      return "neutral";
+    default: {
+      const exhaustive: never = status;
+      return exhaustive;
+    }
+  }
 }
 
 function placeholderNote(project: ArchiveProject) {
