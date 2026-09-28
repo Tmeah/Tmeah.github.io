@@ -19,6 +19,7 @@ export const projects: Project[] = [
     links: [{ label: "viralzapp.com", href: "https://viralzapp.com/" }],
     desktopImage: "/projects/viralz.webp",
     phoneImage: "/projects/viralz-phone.webp",
+    phoneImageSize: { width: 384, height: 820 },
     role: "Founder and developer",
     platform: "iOS app and web",
     overview:
@@ -63,6 +64,7 @@ export const projects: Project[] = [
     links: [{ label: "snappd.app", href: "https://snappd.app/" }],
     desktopImage: "/projects/snappd.webp",
     phoneImage: "/projects/snappd-phone.webp",
+    phoneImageSize: { width: 732, height: 1609 },
     role: "Founder and developer",
     platform: "Web app",
     overview:
@@ -108,6 +110,7 @@ export const projects: Project[] = [
     links: [{ label: "getgogrow.app", href: "https://getgogrow.app/" }],
     desktopImage: "/projects/gogrow.webp",
     phoneImage: "/projects/gogrow-phone.webp",
+    phoneImageSize: { width: 436, height: 951 },
     role: "Developer",
     platform: "iOS app and web",
     overview:

@@ -139,6 +139,8 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
         <div className="case-screens__phone">
           <DeviceFrame
             src={project.phoneImage}
+            width={project.phoneImageSize.width}
+            height={project.phoneImageSize.height}
             alt={`${project.name} app screen`}
             theme={project.theme}
           />

@@ -1427,7 +1427,6 @@ textarea.input {
 
 .archive__card:hover .archive__thumb img,
 .archive__card:hover .archive__placeholder {
-  transform: scale(1.045);
   filter: saturate(1.1);
 }
 

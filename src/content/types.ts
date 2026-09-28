@@ -25,6 +25,7 @@ export type Project = {
   links: ProjectLink[];
   desktopImage: string;
   phoneImage: string;
+  phoneImageSize: { width: number; height: number };
   role: string;
   platform: string;
   overview: string;
