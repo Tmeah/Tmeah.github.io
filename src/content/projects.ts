@@ -168,14 +168,14 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "Hifz Helper",
         description:
-          "Quran revision companion for people who have memorised the Quran: daily juz logging, streaks, khatam progress, and achievements, with group khatams on the way.",
+          "Quran revision companion for people who have memorised the Quran: daily juz logging, streaks, khatam progress, and achievements, with group khatams on the way. In development.",
         stack: ["React Native", "Expo Router", "TypeScript", "NativeWind", "Zustand"],
         image: "/archive/hifz-helper.webp",
       },
       {
         name: "Ramadan Apps",
         description:
-          "Four apps for one Ramadan season: Khushu briefs you on each night's Taraweeh, Baraka plans your day around fasting, Suhba puts you in a small accountability circle, and Munaajat suggests duas for the moment.",
+          "Four apps for one Ramadan season: Khushu briefs you on each night's Taraweeh, Baraka plans your day around fasting, Suhba puts you in a small accountability circle, and Munaajat suggests duas for the moment. In development.",
         stack: ["React Native", "Expo", "TypeScript", "npm workspaces"],
         image: "/archive/ramadan-apps.webp",
       },
@@ -211,14 +211,14 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "Youth Club Register",
         description:
-          "Register for a weekly youth club: attendance and session payments for separate boys' and girls' sections, incident logging, and monthly reports with charts.",
+          "Register for the Iqra Newport youth club: attendance and session payments for separate boys' and girls' sections, incident logging, and monthly reports with charts.",
         stack: ["React", "Firebase", "Chart.js", "React Bootstrap"],
         image: "/archive/youth-club-register.webp",
       },
       {
         name: "SJ Concepts",
         description:
-          "Website for a car audio, security, and customisation specialist in Newport, with a gallery and shop managed through Contentful and Stripe checkout.",
+          "Previous website for a car audio, security, and customisation specialist in Newport, with a gallery and shop managed through Contentful and Stripe checkout.",
         stack: ["React", "Contentful", "Stripe", "Netlify Functions", "Bootstrap"],
         image: "/archive/sj-concepts.webp",
         githubUrl: "https://github.com/Tmeah/sjc-app-master",
@@ -265,7 +265,7 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "ChemInspect",
         description:
-          "Chemical database and emergency response training tool: look up chemicals via PubChem, log spill incidents with live weather, and practise shelter-or-evacuate decisions using the SHORE framework.",
+          "Chemical database and emergency response training tool built with UKHSA: look up chemicals via PubChem, log spill incidents with live weather, and practise shelter-or-evacuate decisions using the SHORE framework.",
         stack: ["React", "Express", "MySQL", "PHP", "PubChem API"],
         image: "/archive/cheminspect.webp",
         githubUrl: "https://github.com/Tmeah/Devolepment-project",
