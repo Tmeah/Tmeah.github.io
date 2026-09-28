@@ -1,7 +1,7 @@
-import { useRef, type MouseEvent } from "react";
+import { useRef, type MouseEvent, type ReactNode } from "react";
 import { ProjectReel } from "@/components/reels/project-reel";
 import { MarginNote } from "@/components/site/margin-note";
-import type { Project } from "@/content/types";
+import type { Project, ProjectTheme } from "@/content/types";
 
 type ProjectShowcaseProps = {
   project: Project;
@@ -9,6 +9,7 @@ type ProjectShowcaseProps = {
 };
 
 export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
+  const themeDetails = getThemeDetails(project.theme);
   const caseStudyLink = useRef<HTMLAnchorElement>(null);
   const reverse = index % 2 === 1;
 
@@ -38,6 +39,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
           className={`showcase showcase--${project.theme}${reverse ? " showcase--reverse" : ""}`}
           onClick={openCaseStudy}
         >
+          {themeDetails.decorations}
           <div className="showcase__media">
             <ProjectReel theme={project.theme} />
           </div>
@@ -46,8 +48,11 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <span>{project.eyebrow}</span>
             </p>
-            <p className="showcase__brand">{project.name}</p>
-            <h3 className="showcase__headline">{project.headline}</h3>
+            <p className="showcase__brand">
+              {themeDetails.brandMark}
+              {project.name}
+            </p>
+            <h3 className="showcase__headline">{themeDetails.headline}</h3>
             <p className="showcase__summary">{project.summary}</p>
             <ul className="showcase__highlights">
               {project.highlights.map((item) => (
@@ -83,4 +88,63 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
       </div>
     </li>
   );
+}
+
+type ThemeDetails = {
+  brandMark: ReactNode;
+  headline: ReactNode;
+  decorations: ReactNode;
+};
+
+function getThemeDetails(theme: ProjectTheme): ThemeDetails {
+  switch (theme) {
+    case "viralz":
+      return {
+        brandMark: (
+          <span className="showcase__mark">
+            <i className="fas fa-rocket" aria-hidden />
+          </span>
+        ),
+        headline: (
+          <>
+            Analyze your TikTok performance <span>like a pro.</span>
+          </>
+        ),
+        decorations: <span className="showcase__glow" aria-hidden />,
+      };
+    case "snappd":
+      return {
+        brandMark: null,
+        headline: (
+          <>
+            <span className="showcase__script">every moment, kept.</span>
+            Snap it. <mark>Scrapbook</mark> it.
+          </>
+        ),
+        decorations: (
+          <>
+            <span className="doodle doodle--spark" aria-hidden>
+              ✦
+            </span>
+            <span className="doodle doodle--heart" aria-hidden>
+              ♡
+            </span>
+          </>
+        ),
+      };
+    case "gogrow":
+      return {
+        brandMark: <span className="showcase__mark">G</span>,
+        headline: (
+          <>
+            height habits <em>for growing kids</em>
+          </>
+        ),
+        decorations: <span className="showcase__glow" aria-hidden />,
+      };
+    default: {
+      const exhaustive: never = theme;
+      return exhaustive;
+    }
+  }
 }
