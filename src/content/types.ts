@@ -40,6 +40,7 @@ export type ArchiveProject = {
   image?: string;
   caseStudyUrl?: string;
   liveUrl?: string;
+  liveLabel?: string;
   githubUrl?: string;
 };
 

@@ -1,4 +1,4 @@
-import type { ArchiveGroup, Project } from "@/content/types";
+import type { ArchiveGroup, ArchiveProject, Project } from "@/content/types";
 
 export const projects: Project[] = [
   {
@@ -16,15 +16,13 @@ export const projects: Project[] = [
       "Around £1,000 in monthly revenue",
     ],
     stack: ["React", "TypeScript", "Stripe", "Google OAuth", "AI"],
-    links: [
-      { label: "viralzapp.com", href: "https://viralzapp.com/" },
-    ],
+    links: [{ label: "viralzapp.com", href: "https://viralzapp.com/" }],
     desktopImage: "/projects/viralz.webp",
     phoneImage: "/projects/viralz-phone.webp",
     role: "Founder and developer",
     platform: "iOS app and web",
     overview:
-      "Viralz helps TikTok creators understand why some videos take off and others don't. It pulls performance data into one place and uses AI to turn it into clear insights and next steps. I designed, built, launched, and now run it.",
+      "Viralz helps TikTok creators understand why some videos take off and others don't. It pulls performance data into one place and uses AI to turn it into clear insights and next steps. I designed, built, launched, and now run it. It started in 2024 as a web tool that used AI to suggest hooks, hashtags, and video ideas, and grew into the analytics app it is today.",
     built: [
       "The mobile app and marketing site, from first design to App Store release.",
       "AI-driven insights that summarise performance and suggest improvements.",
@@ -62,9 +60,7 @@ export const projects: Project[] = [
       "First product built for segregated events, with separate men's and women's scrapbooks",
     ],
     stack: ["Next.js", "TypeScript", "Payments", "Image uploads", "QR codes"],
-    links: [
-      { label: "snappd.app", href: "https://snappd.app/" },
-    ],
+    links: [{ label: "snappd.app", href: "https://snappd.app/" }],
     desktopImage: "/projects/snappd.webp",
     phoneImage: "/projects/snappd-phone.webp",
     role: "Founder and developer",
@@ -109,9 +105,7 @@ export const projects: Project[] = [
       "Web platform plus iOS app",
     ],
     stack: ["iOS", "Web platform", "API integration", "Testing"],
-    links: [
-      { label: "getgogrow.app", href: "https://getgogrow.app/" },
-    ],
+    links: [{ label: "getgogrow.app", href: "https://getgogrow.app/" }],
     desktopImage: "/projects/gogrow.webp",
     phoneImage: "/projects/gogrow-phone.webp",
     role: "Developer",
@@ -146,20 +140,75 @@ export const archiveGroups: ArchiveGroup[] = [
     id: "products",
     title: "Products",
     note: "live and shipping",
-    projects: projects.map((project) => ({
-      name: project.name,
-      description: project.summary,
-      stack: project.stack,
-      image: project.desktopImage,
-      caseStudyUrl: `/projects/${project.slug}/`,
-      liveUrl: project.links[0]?.href,
-    })),
+    projects: [
+      ...projects.map((project): ArchiveProject => ({
+        name: project.name,
+        description: project.summary,
+        stack: project.stack,
+        image: project.desktopImage,
+        caseStudyUrl: `/projects/${project.slug}/`,
+        liveUrl: project.links[0]?.href,
+      })),
+      {
+        name: "TikWave",
+        description:
+          "TikTok Shop research app for iPhone: trending products, viral product videos, top ads, and a product scanner, with subscriptions built in.",
+        stack: ["React Native", "Expo", "RevenueCat", "Cloudflare Workers", "AppsFlyer"],
+        liveUrl: "https://apps.apple.com/gb/app/tikwave/id6758156484",
+        liveLabel: "App Store",
+      },
+    ],
+  },
+  {
+    id: "side",
+    title: "Side projects",
+    note: "apps and ideas I build in my own time",
+    projects: [
+      {
+        name: "Hifz Helper",
+        description:
+          "Quran revision app built around accountability: streaks, points and badges, revision circles with friends, heatmaps, and reminders that respect prayer times.",
+        stack: ["React Native", "Expo", "Supabase", "React Query"],
+      },
+      {
+        name: "Ramadan Apps",
+        description:
+          "Four apps for one Ramadan season, each solving one problem: Taraweeh briefings, a fasting-day planner, a Ramadan circle, and help with making dua.",
+        stack: ["React Native", "Expo", "Monorepo"],
+      },
+      {
+        name: "Room Decorator",
+        description:
+          "3D room planner: set the room size, add doors and windows, then drag, rotate, and snap furniture into place. Undo, redo, and save to file.",
+        stack: ["Three.js", "JavaScript", "HTML", "CSS"],
+      },
+      {
+        name: "Baseerah",
+        description:
+          "Website for Baseerah, a Muslim-led digital agency building apps for the community.",
+        stack: ["Astro", "React", "Tailwind CSS", "Framer Motion"],
+      },
+    ],
   },
   {
     id: "sites",
     title: "Sites and tools for others",
     note: "for businesses, friends, and the community",
     projects: [
+      {
+        name: "Quran Academy",
+        description:
+          "Interest form for a weekend Quran class in Newport, with a password-protected admin page for replies.",
+        stack: ["Next.js", "TypeScript", "Cloudflare Workers"],
+        image: "/archive/quran-academy.webp",
+        liveUrl: "https://quran-academy.tausifmeah.workers.dev/",
+      },
+      {
+        name: "Youth Club Register",
+        description:
+          "Attendance register for a youth club, with separate boys' and girls' sessions, dashboards, reports, and exports.",
+        stack: ["React", "Firebase", "Chart.js", "Bootstrap"],
+      },
       {
         name: "SJ Concepts",
         description:
@@ -172,6 +221,12 @@ export const archiveGroups: ArchiveGroup[] = [
         description: "Landing site for a study centre, with a contact form for enquiries.",
         stack: ["React", "React Router", "CSS"],
         githubUrl: "https://github.com/Tmeah/iqrastudy",
+      },
+      {
+        name: "EduCam",
+        description:
+          "Marketing site for a small-group tutoring service, with pricing, FAQs, and testimonials.",
+        stack: ["React", "React Bootstrap"],
       },
       {
         name: "Iqra Community Centre Feedback Form",
@@ -267,7 +322,10 @@ export const archiveGroups: ArchiveGroup[] = [
   },
 ];
 
-export const archiveCount = archiveGroups.reduce((total, group) => total + group.projects.length, 0);
+export const archiveCount = archiveGroups.reduce(
+  (total, group) => total + group.projects.length,
+  0,
+);
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

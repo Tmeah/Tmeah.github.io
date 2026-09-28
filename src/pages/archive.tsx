@@ -70,7 +70,7 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
         ) : (
           <div className="archive__placeholder" aria-hidden>
             <span className="archive__placeholder-name">{project.name}</span>
-            <span className="note">code on GitHub</span>
+            <span className="note">{placeholderNote(project)}</span>
           </div>
         )}
       </div>
@@ -86,7 +86,7 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
           ) : null}
           {project.liveUrl ? (
             <a href={project.liveUrl} target="_blank" rel="noreferrer">
-              <Icon name="globe" /> Live
+              <Icon name="globe" /> {project.liveLabel ?? "Live"}
             </a>
           ) : null}
           {project.githubUrl ? (
@@ -98,6 +98,16 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
       </div>
     </li>
   );
+}
+
+function placeholderNote(project: ArchiveProject) {
+  if (project.githubUrl) {
+    return "code on GitHub";
+  }
+  if (project.liveUrl) {
+    return project.liveLabel ? `on the ${project.liveLabel}` : "live now";
+  }
+  return "private repo";
 }
 
 mount(<ArchivePage />);
