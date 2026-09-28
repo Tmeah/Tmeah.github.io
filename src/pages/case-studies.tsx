@@ -1,7 +1,6 @@
-import { ProjectShowcase } from "@/components/home/project-showcase";
+import { CaseIndex } from "@/components/projects/case-index";
 import { InnerPage } from "@/components/site/inner-page";
 import { Scribble } from "@/components/site/scribble";
-import { projects } from "@/content/projects";
 import { mount } from "@/mount";
 
 function CaseStudiesPage() {
@@ -21,11 +20,13 @@ function CaseStudiesPage() {
         </p>
       </header>
       <div className="inner wrap">
-        <ul className="projects__list">
-          {projects.map((project, index) => (
-            <ProjectShowcase key={project.slug} project={project} index={index} />
-          ))}
-        </ul>
+        <CaseIndex />
+        <p className="case-index__more">
+          Looking for older stuff?{" "}
+          <a href="/archive/" className="text--blue">
+            See the archive <i className="fas fa-arrow-right" aria-hidden />
+          </a>
+        </p>
       </div>
     </InnerPage>
   );

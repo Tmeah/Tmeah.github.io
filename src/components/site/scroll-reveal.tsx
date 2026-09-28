@@ -3,6 +3,7 @@ import { useLayoutEffect } from "react";
 const revealTargets = [
   ".section__head",
   ".projects__list > li",
+  ".case-index__item",
   ".experience__row",
   ".cta__title",
   ".cta__row",
