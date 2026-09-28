@@ -2,9 +2,13 @@ import { Icon } from "@/components/site/icon";
 import { InnerPage } from "@/components/site/inner-page";
 import { Scribble } from "@/components/site/scribble";
 import { archiveCount, archiveGroups } from "@/content/projects";
-import type { CSSProperties } from "react";
+import type { CSSProperties, PointerEvent } from "react";
 import type { ArchiveProject, ArchiveStatus } from "@/content/types";
 import { mount } from "@/mount";
+
+const groupStarts = archiveGroups.map((_, index) =>
+  archiveGroups.slice(0, index).reduce((total, group) => total + group.projects.length, 0),
+);
 
 function ArchivePage() {
   return (
@@ -44,8 +48,12 @@ function ArchivePage() {
               <h2 id={`${group.id}-title`}>{group.title}</h2>
             </div>
             <ul className={`archive__grid${group.id === "products" ? " archive__grid--feature" : ""}`}>
-              {group.projects.map((project) => (
-                <ArchiveCard key={project.name} project={project} />
+              {group.projects.map((project, projectIndex) => (
+                <ArchiveCard
+                  key={project.name}
+                  project={project}
+                  number={groupStarts[index] + projectIndex + 1}
+                />
               ))}
             </ul>
           </section>
@@ -55,9 +63,44 @@ function ArchivePage() {
   );
 }
 
-function ArchiveCard({ project }: { project: ArchiveProject }) {
+function ArchiveCard({ project, number }: { project: ArchiveProject; number: number }) {
+  const handleMove = (event: PointerEvent<HTMLLIElement>) => {
+    if (event.pointerType !== "mouse") {
+      return;
+    }
+    const card = event.currentTarget;
+    const box = card.getBoundingClientRect();
+    const x = (event.clientX - box.left) / box.width;
+    const y = (event.clientY - box.top) / box.height;
+    card.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+    card.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+    card.style.setProperty("--ry", `${((x - 0.5) * 7).toFixed(2)}deg`);
+    card.style.setProperty("--rx", `${((0.5 - y) * 7).toFixed(2)}deg`);
+  };
+
+  const handleLeave = (event: PointerEvent<HTMLLIElement>) => {
+    const card = event.currentTarget;
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  };
+
   return (
-    <li className="archive__card" style={{ "--accent": project.accent } as CSSProperties}>
+    <li
+      className="archive__card"
+      style={{ "--accent": project.accent } as CSSProperties}
+      onPointerMove={handleMove}
+      onPointerLeave={handleLeave}
+    >
+      <span className="archive__glow" aria-hidden />
+      <div className="archive__meta">
+        <span className="archive__number" aria-hidden>
+          {String(number).padStart(2, "0")}
+        </span>
+        <span className={`archive__status archive__status--${statusTone(project.status)}`}>
+          <span className="archive__status-dot" aria-hidden />
+          {project.status}
+        </span>
+      </div>
       <div className="archive__thumb">
         {project.image ? (
           <img
@@ -74,10 +117,6 @@ function ArchiveCard({ project }: { project: ArchiveProject }) {
             <span className="note">{placeholderNote(project)}</span>
           </div>
         )}
-        <span className={`archive__status archive__status--${statusTone(project.status)}`}>
-          <span className="archive__status-dot" aria-hidden />
-          {project.status}
-        </span>
       </div>
       <div className="archive__body">
         <h3>{project.name}</h3>
