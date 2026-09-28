@@ -5,6 +5,7 @@ const revealTargets = [
   ".projects__list > li",
   ".case-index__item",
   ".experience__row",
+  ".toolkit__group",
   ".cta__title",
   ".cta__row",
   ".archive__card",

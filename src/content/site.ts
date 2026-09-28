@@ -19,16 +19,57 @@ export const nowCopy = {
 
 export const aboutCopy = {
   intro:
-    "I'm a full stack developer based in Wales. At Pobl Tech I deliver web and mobile projects end to end, from design and development through testing and deployment. Outside work I build and ship my own products: Viralz, GoGrow, and Snappd.",
-  education:
-    "BSc Software Engineering, First-Class Honours, Cardiff Metropolitan University (2020 – 2023).",
+    "I'm a full stack developer based in Wales. At Pobl Tech I deliver web and mobile projects end to end, and outside work I build and ship products like Viralz, Snappd, and GoGrow.",
 } as const;
 
-export const skillLogos = [
-  { name: "TypeScript", src: "/skills/typescript-original.svg", mono: false },
-  { name: "React", src: "/skills/react-original.svg", mono: false },
-  { name: "Next.js", src: "/skills/nextjs-original.svg", mono: true },
-  { name: "React Native", src: "/skills/react-original.svg", mono: false },
-  { name: "PHP", src: "/skills/php-original.svg", mono: false },
-  { name: "Cloudflare", src: "/skills/cloudflare-original.svg", mono: false },
+export const toolkit = [
+  {
+    group: "Languages",
+    items: ["JavaScript (ES6+)", "TypeScript", "PHP", "SQL", "Python", "HTML5", "CSS3"],
+  },
+  {
+    group: "Frontend and mobile",
+    items: [
+      "React",
+      "Next.js",
+      "React Native",
+      "Expo",
+      "Redux",
+      "Material UI",
+      "SCSS",
+      "Tailwind CSS",
+      "Bootstrap",
+    ],
+  },
+  {
+    group: "Backend and platforms",
+    items: [
+      "REST APIs",
+      "API integration",
+      "Laravel",
+      "WordPress",
+      "Shopify",
+      "Liquid",
+      "Firebase",
+      "Stripe",
+      "Google OAuth",
+    ],
+  },
+  {
+    group: "Cloud, tools and testing",
+    items: [
+      "GCP",
+      "GKE",
+      "AWS",
+      "Cloudflare Workers",
+      "Kubernetes",
+      "Docker",
+      "Terraform",
+      "Git",
+      "GitHub",
+      "npm",
+      "Jest",
+      "Manual testing",
+    ],
+  },
 ] as const;

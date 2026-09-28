@@ -9,7 +9,7 @@ import { SiteNav } from "@/components/site/site-nav";
 import { useAboutDialog } from "@/components/site/use-about-dialog";
 import { experience } from "@/content/experience";
 import { projects } from "@/content/projects";
-import { nowCopy, siteConfig } from "@/content/site";
+import { nowCopy, siteConfig, toolkit } from "@/content/site";
 
 export function HomePage() {
   const { section, openAbout, openContact, close } = useAboutDialog();
@@ -152,8 +152,35 @@ export function HomePage() {
             </ol>
           </section>
 
+          <section className="section wrap" id="toolkit" aria-labelledby="toolkit-title">
+            <div className="section__head">
+              <div>
+                <p className="note">03 · toolkit</p>
+                <h2 className="section__title" id="toolkit-title">
+                  What I <Scribble>work with</Scribble>
+                </h2>
+              </div>
+              <p className="section__lede">
+                The languages, frameworks, and tools I use across client work at{" "}
+                {nowCopy.current.company} and my own products.
+              </p>
+            </div>
+            <div className="toolkit">
+              {toolkit.map((group) => (
+                <div key={group.group} className="toolkit__group">
+                  <p className="note">{group.group.toLowerCase()}</p>
+                  <ul className="toolkit__chips">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="section cta wrap" aria-labelledby="cta-title">
-            <p className="note">03 · contact</p>
+            <p className="note">04 · contact</p>
             <h2 className="cta__title" id="cta-title">
               Fancy working
               <br />
