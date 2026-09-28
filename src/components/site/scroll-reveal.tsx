@@ -7,6 +7,7 @@ const revealTargets = [
   ".experience__row",
   ".cta__title",
   ".cta__row",
+  ".archive__group-head",
   ".archive__card",
   ".case-hero__facts",
   ".case-story__section",

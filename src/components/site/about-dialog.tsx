@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import type { AboutSection } from "@/components/site/use-about-dialog";
 import { experience } from "@/content/experience";
 import { aboutCopy, siteConfig, skillLogos } from "@/content/site";
+import { Icon } from "@/components/site/icon";
 
 type AboutDialogProps = {
   section: AboutSection | null;
@@ -53,7 +54,7 @@ export function AboutDialog({ section, onClose }: AboutDialogProps) {
         aria-label="Close"
         onClick={onClose}
       >
-        <i className="fas fa-times" aria-hidden />
+        <Icon name="times" />
       </button>
       <div className="about-dialog__card">
         <section className="about-dialog__about">
@@ -105,13 +106,13 @@ export function AboutDialog({ section, onClose }: AboutDialogProps) {
 
           <div className="about-dialog__links">
             <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">
-              <i className="fab fa-linkedin" aria-hidden /> LinkedIn
+              <Icon name="linkedin" /> LinkedIn
             </a>
             <a href={siteConfig.social.github} target="_blank" rel="noreferrer">
-              <i className="fab fa-github" aria-hidden /> GitHub
+              <Icon name="github" /> GitHub
             </a>
             <a href={siteConfig.cvPath} target="_blank" rel="noreferrer">
-              <i className="fas fa-file-pdf" aria-hidden /> CV
+              <Icon name="file-pdf" /> CV
             </a>
           </div>
         </section>
@@ -122,7 +123,7 @@ export function AboutDialog({ section, onClose }: AboutDialogProps) {
           aria-labelledby="about-dialog-contact-title"
         >
           <p className="about-dialog__status">
-            <i className="fas fa-check" aria-hidden /> open to new opportunities
+            <Icon name="check" /> open to new opportunities
           </p>
           <h2 className="about-dialog__name" id="about-dialog-contact-title">
             Let&apos;s have a chat!

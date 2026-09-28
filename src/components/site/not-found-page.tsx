@@ -1,4 +1,5 @@
 import { InnerPage } from "@/components/site/inner-page";
+import { Icon } from "@/components/site/icon";
 
 export function NotFoundPage() {
   return (
@@ -10,7 +11,7 @@ export function NotFoundPage() {
         </h1>
         <p>That page doesn&apos;t exist or has moved.</p>
         <a href="/" className="btn btn--primary">
-          Back home <i className="fas fa-arrow-right" aria-hidden />
+          Back home <Icon name="arrow-right" />
         </a>
       </div>
     </InnerPage>

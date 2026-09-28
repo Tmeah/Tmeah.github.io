@@ -13,6 +13,7 @@ import {
   type Frame,
   type Track,
 } from "@/components/reels/timeline";
+import { Icon, type IconName } from "@/components/site/icon";
 
 const qrSize = 13;
 
@@ -38,13 +39,13 @@ const qrModules = Array.from({ length: qrSize * qrSize }, (_, index) => {
 }).filter((module) => module.on);
 
 const polaroids = [
-  { caption: "the vows ♡", icon: "fas fa-heart", from: "translate(-40em, -30em) rotate(-40deg)", rotate: -8 },
-  { caption: "first dance", icon: "fas fa-music", from: "translate(10em, -50em) rotate(30deg)", rotate: 6 },
-  { caption: "Eid mubarak", icon: "fas fa-moon", from: "translate(50em, -30em) rotate(50deg)", rotate: -4 },
-  { caption: "cake!", icon: "fas fa-cake-candles", from: "translate(-50em, 30em) rotate(-30deg)", rotate: 5 },
-  { caption: "the squad", icon: "fas fa-user-group", from: "translate(0em, 50em) rotate(20deg)", rotate: -7 },
-  { caption: "golden hour", icon: "fas fa-sun", from: "translate(50em, 40em) rotate(-45deg)", rotate: 9 },
-];
+  { caption: "the vows ♡", icon: "heart", from: "translate(-40em, -30em) rotate(-40deg)", rotate: -8 },
+  { caption: "first dance", icon: "music", from: "translate(10em, -50em) rotate(30deg)", rotate: 6 },
+  { caption: "Eid mubarak", icon: "moon", from: "translate(50em, -30em) rotate(50deg)", rotate: -4 },
+  { caption: "cake!", icon: "cake-candles", from: "translate(-50em, 30em) rotate(-30deg)", rotate: 5 },
+  { caption: "the squad", icon: "user-group", from: "translate(0em, 50em) rotate(20deg)", rotate: -7 },
+  { caption: "golden hour", icon: "sun", from: "translate(50em, 40em) rotate(-45deg)", rotate: 9 },
+] satisfies ({ icon: IconName } & Record<string, unknown>)[];
 
 const moderation = ["Aisha's upload", "Table 4", "Grandad ♡"];
 
@@ -190,7 +191,7 @@ export function SnappdReel() {
           <p className="sn-title">
             <span className="reel-line">
               <span>
-                <i className="fas fa-camera sn-camera" /> Snap it.
+                <Icon name="camera" className="sn-camera" /> Snap it.
               </span>
             </span>
             <span className="reel-line">
@@ -236,7 +237,7 @@ export function SnappdReel() {
             <p className="sn-qr__caption">scan me at the party!</p>
           </div>
           <p className="sn-check">
-            <i className="fas fa-check" /> No app needed
+            <Icon name="check" /> No app needed
           </p>
         </div>
 
@@ -248,7 +249,7 @@ export function SnappdReel() {
           {polaroids.map((polaroid, index) => (
             <figure key={polaroid.caption} className={`sn-pol sn-pol--${index + 1}`}>
               <span className="sn-pol__photo">
-                <i className={polaroid.icon} />
+                <Icon name={polaroid.icon} />
               </span>
               <figcaption>{polaroid.caption}</figcaption>
               <span className="sn-pol__tape" />
@@ -284,7 +285,7 @@ export function SnappdReel() {
                 <span className="sn-mod__action">
                   <span className={`sn-mod__state sn-mod__state--${index + 1}`}>Approved</span>
                   <span className={`sn-mod__tick sn-mod__tick--${index + 1}`}>
-                    <i className="fas fa-check" />
+                    <Icon name="check" />
                   </span>
                 </span>
               </div>
@@ -295,7 +296,7 @@ export function SnappdReel() {
         <div className="reel-scene sn-s5">
           <p className="sn-logo">
             Snappd
-            <i className="fas fa-camera-retro sn-logo-camera" />
+            <Icon name="camera-retro" className="sn-logo-camera" />
           </p>
           <svg className="sn-swoosh" viewBox="0 0 400 40">
             <path d="M8,28 C90,8 200,4 392,20" pathLength={1} />

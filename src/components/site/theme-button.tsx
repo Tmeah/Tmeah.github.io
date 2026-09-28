@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import { flushSync } from "react-dom";
 import { useTheme } from "@/components/site/use-theme";
+import { Icon } from "@/components/site/icon";
 
 export function ThemeButton() {
   const { theme, setTheme } = useTheme();
@@ -43,7 +44,7 @@ export function ThemeButton() {
       aria-pressed={isDark}
       onClick={onClick}
     >
-      <i className="fas fa-adjust" aria-hidden />
+      <Icon name="adjust" />
     </button>
   );
 }

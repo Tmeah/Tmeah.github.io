@@ -8,8 +8,9 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
 import { useAboutDialog } from "@/components/site/use-about-dialog";
 import { experience } from "@/content/experience";
-import { projects } from "@/content/projects";
+import { archiveCount, projects } from "@/content/projects";
 import { nowCopy, siteConfig } from "@/content/site";
+import { Icon } from "@/components/site/icon";
 
 export function HomePage() {
   const { section, openAbout, openContact, close } = useAboutDialog();
@@ -49,7 +50,7 @@ export function HomePage() {
             <div className="hero__side">
               <div className="hero__actions">
                 <a href="#projects" className="btn btn--primary">
-                  See my work <i className="fas fa-arrow-down" aria-hidden />
+                  See my work <Icon name="arrow-down" />
                 </a>
                 <button type="button" className="btn btn--ghost" onClick={openContact}>
                   Get in touch
@@ -63,7 +64,7 @@ export function HomePage() {
                   className="icon-btn"
                   aria-label="LinkedIn"
                 >
-                  <i className="fab fa-linkedin-in" aria-hidden />
+                  <Icon name="linkedin-in" />
                 </a>
                 <a
                   href={siteConfig.social.github}
@@ -72,7 +73,7 @@ export function HomePage() {
                   className="icon-btn"
                   aria-label="GitHub"
                 >
-                  <i className="fab fa-github" aria-hidden />
+                  <Icon name="github" />
                 </a>
                 <a
                   href={siteConfig.cvPath}
@@ -81,7 +82,7 @@ export function HomePage() {
                   className="icon-btn"
                   aria-label="CV (PDF)"
                 >
-                  <i className="fas fa-file-lines" aria-hidden />
+                  <Icon name="file-lines" />
                 </a>
                 <button
                   type="button"
@@ -89,7 +90,7 @@ export function HomePage() {
                   aria-label="Email me"
                   onClick={openContact}
                 >
-                  <i className="far fa-envelope" aria-hidden />
+                  <Icon name="envelope" />
                 </button>
               </div>
             </div>
@@ -116,6 +117,11 @@ export function HomePage() {
                 <ProjectShowcase key={project.slug} project={project} index={index} />
               ))}
             </ul>
+            <p className="projects__more">
+              <a href="/archive/">
+                See all {archiveCount} projects <Icon name="arrow-right" />
+              </a>
+            </p>
           </section>
 
           <section className="section wrap" id="experience" aria-labelledby="experience-title">
@@ -161,10 +167,10 @@ export function HomePage() {
             </h2>
             <div className="cta__row">
               <a href={`mailto:${siteConfig.email}`} className="cta__email">
-                {siteConfig.email} <i className="fas fa-arrow-right" aria-hidden />
+                {siteConfig.email} <Icon name="arrow-right" />
               </a>
               <button type="button" className="btn btn--primary" onClick={openContact}>
-                Send me a message <i className="fas fa-arrow-right" aria-hidden />
+                Send me a message <Icon name="arrow-right" />
               </button>
             </div>
           </section>

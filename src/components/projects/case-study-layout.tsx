@@ -2,6 +2,7 @@ import { ProjectReel } from "@/components/reels/project-reel";
 import { DeviceFrame } from "@/components/site/device-frame";
 import { projects } from "@/content/projects";
 import type { Project } from "@/content/types";
+import { Icon } from "@/components/site/icon";
 
 type CaseStudyLayoutProps = {
   project: Project;
@@ -18,7 +19,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
     <article className={`case case--${project.theme}`}>
       <header className="case-hero wrap">
         <a href="/projects/" className="back-link">
-          <i className="fas fa-arrow-left" aria-hidden /> All case studies
+          <Icon name="arrow-left" /> All case studies
         </a>
         <p className="note case-hero__label">
           case study {number} · {project.eyebrow.toLowerCase()}
@@ -49,7 +50,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
               {primaryLink ? (
                 <a href={primaryLink.href} target="_blank" rel="noreferrer">
                   Visit {primaryLink.label}{" "}
-                  <i className="fas fa-arrow-up-right-from-square" aria-hidden />
+                  <Icon name="arrow-up-right-from-square" />
                 </a>
               ) : null}
             </dd>
@@ -112,7 +113,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
           <ul className="case-story__outcomes">
             {project.outcomes.map((item) => (
               <li key={item}>
-                <i className="fas fa-check" aria-hidden />
+                <Icon name="check" />
                 <p>{item}</p>
               </li>
             ))}
@@ -150,7 +151,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
           <span className="case-next__name">{next.name}</span>
           <span className="case-next__headline">{next.headline}</span>
           <span className="case-next__arrow" aria-hidden>
-            <i className="fas fa-arrow-right" />
+            <Icon name="arrow-right" />
           </span>
         </a>
       </div>

@@ -2,6 +2,7 @@ import { useRef, type MouseEvent, type ReactNode } from "react";
 import { ProjectReel } from "@/components/reels/project-reel";
 import { MarginNote } from "@/components/site/margin-note";
 import type { Project, ProjectTheme } from "@/content/types";
+import { Icon } from "@/components/site/icon";
 
 type ProjectShowcaseProps = {
   project: Project;
@@ -57,7 +58,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
             <ul className="showcase__highlights">
               {project.highlights.map((item) => (
                 <li key={item}>
-                  <i className="fas fa-check" aria-hidden />
+                  <Icon name="check" />
                   {item}
                 </li>
               ))}
@@ -69,7 +70,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
                 href={`/projects/${project.slug}/`}
                 className="showcase__cta"
               >
-                Read the case study <i className="fas fa-arrow-right" aria-hidden />
+                Read the case study <Icon name="arrow-right" />
               </a>
               {project.links.map((link) => (
                 <a
@@ -79,7 +80,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
                   rel="noreferrer"
                   className="showcase__link"
                 >
-                  {link.label} <i className="fas fa-arrow-up-right-from-square" aria-hidden />
+                  {link.label} <Icon name="arrow-up-right-from-square" />
                 </a>
               ))}
             </div>
@@ -102,12 +103,12 @@ function getThemeDetails(theme: ProjectTheme): ThemeDetails {
       return {
         brandMark: (
           <span className="showcase__mark">
-            <i className="fas fa-rocket" aria-hidden />
+            <Icon name="rocket" />
           </span>
         ),
         headline: (
           <>
-            Analyze your TikTok performance <span>like a pro.</span>
+            Analyse your TikTok performance <span>like a pro.</span>
           </>
         ),
         decorations: <span className="showcase__glow" aria-hidden />,

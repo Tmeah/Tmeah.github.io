@@ -1,14 +1,16 @@
 import { CaseIndex } from "@/components/projects/case-index";
 import { InnerPage } from "@/components/site/inner-page";
 import { Scribble } from "@/components/site/scribble";
+import { archiveCount } from "@/content/projects";
 import { mount } from "@/mount";
+import { Icon } from "@/components/site/icon";
 
 function CaseStudiesPage() {
   return (
     <InnerPage>
       <header className="page-head wrap">
         <a href="/" className="back-link">
-          <i className="fas fa-arrow-left" aria-hidden /> Home
+          <Icon name="arrow-left" /> Home
         </a>
         <p className="note">in more detail</p>
         <h1 className="page-head__title">
@@ -22,9 +24,9 @@ function CaseStudiesPage() {
       <div className="inner wrap">
         <CaseIndex />
         <p className="case-index__more">
-          Looking for older stuff?{" "}
+          Want the full list?{" "}
           <a href="/archive/" className="text--blue">
-            See the archive <i className="fas fa-arrow-right" aria-hidden />
+            See all {archiveCount} projects <Icon name="arrow-right" />
           </a>
         </p>
       </div>

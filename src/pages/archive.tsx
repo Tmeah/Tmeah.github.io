@@ -1,59 +1,102 @@
+import { Icon } from "@/components/site/icon";
 import { InnerPage } from "@/components/site/inner-page";
 import { Scribble } from "@/components/site/scribble";
-import { archiveProjects } from "@/content/projects";
+import { archiveCount, archiveGroups } from "@/content/projects";
+import type { ArchiveProject } from "@/content/types";
 import { mount } from "@/mount";
 
 function ArchivePage() {
   return (
     <InnerPage>
       <header className="page-head wrap">
-        <a href="/#projects" className="back-link">
-          <i className="fas fa-arrow-left" aria-hidden /> Selected work
+        <a href="/" className="back-link">
+          <Icon name="arrow-left" /> Home
         </a>
-        <p className="note">older projects</p>
+        <p className="note">everything, in one place</p>
         <h1 className="page-head__title">
-          Earlier <Scribble>work</Scribble>
+          All <Scribble>projects</Scribble>
         </h1>
         <p className="page-head__lede">
-          Front-end projects from when I was starting out. Kept here for the
-          record; my current work is on the homepage.
+          {archiveCount} projects, from the products I run today back to the first
+          games I built while learning.
         </p>
+        <nav className="archive__jump" aria-label="Project groups">
+          {archiveGroups.map((group) => (
+            <a key={group.id} href={`#${group.id}`}>
+              {group.title} <span>{group.projects.length}</span>
+            </a>
+          ))}
+        </nav>
       </header>
       <div className="inner wrap">
-        <ul className="archive__grid">
-          {archiveProjects.map((project) => (
-            <li key={project.name} className="archive__card">
-              <div className="archive__thumb">
-                <img
-                  src={project.image}
-                  alt={`${project.name} screenshot`}
-                  width={1200}
-                  height={750}
-                  loading="lazy"
-                />
-              </div>
-              <div className="archive__body">
-                <h2>{project.name}</h2>
-                <p>{project.description}</p>
-                <p className="label">{project.stack.join(" · ")}</p>
-                <div className="archive__links">
-                  {project.liveUrl ? (
-                    <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                      <i className="fas fa-globe" aria-hidden /> Live
-                    </a>
-                  ) : null}
-                  {project.githubUrl ? (
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                      <i className="fab fa-github" aria-hidden /> Code
-                    </a>
-                  ) : null}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {archiveGroups.map((group, index) => (
+          <section
+            key={group.id}
+            id={group.id}
+            className="archive__group"
+            aria-labelledby={`${group.id}-title`}
+          >
+            <div className="archive__group-head">
+              <p className="note">
+                {String(index + 1).padStart(2, "0")} · {group.note}
+              </p>
+              <h2 id={`${group.id}-title`}>{group.title}</h2>
+            </div>
+            <ul className="archive__grid">
+              {group.projects.map((project) => (
+                <ArchiveCard key={project.name} project={project} />
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
     </InnerPage>
+  );
+}
+
+function ArchiveCard({ project }: { project: ArchiveProject }) {
+  return (
+    <li className="archive__card">
+      <div className="archive__thumb">
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            width={1200}
+            height={675}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div className="archive__placeholder" aria-hidden>
+            <span className="archive__placeholder-name">{project.name}</span>
+            <span className="note">code on GitHub</span>
+          </div>
+        )}
+      </div>
+      <div className="archive__body">
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
+        <p className="label">{project.stack.join(" · ")}</p>
+        <div className="archive__links">
+          {project.caseStudyUrl ? (
+            <a href={project.caseStudyUrl}>
+              <Icon name="arrow-right" /> Case study
+            </a>
+          ) : null}
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noreferrer">
+              <Icon name="globe" /> Live
+            </a>
+          ) : null}
+          {project.githubUrl ? (
+            <a href={project.githubUrl} target="_blank" rel="noreferrer">
+              <Icon name="github" /> Code
+            </a>
+          ) : null}
+        </div>
+      </div>
+    </li>
   );
 }
 

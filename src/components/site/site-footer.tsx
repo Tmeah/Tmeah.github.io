@@ -1,4 +1,5 @@
 import { siteConfig } from "@/content/site";
+import { Icon } from "@/components/site/icon";
 
 type SiteFooterProps = {
   onOpenContact: () => void;
@@ -34,7 +35,7 @@ export function SiteFooter({ onOpenContact }: SiteFooterProps) {
               </li>
               <li>
                 <a href="/archive/" className="footer__link">
-                  Archive
+                  All projects
                 </a>
               </li>
             </ul>
@@ -86,7 +87,7 @@ export function SiteFooter({ onOpenContact }: SiteFooterProps) {
           &copy; {new Date().getFullYear()} {siteConfig.name}
         </span>
         <a href="#top">
-          Back to top <i className="fas fa-arrow-up" aria-hidden />
+          Back to top <Icon name="arrow-up" />
         </a>
       </div>
     </footer>

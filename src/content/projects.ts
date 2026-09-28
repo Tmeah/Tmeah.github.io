@@ -1,4 +1,4 @@
-import type { ArchiveProject, Project } from "@/content/types";
+import type { ArchiveGroup, Project } from "@/content/types";
 
 export const projects: Project[] = [
   {
@@ -7,7 +7,7 @@ export const projects: Project[] = [
     name: "Viralz",
     eyebrow: "TikTok analytics platform",
     note: "live on the App Store, around £1k a month",
-    headline: "Analyze your TikTok performance like a pro.",
+    headline: "Analyse your TikTok performance like a pro.",
     summary:
       "An AI-powered TikTok analytics app. Creators get deep insights into their content, track performance over time, and get guidance on what to post next.",
     highlights: [
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "TypeScript", "Stripe", "Google OAuth", "AI"],
     links: [
-      { label: "viralzapp.com", href: "https://viralzapp.com/", icon: "fas fa-globe" },
+      { label: "viralzapp.com", href: "https://viralzapp.com/" },
     ],
     desktopImage: "/projects/viralz.webp",
     phoneImage: "/projects/viralz-phone.webp",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "Payments", "Image uploads", "QR codes"],
     links: [
-      { label: "snappd.app", href: "https://snappd.app/", icon: "fas fa-globe" },
+      { label: "snappd.app", href: "https://snappd.app/" },
     ],
     desktopImage: "/projects/snappd.webp",
     phoneImage: "/projects/snappd-phone.webp",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     ],
     stack: ["iOS", "Web platform", "API integration", "Testing"],
     links: [
-      { label: "getgogrow.app", href: "https://getgogrow.app/", icon: "fas fa-globe" },
+      { label: "getgogrow.app", href: "https://getgogrow.app/" },
     ],
     desktopImage: "/projects/gogrow.webp",
     phoneImage: "/projects/gogrow-phone.webp",
@@ -141,48 +141,133 @@ export const projects: Project[] = [
   },
 ];
 
-export const archiveProjects: ArchiveProject[] = [
+export const archiveGroups: ArchiveGroup[] = [
   {
-    name: "React Templates Site",
-    description: "Marketing page showcasing reusable React layout templates.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    image: "/archive/reactss.png",
-    githubUrl: "https://github.com/Tmeah/react-templates-page",
-    liveUrl: "https://tausifmeah.co.uk/react-templates-page/",
+    id: "products",
+    title: "Products",
+    note: "live and shipping",
+    projects: projects.map((project) => ({
+      name: project.name,
+      description: project.summary,
+      stack: project.stack,
+      image: project.desktopImage,
+      caseStudyUrl: `/projects/${project.slug}/`,
+      liveUrl: project.links[0]?.href,
+    })),
   },
   {
-    name: "Travel Website",
-    description: "Wales-focused travel booking site built with React.",
-    stack: ["React", "HTML", "CSS", "JavaScript"],
-    image: "/archive/trvlwales.png",
-    githubUrl: "https://github.com/Tmeah01/react-travel",
-    liveUrl: "https://tmeah01.github.io/react-travel/",
+    id: "sites",
+    title: "Sites and tools for others",
+    note: "for businesses, friends, and the community",
+    projects: [
+      {
+        name: "SJ Concepts",
+        description:
+          "Website for an automotive specialist covering ECU remapping, custom installs, and audio, with CMS-managed content, a shop, and Stripe checkout.",
+        stack: ["React", "Prismic", "Contentful", "Stripe"],
+        githubUrl: "https://github.com/Tmeah/sjc-app-master",
+      },
+      {
+        name: "Iqra Study",
+        description: "Landing site for a study centre, with a contact form for enquiries.",
+        stack: ["React", "React Router", "CSS"],
+        githubUrl: "https://github.com/Tmeah/iqrastudy",
+      },
+      {
+        name: "Iqra Community Centre Feedback Form",
+        description:
+          "Feedback form for parents to rate their child's progress and the centre's service.",
+        stack: ["HTML", "CSS"],
+        image: "/archive/iqra-feedback.webp",
+        githubUrl: "https://github.com/Tmeah/survey-form",
+        liveUrl: "https://tausifmeah.co.uk/survey-form/",
+      },
+      {
+        name: "Portfolio for Jamil Rahman",
+        description: "Personal portfolio site for a fellow software engineer.",
+        stack: ["HTML", "CSS"],
+        image: "/archive/jamil-portfolio.webp",
+        githubUrl: "https://github.com/Tmeah/Friend-eport",
+        liveUrl: "https://tausifmeah.co.uk/Friend-eport/",
+      },
+    ],
   },
   {
-    name: "Number Guesser",
-    description: "Retro number guessing game with high-score tracking.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    image: "/archive/numberguesser.png",
-    githubUrl: "https://github.com/Tmeah/Number-guesser",
-    liveUrl: "https://tausifmeah.co.uk/Number-guesser/",
+    id: "university",
+    title: "University",
+    note: "BSc Software Engineering, Cardiff Met",
+    projects: [
+      {
+        name: "Chemical Incident Training Tool",
+        description:
+          "Development project themed around UKHSA, with a chemical database, risk evaluation, incident tracking, and training scenarios.",
+        stack: ["React", "Express", "MySQL", "PHP"],
+        githubUrl: "https://github.com/Tmeah/Devolepment-project",
+      },
+      {
+        name: "Game of Life",
+        description: "Conway's Game of Life, written in C++.",
+        stack: ["C++"],
+        githubUrl: "https://github.com/Tmeah/st20182639-game-of-life",
+      },
+    ],
   },
   {
-    name: "E-commerce Store",
-    description: "Book storefront with featured and latest book sections.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    image: "/archive/e-commerce.png",
-    githubUrl: "https://github.com/Tmeah/e-commerce",
-    liveUrl: "https://tausifmeah.co.uk/e-commerce/",
-  },
-  {
-    name: "Dice Game",
-    description: "Two-player race to 100. Be careful of the 1s.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    image: "/archive/dice.png",
-    githubUrl: "https://github.com/Tmeah/Dice-game",
-    liveUrl: "https://tausifmeah.co.uk/Dice-game/",
+    id: "early",
+    title: "Early projects",
+    note: "where it started",
+    projects: [
+      {
+        name: "Calendar App",
+        description: "Google Calendar style app with a month view, events, and colour labels.",
+        stack: ["React", "Day.js", "Context API"],
+        githubUrl: "https://github.com/Tmeah/react-calendar",
+      },
+      {
+        name: "Travel Website",
+        description: "Wales-focused travel booking site built with React.",
+        stack: ["React", "HTML", "CSS", "JavaScript"],
+        image: "/archive/trvlwales.webp",
+        githubUrl: "https://github.com/Tmeah01/react-travel",
+        liveUrl: "https://tmeah01.github.io/react-travel/",
+      },
+      {
+        name: "React Templates Site",
+        description: "Marketing page showcasing reusable React layout templates.",
+        stack: ["HTML", "CSS", "JavaScript"],
+        image: "/archive/reactss.webp",
+        githubUrl: "https://github.com/Tmeah/react-templates-page",
+        liveUrl: "https://tausifmeah.co.uk/react-templates-page/",
+      },
+      {
+        name: "E-commerce Store",
+        description: "Book storefront with featured and latest book sections.",
+        stack: ["HTML", "CSS", "JavaScript"],
+        image: "/archive/e-commerce.webp",
+        githubUrl: "https://github.com/Tmeah/e-commerce",
+        liveUrl: "https://tausifmeah.co.uk/e-commerce/",
+      },
+      {
+        name: "Number Guesser",
+        description: "Retro number guessing game with high-score tracking.",
+        stack: ["HTML", "CSS", "JavaScript"],
+        image: "/archive/numberguesser.webp",
+        githubUrl: "https://github.com/Tmeah/Number-guesser",
+        liveUrl: "https://tausifmeah.co.uk/Number-guesser/",
+      },
+      {
+        name: "Dice Game",
+        description: "Two-player race to 100. Be careful of the 1s.",
+        stack: ["HTML", "CSS", "JavaScript"],
+        image: "/archive/dice.webp",
+        githubUrl: "https://github.com/Tmeah/Dice-game",
+        liveUrl: "https://tausifmeah.co.uk/Dice-game/",
+      },
+    ],
   },
 ];
+
+export const archiveCount = archiveGroups.reduce((total, group) => total + group.projects.length, 0);
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

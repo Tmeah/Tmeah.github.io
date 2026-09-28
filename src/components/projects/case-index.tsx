@@ -1,6 +1,7 @@
 import type { PointerEvent } from "react";
 import { ProjectReel } from "@/components/reels/project-reel";
 import { projects } from "@/content/projects";
+import { Icon } from "@/components/site/icon";
 
 function followCursor(event: PointerEvent<HTMLAnchorElement>) {
   if (event.pointerType !== "mouse") {
@@ -32,7 +33,7 @@ export function CaseIndex() {
               </span>
             </span>
             <span className="case-index__arrow" aria-hidden>
-              <i className="fas fa-arrow-right" />
+              <Icon name="arrow-right" />
             </span>
             <span className="case-index__preview">
               <ProjectReel theme={project.theme} />

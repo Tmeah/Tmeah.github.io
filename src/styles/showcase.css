@@ -17,6 +17,37 @@
   position: relative;
 }
 
+.projects__more {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.projects__more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+
+.projects__more a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.projects__more .icon {
+  font-size: 13px;
+  transition: transform 400ms var(--ease-out);
+}
+
+.projects__more a:hover .icon {
+  transform: translateX(4px);
+}
+
 .showcase {
   position: relative;
   display: grid;

@@ -10,7 +10,6 @@ export type ProjectTheme = "viralz" | "snappd" | "gogrow";
 export type ProjectLink = {
   label: string;
   href: string;
-  icon: string;
 };
 
 export type Project = {
@@ -38,7 +37,15 @@ export type ArchiveProject = {
   name: string;
   description: string;
   stack: string[];
-  image: string;
+  image?: string;
+  caseStudyUrl?: string;
   liveUrl?: string;
   githubUrl?: string;
+};
+
+export type ArchiveGroup = {
+  id: string;
+  title: string;
+  note: string;
+  projects: ArchiveProject[];
 };

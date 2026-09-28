@@ -13,15 +13,16 @@ import {
   stagger,
   type Track,
 } from "@/components/reels/timeline";
+import { Icon, type IconName } from "@/components/site/icon";
 
 const word = "Viralz".split("");
 
 const chips = [
-  { icon: "fas fa-user-plus", value: "+645", label: "followers" },
-  { icon: "fas fa-eye", value: "259K", label: "avg views" },
-  { icon: "fas fa-star", value: "54", label: "quality score" },
-  { icon: "fas fa-heart", value: "4.98%", label: "engagement" },
-];
+  { icon: "user-plus", value: "+645", label: "followers" },
+  { icon: "eye", value: "259K", label: "avg views" },
+  { icon: "star", value: "54", label: "quality score" },
+  { icon: "heart", value: "4.98%", label: "engagement" },
+] satisfies ({ icon: IconName } & Record<string, unknown>)[];
 
 const insight =
   "Your best videos hook viewers in the first two seconds. Lead with the payoff.".split(" ");
@@ -167,7 +168,7 @@ export function ViralzReel() {
           <span className="vz-burst vz-burst--2" />
           <div className="vz-lockup">
             <span className="vz-icon">
-              <i className="fas fa-rocket" />
+              <Icon name="rocket" />
             </span>
             <span className="vz-word">
               {word.map((letter, index) => (
@@ -195,7 +196,7 @@ export function ViralzReel() {
           </div>
           {chips.map((chip, index) => (
             <div key={chip.label} className={`vz-chip vz-chip--${index + 1}`}>
-              <i className={chip.icon} />
+              <Icon name={chip.icon} />
               <span>
                 <b>{chip.value}</b> {chip.label}
               </span>
@@ -240,7 +241,7 @@ export function ViralzReel() {
           </svg>
           <div className="vz-insight">
             <p className="vz-insight__head">
-              <i className="fas fa-wand-magic-sparkles" /> AI insight
+              <Icon name="wand-magic-sparkles" /> AI insight
             </p>
             <p className="vz-insight__text">
               {insight.map((item, index) => (
@@ -269,7 +270,7 @@ export function ViralzReel() {
         <div className="reel-scene vz-s5">
           <div className="vz-lockup vz-lockup--end">
             <span className="vz-icon">
-              <i className="fas fa-rocket" />
+              <Icon name="rocket" />
             </span>
             <span className="vz-end-word">Viralz</span>
           </div>

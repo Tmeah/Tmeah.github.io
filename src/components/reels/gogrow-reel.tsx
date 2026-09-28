@@ -13,18 +13,19 @@ import {
   type Frame,
   type Track,
 } from "@/components/reels/timeline";
+import { Icon, type IconName } from "@/components/site/icon";
 
 const habits = [
-  { name: "Move", icon: "fas fa-dumbbell", value: "0.6h", fillAt: 7.3 },
-  { name: "Food", icon: "fas fa-apple-whole", value: "3 of 3", fillAt: 7.75 },
-  { name: "Sleep", icon: "fas fa-moon", value: "8h", fillAt: 8.2 },
-];
+  { name: "Move", icon: "dumbbell", value: "0.6h", fillAt: 7.3 },
+  { name: "Food", icon: "apple-whole", value: "3 of 3", fillAt: 7.75 },
+  { name: "Sleep", icon: "moon", value: "8h", fillAt: 8.2 },
+] satisfies ({ icon: IconName } & Record<string, unknown>)[];
 
 const floaters = [
-  { icon: "fas fa-bolt", text: "+50 XP" },
-  { icon: "fas fa-trophy", text: "Level 4" },
-  { icon: "fas fa-fire", text: "30 day streak" },
-];
+  { icon: "bolt", text: "+50 XP" },
+  { icon: "trophy", text: "Level 4" },
+  { icon: "fire", text: "30 day streak" },
+] satisfies ({ icon: IconName } & Record<string, unknown>)[];
 
 const cuts = [3.1, 6.6, 10.5, 13.1];
 
@@ -221,9 +222,9 @@ export function GoGrowReel() {
                     <circle className="gg-habit__track" cx="50" cy="50" r="42" />
                     <circle className="gg-habit__progress" cx="50" cy="50" r="42" pathLength={1} />
                   </svg>
-                  <i className={habit.icon} />
+                  <Icon name={habit.icon} />
                   <span className="gg-habit__check">
-                    <i className="fas fa-check" />
+                    <Icon name="check" />
                   </span>
                 </span>
                 <span className="gg-habit__name">{habit.name}</span>
@@ -232,7 +233,7 @@ export function GoGrowReel() {
             ))}
           </div>
           <p className="gg-streak">
-            <i className="fas fa-fire" />
+            <Icon name="fire" />
             <span className="gg-streak__num" /> day streak
           </p>
         </div>
@@ -257,7 +258,7 @@ export function GoGrowReel() {
           </div>
           {floaters.map((floater, index) => (
             <p key={floater.text} className={`gg-float gg-float--${index + 1}`}>
-              <i className={floater.icon} /> {floater.text}
+              <Icon name={floater.icon} /> {floater.text}
             </p>
           ))}
         </div>
@@ -269,7 +270,7 @@ export function GoGrowReel() {
           </div>
           <p className="gg-url">getgogrow.app</p>
           <p className="gg-store">
-            <i className="fab fa-apple" /> Available on iPhone
+            <Icon name="apple" /> Available on iPhone
           </p>
           <p className="gg-credit">Built by Tausif Meah</p>
         </div>
