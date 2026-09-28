@@ -28,7 +28,8 @@ const chromeTracks: Track[] = [
 ];
 
 // A 16:9 stage that scales every element with its width (1em is 1% of the
-// stage), and plays its tracks on one shared 15 second loop.
+// stage), and plays its tracks on one shared 15 second loop. It rests on the
+// poster frame until it scrolls into view, so it never shows an empty stage.
 export function ReelStage({ slug, name, tracks, posterAt, children }: ReelStageProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -48,12 +49,12 @@ export function ReelStage({ slug, name, tracks, posterAt, children }: ReelStageP
         }),
       );
     });
-    animations.forEach((animation) => animation.pause());
+    animations.forEach((animation) => {
+      animation.pause();
+      animation.currentTime = posterAt * 1000;
+    });
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      animations.forEach((animation) => {
-        animation.currentTime = posterAt * 1000;
-      });
       return () => animations.forEach((animation) => animation.cancel());
     }
 
