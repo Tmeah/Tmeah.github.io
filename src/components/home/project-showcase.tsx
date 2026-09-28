@@ -35,7 +35,7 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
       </MarginNote>
       <div className="projects__card">
         <div
-          className={`showcase${reverse ? " showcase--reverse" : ""}`}
+          className={`showcase showcase--${project.theme}${reverse ? " showcase--reverse" : ""}`}
           onClick={openCaseStudy}
         >
           <div className="showcase__media">

@@ -18,6 +18,8 @@
 }
 
 .showcase {
+  --accent: var(--blue);
+  --accent-ink: #fff;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
@@ -38,8 +40,28 @@
 
 .showcase:hover {
   transform: translateY(-6px);
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow:
+    inset 0 3px 0 var(--accent),
+    var(--shadow),
+    0 20px 60px -30px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.showcase--viralz {
+  --accent: #ff2d55;
+}
+
+.showcase--snappd {
+  --accent: #e8577e;
+}
+
+.showcase--gogrow {
+  --accent: #0e9aa2;
+}
+
+.dark .showcase--gogrow {
+  --accent: #5ee0e6;
+  --accent-ink: #062b2d;
 }
 
 .showcase--reverse {
@@ -79,7 +101,7 @@
   margin-top: 16px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .showcase__headline {
@@ -115,7 +137,7 @@
 .showcase__highlights i {
   margin-top: 4px;
   font-size: 11px;
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .showcase__stack {
@@ -139,8 +161,8 @@
   height: 46px;
   padding: 0 22px;
   border-radius: 999px;
-  background: var(--blue);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-ink);
   font-weight: 600;
   transition: transform 500ms var(--ease-out);
 }
@@ -171,7 +193,7 @@
 }
 
 .showcase__link:hover {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 /* Phone frame (case study screens) */
