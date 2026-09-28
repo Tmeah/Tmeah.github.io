@@ -152,8 +152,9 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "TikWave",
         description:
-          "TikTok Shop research app for iPhone: trending products, viral product videos, top ads, and a product scanner, with subscriptions built in.",
-        stack: ["React Native", "Expo", "RevenueCat", "Cloudflare Workers", "AppsFlyer"],
+          "Subscription iPhone app for TikTok Shop sellers and creators: trending products ranked by sales, viral product videos, and product analysis with scores and competitor context.",
+        stack: ["React Native", "Expo", "Supabase", "Cloudflare Workers", "RevenueCat", "OpenAI"],
+        image: "/archive/tikwave.webp",
         liveUrl: "https://apps.apple.com/gb/app/tikwave/id6758156484",
         liveLabel: "App Store",
       },
@@ -167,26 +168,30 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "Hifz Helper",
         description:
-          "Quran revision app built around accountability: streaks, points and badges, revision circles with friends, heatmaps, and reminders that respect prayer times.",
-        stack: ["React Native", "Expo", "Supabase", "React Query"],
+          "Quran revision companion for people who have memorised the Quran: daily juz logging, streaks, khatam progress, and achievements, with group khatams on the way.",
+        stack: ["React Native", "Expo Router", "TypeScript", "NativeWind", "Zustand"],
+        image: "/archive/hifz-helper.webp",
       },
       {
         name: "Ramadan Apps",
         description:
-          "Four apps for one Ramadan season, each solving one problem: Taraweeh briefings, a fasting-day planner, a Ramadan circle, and help with making dua.",
-        stack: ["React Native", "Expo", "Monorepo"],
+          "Four apps for one Ramadan season: Khushu briefs you on each night's Taraweeh, Baraka plans your day around fasting, Suhba puts you in a small accountability circle, and Munaajat suggests duas for the moment.",
+        stack: ["React Native", "Expo", "TypeScript", "npm workspaces"],
+        image: "/archive/ramadan-apps.webp",
       },
       {
         name: "Room Decorator",
         description:
-          "3D room planner: set the room size, add doors and windows, then drag, rotate, and snap furniture into place. Undo, redo, and save to file.",
+          "Browser-based 3D room planner: set the room size, add doors, windows, and wall blocks, then drag, rotate, and snap furniture to a grid. Undo, redo, and save to file.",
         stack: ["Three.js", "JavaScript", "HTML", "CSS"],
+        image: "/archive/room-decorator.webp",
       },
       {
         name: "Baseerah",
         description:
-          "Website for Baseerah, a Muslim-led digital agency building apps for the community.",
-        stack: ["Astro", "React", "Tailwind CSS", "Framer Motion"],
+          "Concept site for a Muslim-led app agency: services, featured apps, and a contact form, with scroll animations throughout.",
+        stack: ["Astro", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        image: "/archive/baseerah.webp",
       },
     ],
   },
@@ -206,27 +211,32 @@ export const archiveGroups: ArchiveGroup[] = [
       {
         name: "Youth Club Register",
         description:
-          "Attendance register for a youth club, with separate boys' and girls' sessions, dashboards, reports, and exports.",
-        stack: ["React", "Firebase", "Chart.js", "Bootstrap"],
+          "Register for a weekly youth club: attendance and session payments for separate boys' and girls' sections, incident logging, and monthly reports with charts.",
+        stack: ["React", "Firebase", "Chart.js", "React Bootstrap"],
+        image: "/archive/youth-club-register.webp",
       },
       {
         name: "SJ Concepts",
         description:
-          "Website for an automotive specialist covering ECU remapping, custom installs, and audio, with CMS-managed content, a shop, and Stripe checkout.",
-        stack: ["React", "Prismic", "Contentful", "Stripe"],
+          "Website for a car audio, security, and customisation specialist in Newport, with a gallery and shop managed through Contentful and Stripe checkout.",
+        stack: ["React", "Contentful", "Stripe", "Netlify Functions", "Bootstrap"],
+        image: "/archive/sj-concepts.webp",
         githubUrl: "https://github.com/Tmeah/sjc-app-master",
       },
       {
         name: "Iqra Study",
-        description: "Landing site for a study centre, with a contact form for enquiries.",
+        description:
+          "Landing page for IqraStudy, an online platform for exploring the Quran, Hadith, and duas, with a pop-up contact form.",
         stack: ["React", "React Router", "CSS"],
+        image: "/archive/iqra-study.webp",
         githubUrl: "https://github.com/Tmeah/iqrastudy",
       },
       {
         name: "EduCam",
         description:
-          "Marketing site for a small-group tutoring service, with pricing, FAQs, and testimonials.",
-        stack: ["React", "React Bootstrap"],
+          "Marketing site for a GCSE tutoring service offering small-group, pay-as-you-go, and one-to-one sessions, with pricing and FAQs.",
+        stack: ["React", "React Bootstrap", "React Router"],
+        image: "/archive/educam.webp",
       },
       {
         name: "Iqra Community Centre Feedback Form",
@@ -253,16 +263,19 @@ export const archiveGroups: ArchiveGroup[] = [
     note: "BSc Software Engineering, Cardiff Met",
     projects: [
       {
-        name: "Chemical Incident Training Tool",
+        name: "ChemInspect",
         description:
-          "Development project themed around UKHSA, with a chemical database, risk evaluation, incident tracking, and training scenarios.",
-        stack: ["React", "Express", "MySQL", "PHP"],
+          "Chemical database and emergency response training tool: look up chemicals via PubChem, log spill incidents with live weather, and practise shelter-or-evacuate decisions using the SHORE framework.",
+        stack: ["React", "Express", "MySQL", "PHP", "PubChem API"],
+        image: "/archive/cheminspect.webp",
         githubUrl: "https://github.com/Tmeah/Devolepment-project",
       },
       {
         name: "Game of Life",
-        description: "Conway's Game of Life, written in C++.",
-        stack: ["C++"],
+        description:
+          "Conway's Game of Life in C++ for a university module: a randomly seeded 64 by 64 grid drawn with OpenGL, with each generation timed and an experiment in parallelising the update with Intel TBB.",
+        stack: ["C++", "OpenGL", "FreeGLUT", "Intel TBB"],
+        image: "/archive/game-of-life.webp",
         githubUrl: "https://github.com/Tmeah/st20182639-game-of-life",
       },
     ],
@@ -274,8 +287,10 @@ export const archiveGroups: ArchiveGroup[] = [
     projects: [
       {
         name: "Calendar App",
-        description: "Google Calendar style app with a month view, events, and colour labels.",
-        stack: ["React", "Day.js", "Context API"],
+        description:
+          "Google Calendar style month view: create, edit, and delete events, tag them with colour labels, and filter from the sidebar. Events are saved in the browser.",
+        stack: ["React", "Tailwind CSS", "Day.js", "Context API"],
+        image: "/archive/calendar-app.webp",
         githubUrl: "https://github.com/Tmeah/react-calendar",
       },
       {
