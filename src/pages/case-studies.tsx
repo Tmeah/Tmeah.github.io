@@ -1,5 +1,6 @@
 import { ProjectShowcase } from "@/components/home/project-showcase";
 import { InnerPage } from "@/components/site/inner-page";
+import { Scribble } from "@/components/site/scribble";
 import { projects } from "@/content/projects";
 import { mount } from "@/mount";
 
@@ -12,7 +13,7 @@ function CaseStudiesPage() {
         </a>
         <p className="label">Case studies · {projects.length} products</p>
         <h1 className="page-head__title">
-          How I <span className="accent">build</span>
+          How I <Scribble mark="circle">build</Scribble>
         </h1>
         <p className="page-head__lede">
           How I built and shipped three live products: what they do, the

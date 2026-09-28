@@ -1,4 +1,5 @@
 import { InnerPage } from "@/components/site/inner-page";
+import { Scribble } from "@/components/site/scribble";
 import { archiveProjects } from "@/content/projects";
 import { mount } from "@/mount";
 
@@ -11,7 +12,7 @@ function ArchivePage() {
         </a>
         <p className="label">Archive · {archiveProjects.length} projects</p>
         <h1 className="page-head__title">
-          Earlier <span className="accent">work</span>
+          Earlier <Scribble>work</Scribble>
         </h1>
         <p className="page-head__lede">
           Front-end projects from when I was starting out. Kept here for the

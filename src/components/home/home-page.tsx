@@ -1,6 +1,7 @@
 import { NowStrip } from "@/components/home/now-strip";
 import { ProjectShowcase } from "@/components/home/project-showcase";
 import { AboutDialog } from "@/components/site/about-dialog";
+import { Scribble } from "@/components/site/scribble";
 import { ShapeField } from "@/components/site/shape-field";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
@@ -103,7 +104,7 @@ export function HomePage() {
               <div>
                 <p className="label">(01) Selected work</p>
                 <h2 className="section__title" id="work-title">
-                  Things I&apos;ve <span className="accent">shipped</span>
+                  Things I&apos;ve <Scribble>shipped</Scribble>
                 </h2>
               </div>
               <p className="section__lede">
@@ -123,7 +124,7 @@ export function HomePage() {
               <div>
                 <p className="label">(02) Experience</p>
                 <h2 className="section__title" id="experience-title">
-                  Where I&apos;ve <span className="accent">worked</span>
+                  Where I&apos;ve <Scribble mark="circle">worked</Scribble>
                 </h2>
               </div>
               <p className="section__lede">
@@ -157,7 +158,7 @@ export function HomePage() {
             <h2 className="cta__title" id="cta-title">
               Got an idea?
               <br />
-              Let&apos;s <span className="accent">build it.</span>
+              Let&apos;s <Scribble>build it.</Scribble>
             </h2>
             <div className="cta__row">
               <a href={`mailto:${siteConfig.email}`} className="cta__email">
