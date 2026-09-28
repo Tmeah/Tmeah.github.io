@@ -23,13 +23,14 @@ type ShapeState = {
   vy: number;
   spin: number;
   dragging: boolean;
+  pinned: boolean;
   lastX: number;
   lastY: number;
   lastTime: number;
 };
 
-// The triangles follow the mouse slightly, and can be grabbed, dragged, and
-// flung around the screen.
+// The triangles follow the mouse slightly until one is grabbed; after that it
+// stays wherever it's dragged or flung.
 export function ShapeField() {
   const fieldRef = useRef<HTMLDivElement>(null);
 
@@ -47,6 +48,7 @@ export function ShapeField() {
       vy: 0,
       spin: 0,
       dragging: false,
+      pinned: false,
       lastX: 0,
       lastY: 0,
       lastTime: 0,
@@ -54,12 +56,17 @@ export function ShapeField() {
     const parallax = { x: 0, y: 0 };
     let frame = 0;
 
+    function parallaxFor(index: number) {
+      const direction = index % 2 !== 0 ? -1 : 1;
+      return { x: parallax.x * direction, y: parallax.y * direction };
+    }
+
     function render() {
       elements.forEach((element, index) => {
-        const direction = index % 2 !== 0 ? -1 : 1;
         const state = states[index];
-        element.style.transform = `translate(${parallax.x * direction + state.x}px, ${
-          parallax.y * direction + state.y
+        const offset = state.pinned ? { x: 0, y: 0 } : parallaxFor(index);
+        element.style.transform = `translate(${offset.x + state.x}px, ${
+          offset.y + state.y
         }px) rotate(${state.spin}deg)`;
       });
     }
@@ -113,6 +120,12 @@ export function ShapeField() {
         event.preventDefault();
         element.setPointerCapture(event.pointerId);
         element.classList.add("is-dragging");
+        if (!state.pinned) {
+          const offset = parallaxFor(index);
+          state.x += offset.x;
+          state.y += offset.y;
+          state.pinned = true;
+        }
         Object.assign(state, {
           dragging: true,
           vx: 0,
