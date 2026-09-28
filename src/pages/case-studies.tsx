@@ -11,7 +11,7 @@ function CaseStudiesPage() {
         <a href="/" className="back-link">
           <i className="fas fa-arrow-left" aria-hidden /> Home
         </a>
-        <p className="note">the long versions, with all the decisions</p>
+        <p className="note">in more detail</p>
         <h1 className="page-head__title">
           Case <Scribble mark="circle">studies</Scribble>
         </h1>

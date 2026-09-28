@@ -24,7 +24,6 @@ export function HomePage() {
         <SiteNav onOpenAbout={openAbout} onOpenContact={openContact} />
 
         <header className="hero wrap" id="main-content">
-          <p className="note hero__hi">hello there, thanks for stopping by</p>
           <div className="hero__heading">
             <h1 className="hero__title">
               <span className="hero__line">
@@ -35,7 +34,7 @@ export function HomePage() {
               </span>
             </h1>
             <MarginNote arrow="left" className="hero__note">
-              that&apos;s me, building stuff at {nowCopy.current.company} in Wales
+              full stack developer at {nowCopy.current.company}, Wales
             </MarginNote>
           </div>
           <div className="hero__foot">
@@ -102,7 +101,7 @@ export function HomePage() {
           <section className="section wrap" id="projects" aria-labelledby="work-title">
             <div className="section__head">
               <div>
-                <p className="note">01 · the good stuff</p>
+                <p className="note">01 · projects</p>
                 <h2 className="section__title" id="work-title">
                   Some of my <Scribble>projects</Scribble>
                 </h2>
@@ -122,7 +121,7 @@ export function HomePage() {
           <section className="section wrap" id="experience" aria-labelledby="experience-title">
             <div className="section__head">
               <div>
-                <p className="note">02 · the day jobs</p>
+                <p className="note">02 · experience</p>
                 <h2 className="section__title" id="experience-title">
                   Where I&apos;ve <Scribble mark="circle">worked</Scribble>
                 </h2>
@@ -154,7 +153,7 @@ export function HomePage() {
           </section>
 
           <section className="section cta wrap" aria-labelledby="cta-title">
-            <p className="note">03 · say hello</p>
+            <p className="note">03 · contact</p>
             <h2 className="cta__title" id="cta-title">
               Fancy working
               <br />

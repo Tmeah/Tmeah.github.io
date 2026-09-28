@@ -15,7 +15,7 @@ export function SiteFooter({ onOpenContact }: SiteFooterProps) {
             <p className="footer__role">
               {siteConfig.title} · {siteConfig.location}
             </p>
-            <p className="note footer__made">designed and built by hand, in Wales</p>
+            <p className="note footer__made">designed and built in Wales</p>
           </div>
         </div>
         <div className="footer__cols">

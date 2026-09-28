@@ -588,9 +588,6 @@ p {
   font-size: 23px;
 }
 
-.hero__hi {
-  animation: rise 900ms var(--ease-out) 80ms backwards;
-}
 
 .hero__line {
   display: block;

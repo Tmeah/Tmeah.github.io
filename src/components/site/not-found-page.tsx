@@ -4,7 +4,7 @@ export function NotFoundPage() {
   return (
     <InnerPage>
       <div className="inner not-found wrap">
-        <p className="note">404, this page wandered off</p>
+        <p className="note">404</p>
         <h1>
           Oops<span className="text--blue">.</span>
         </h1>

@@ -29,7 +29,7 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
           <p className="case__headline">{project.headline}</p>
         </div>
         <MarginNote arrow="down" className="case-hero__reel-note">
-          made this reel in code, no After Effects
+          animated in code
         </MarginNote>
         <div className="case-hero__reel">
           <ProjectReel theme={project.theme} />
