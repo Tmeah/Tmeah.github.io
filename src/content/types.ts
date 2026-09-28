@@ -23,6 +23,7 @@ export type Project = {
   highlights: string[];
   stack: string[];
   links: ProjectLink[];
+  firstVersion?: ProjectLink;
   desktopImage: string;
   phoneImage: string;
   phoneImageSize: { width: number; height: number };

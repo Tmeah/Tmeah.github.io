@@ -49,7 +49,12 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
             <dd className="case-hero__links">
               {primaryLink ? (
                 <a href={primaryLink.href} target="_blank" rel="noreferrer">
-                  Visit {primaryLink.label}{" "}
+                  Visit {primaryLink.label} <Icon name="arrow-up-right-from-square" />
+                </a>
+              ) : null}
+              {project.firstVersion ? (
+                <a href={project.firstVersion.href} target="_blank" rel="noreferrer">
+                  {project.firstVersion.label}{" "}
                   <Icon name="arrow-up-right-from-square" />
                 </a>
               ) : null}

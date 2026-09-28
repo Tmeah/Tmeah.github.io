@@ -17,13 +17,17 @@ export const projects: Project[] = [
     ],
     stack: ["React", "TypeScript", "Stripe", "Google OAuth", "AI"],
     links: [{ label: "viralzapp.com", href: "https://viralzapp.com/" }],
+    firstVersion: {
+      label: "First version (2024)",
+      href: "https://spontaneous-cannoli-a1f199.netlify.app/",
+    },
     desktopImage: "/projects/viralz.webp",
     phoneImage: "/projects/viralz-phone.webp",
     phoneImageSize: { width: 384, height: 820 },
     role: "Founder and developer",
     platform: "iOS app and web",
     overview:
-      "Viralz helps TikTok creators understand why some videos take off and others don't. It pulls performance data into one place and uses AI to turn it into clear insights and next steps. I designed, built, launched, and now run it. It started in 2024 as a web tool that used AI to suggest hooks, hashtags, and video ideas, and grew into the analytics app it is today.",
+      "Viralz helps TikTok creators understand why some videos take off and others don't. It pulls performance data into one place and uses AI to turn it into clear insights and next steps. I designed, built, launched, and now run it. It started in 2024 as a TikTok idea generator, a web tool that used AI to suggest hooks, hashtags, and video ideas, and grew into the analytics app it is today.",
     built: [
       "The mobile app and marketing site, from first design to App Store release.",
       "AI-driven insights that summarise performance and suggest improvements.",
