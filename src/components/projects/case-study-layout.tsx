@@ -52,9 +52,6 @@ export function CaseStudyLayout({ project, next }: CaseStudyLayoutProps) {
                   <i className="fas fa-arrow-up-right-from-square" aria-hidden />
                 </a>
               ) : null}
-              <a href={`/reels/${project.slug}.mp4`} download>
-                Download reel (MP4) <i className="fas fa-download" aria-hidden />
-              </a>
             </dd>
           </div>
         </dl>
