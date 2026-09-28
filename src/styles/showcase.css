@@ -17,18 +17,6 @@
   position: relative;
 }
 
-.tape--left {
-  top: -14px;
-  left: 6%;
-  transform: rotate(-4deg);
-}
-
-.tape--right {
-  top: -12px;
-  right: 7%;
-  transform: rotate(5deg);
-}
-
 .showcase {
   position: relative;
   display: grid;

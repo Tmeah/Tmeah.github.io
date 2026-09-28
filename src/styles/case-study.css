@@ -307,20 +307,6 @@ body:has(.page--snappd) {
   transform: rotate(0deg) translateY(-4px);
 }
 
-.case-story__decision::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  width: 96px;
-  height: 26px;
-  margin-left: -48px;
-  background: var(--tape);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  clip-path: polygon(3% 0, 97% 4%, 100% 30%, 96% 58%, 100% 100%, 2% 96%, 0 66%, 4% 36%);
-  transform: rotate(-3deg);
-}
-
 .page--themed .case-story__decision h3,
 .case-story__decision h3 {
   font-family: var(--font-hand);

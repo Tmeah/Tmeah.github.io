@@ -10,12 +10,11 @@
   --font-outfit: "Outfit";
 
   --paper: #f7f6f1;
-  --grid: rgba(0, 116, 217, 0.07);
+  --dot: rgba(0, 116, 217, 0.26);
   --ink: #16171a;
   --muted: #5d6068;
   --line: rgba(22, 23, 26, 0.12);
   --line-strong: rgba(22, 23, 26, 0.26);
-  --tape: rgba(246, 226, 160, 0.78);
   --blue: #0074d9;
   --blue-hover: #1a86e8;
   --blue-soft: rgba(0, 116, 217, 0.1);
@@ -33,12 +32,11 @@
 
 .dark {
   --paper: #0c1628;
-  --grid: rgba(140, 180, 255, 0.09);
+  --dot: rgba(140, 180, 255, 0.24);
   --ink: #eaf1ff;
   --muted: #9fb0cc;
   --line: rgba(160, 190, 255, 0.16);
   --line-strong: rgba(160, 190, 255, 0.32);
-  --tape: rgba(255, 240, 200, 0.3);
   --blue: #6cb0ff;
   --blue-hover: #9ccaff;
   --blue-soft: rgba(108, 176, 255, 0.16);
@@ -248,15 +246,37 @@ p {
   stroke-dashoffset: 1;
 }
 
-.tape {
+.corner {
   position: absolute;
   z-index: 5;
-  width: 112px;
-  height: 30px;
-  background: var(--tape);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  clip-path: polygon(3% 0, 97% 4%, 100% 30%, 96% 58%, 100% 100%, 2% 96%, 0 66%, 4% 36%);
+  width: 22px;
+  height: 22px;
+  border: 0 solid var(--blue);
   pointer-events: none;
+}
+
+.corner--tl {
+  top: -12px;
+  left: -12px;
+  border-width: 2px 0 0 2px;
+}
+
+.corner--tr {
+  top: -12px;
+  right: -12px;
+  border-width: 2px 2px 0 0;
+}
+
+.corner--bl {
+  bottom: -12px;
+  left: -12px;
+  border-width: 0 0 2px 2px;
+}
+
+.corner--br {
+  bottom: -12px;
+  right: -12px;
+  border-width: 0 2px 2px 0;
 }
 
 .sr-only {
@@ -383,11 +403,9 @@ p {
 }
 
 .page:not(.page--themed) {
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 28px 28px;
-  background-position: -1px -1px;
+  background-image: radial-gradient(circle, var(--dot) 1.1px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 12px 12px;
 }
 
 .page__content {

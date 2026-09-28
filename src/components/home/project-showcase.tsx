@@ -35,8 +35,9 @@ export function ProjectShowcase({ project, index }: ProjectShowcaseProps) {
         {project.note}
       </MarginNote>
       <div className="projects__card">
-        <span className="tape tape--left" aria-hidden />
-        <span className="tape tape--right" aria-hidden />
+        {(["tl", "tr", "bl", "br"] as const).map((corner) => (
+          <span key={corner} className={`corner corner--${corner}`} aria-hidden />
+        ))}
         <div
           className={`showcase showcase--${project.theme}${reverse ? " showcase--reverse" : ""}`}
           onClick={openCaseStudy}
