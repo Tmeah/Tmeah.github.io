@@ -15,6 +15,8 @@ const shapes = [
 const parallaxFactor = 1 / 20;
 const friction = 0.94;
 const bounce = 0.7;
+const grabBlockers =
+  "a, button, input, textarea, select, label, img, video, dialog, .showcase, .reel, .case-screens, .case-story__decision, .archive__card, .case-next";
 
 type ShapeState = {
   x: number;
@@ -102,7 +104,39 @@ export function ShapeField() {
       }
     }
 
+    let active: { index: number; pointerId: number } | null = null;
+    let hovered = -1;
+
+    function shapeAt(x: number, y: number) {
+      for (let index = elements.length - 1; index >= 0; index -= 1) {
+        const rect = elements[index].getBoundingClientRect();
+        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+          return index;
+        }
+      }
+      return -1;
+    }
+
+    // The triangles sit behind the page, so a press only grabs one when it
+    // lands on empty page space, never on a link, button, card, or media.
+    function canGrabThrough(target: EventTarget | null) {
+      return !(target instanceof Element && target.closest(grabBlockers));
+    }
+
+    function setHovered(index: number) {
+      if (index === hovered) {
+        return;
+      }
+      elements[hovered]?.classList.remove("is-hovered");
+      elements[index]?.classList.add("is-hovered");
+      document.documentElement.classList.toggle("shape-hover", index !== -1);
+      hovered = index;
+    }
+
     function onMouseMove(event: MouseEvent) {
+      if (!active) {
+        setHovered(canGrabThrough(event.target) ? shapeAt(event.clientX, event.clientY) : -1);
+      }
       if (reduceMotion.matches) {
         return;
       }
@@ -113,77 +147,84 @@ export function ShapeField() {
       }
     }
 
-    const cleanups = elements.map((element, index) => {
+    function onPointerDown(event: PointerEvent) {
+      if (event.button !== 0 || !canGrabThrough(event.target)) {
+        return;
+      }
+      const index = shapeAt(event.clientX, event.clientY);
+      if (index === -1) {
+        return;
+      }
+      event.preventDefault();
       const state = states[index];
-
-      function onPointerDown(event: PointerEvent) {
-        event.preventDefault();
-        element.setPointerCapture(event.pointerId);
-        element.classList.add("is-dragging");
-        if (!state.pinned) {
-          const offset = parallaxFor(index);
-          state.x += offset.x;
-          state.y += offset.y;
-          state.pinned = true;
-        }
-        Object.assign(state, {
-          dragging: true,
-          vx: 0,
-          vy: 0,
-          lastX: event.clientX,
-          lastY: event.clientY,
-          lastTime: event.timeStamp,
-        });
+      if (!state.pinned) {
+        const offset = parallaxFor(index);
+        state.x += offset.x;
+        state.y += offset.y;
+        state.pinned = true;
       }
+      Object.assign(state, {
+        dragging: true,
+        vx: 0,
+        vy: 0,
+        lastX: event.clientX,
+        lastY: event.clientY,
+        lastTime: event.timeStamp,
+      });
+      active = { index, pointerId: event.pointerId };
+      setHovered(-1);
+      elements[index].classList.add("is-dragging");
+      document.documentElement.classList.add("shape-grabbing");
+    }
 
-      function onPointerMove(event: PointerEvent) {
-        if (!state.dragging) {
-          return;
-        }
-        const dx = event.clientX - state.lastX;
-        const dy = event.clientY - state.lastY;
-        const elapsed = Math.max(1, event.timeStamp - state.lastTime);
-        state.x += dx;
-        state.y += dy;
-        state.vx = (dx / elapsed) * 16;
-        state.vy = (dy / elapsed) * 16;
-        state.lastX = event.clientX;
-        state.lastY = event.clientY;
-        state.lastTime = event.timeStamp;
-        render();
+    function onPointerMove(event: PointerEvent) {
+      if (!active || event.pointerId !== active.pointerId) {
+        return;
       }
+      const state = states[active.index];
+      const dx = event.clientX - state.lastX;
+      const dy = event.clientY - state.lastY;
+      const elapsed = Math.max(1, event.timeStamp - state.lastTime);
+      state.x += dx;
+      state.y += dy;
+      state.vx = (dx / elapsed) * 16;
+      state.vy = (dy / elapsed) * 16;
+      state.lastX = event.clientX;
+      state.lastY = event.clientY;
+      state.lastTime = event.timeStamp;
+      render();
+    }
 
-      function onPointerUp() {
-        if (!state.dragging) {
-          return;
-        }
-        state.dragging = false;
-        element.classList.remove("is-dragging");
-        if (reduceMotion.matches) {
-          state.vx = 0;
-          state.vy = 0;
-          return;
-        }
-        startTicking();
+    function onPointerUp(event: PointerEvent) {
+      if (!active || event.pointerId !== active.pointerId) {
+        return;
       }
-
-      element.addEventListener("pointerdown", onPointerDown);
-      element.addEventListener("pointermove", onPointerMove);
-      element.addEventListener("pointerup", onPointerUp);
-      element.addEventListener("pointercancel", onPointerUp);
-      return () => {
-        element.removeEventListener("pointerdown", onPointerDown);
-        element.removeEventListener("pointermove", onPointerMove);
-        element.removeEventListener("pointerup", onPointerUp);
-        element.removeEventListener("pointercancel", onPointerUp);
-      };
-    });
+      const state = states[active.index];
+      state.dragging = false;
+      elements[active.index].classList.remove("is-dragging");
+      document.documentElement.classList.remove("shape-grabbing");
+      active = null;
+      if (reduceMotion.matches) {
+        state.vx = 0;
+        state.vy = 0;
+        return;
+      }
+      startTicking();
+    }
 
     window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("mousemove", onMouseMove);
-      cleanups.forEach((cleanup) => cleanup());
+      window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+      document.documentElement.classList.remove("shape-hover", "shape-grabbing");
     };
   }, []);
 
