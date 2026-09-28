@@ -248,6 +248,8 @@ export const archiveGroups: ArchiveGroup[] = [
         description:
           "Previous website for a car audio, security, and customisation specialist in Newport, with a gallery and shop managed through Contentful and Stripe checkout.",
         stack: ["React", "Contentful", "Stripe", "Netlify Functions", "Bootstrap"],
+        liveUrl: "https://magnificent-unicorn-a6dda6.netlify.app/",
+        liveLabel: "Old site",
         githubUrl: "https://github.com/Tmeah/sjc-app-master",
       },
       {
@@ -268,6 +270,7 @@ export const archiveGroups: ArchiveGroup[] = [
         description:
           "Marketing site for a GCSE tutoring service offering small-group, pay-as-you-go, and one-to-one sessions, with pricing and FAQs.",
         stack: ["React", "React Bootstrap", "React Router"],
+        liveUrl: "https://educamonline.netlify.app/",
       },
       {
         name: "Iqra Community Centre Feedback Form",
@@ -332,6 +335,7 @@ export const archiveGroups: ArchiveGroup[] = [
         description:
           "Google Calendar style month view: create, edit, and delete events, tag them with colour labels, and filter from the sidebar. Events are saved in the browser.",
         stack: ["React", "Tailwind CSS", "Day.js", "Context API"],
+        liveUrl: "https://react-calendar-submission.netlify.app/",
         githubUrl: "https://github.com/Tmeah/react-calendar",
       },
       {
