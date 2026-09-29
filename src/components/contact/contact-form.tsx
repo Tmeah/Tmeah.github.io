@@ -1,23 +1,21 @@
-import emailjs from "@emailjs/browser";
 import { useState, type FormEvent } from "react";
 import { siteConfig } from "@/content/site";
 
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? "";
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? "";
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? "";
-
-type FormStatus = "idle" | "loading" | "success" | "fallback";
+type FormStatus =
+  | { kind: "idle" }
+  | { kind: "loading" }
+  | { kind: "success" }
+  | { kind: "error"; message: string }
+  | { kind: "fallback" };
 
 function openMailtoFallback(name: string, email: string, message: string) {
   const subject = encodeURIComponent(`Portfolio message from ${name}`);
-  const body = encodeURIComponent(
-    `Name: ${name}\nEmail: ${email}\n\n${message}`,
-  );
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
   window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
 }
 
 export function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>("idle");
+  const [status, setStatus] = useState<FormStatus>({ kind: "idle" });
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,23 +24,28 @@ export function ContactForm() {
     const name = String(formData.get("user_name") ?? "");
     const email = String(formData.get("user_email") ?? "");
     const message = String(formData.get("message") ?? "");
+    const website = String(formData.get("website") ?? "");
 
-    const emailJsConfigured =
-      publicKey.length > 0 && serviceId.length > 0 && templateId.length > 0;
-
-    if (!emailJsConfigured) {
-      setStatus("fallback");
-      openMailtoFallback(name, email, message);
-      return;
-    }
-
-    setStatus("loading");
+    setStatus({ kind: "loading" });
     try {
-      await emailjs.sendForm(serviceId, templateId, form, { publicKey });
-      setStatus("success");
-      form.reset();
+      const response = await fetch(siteConfig.contactEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, website }),
+      });
+      if (response.ok) {
+        setStatus({ kind: "success" });
+        form.reset();
+        return;
+      }
+      if (response.status === 400 || response.status === 429) {
+        const { error } = (await response.json().catch(() => ({}))) as { error?: string };
+        setStatus({ kind: "error", message: error ?? "Please check the form and try again." });
+        return;
+      }
+      throw new Error(`Contact endpoint responded ${response.status}`);
     } catch {
-      setStatus("fallback");
+      setStatus({ kind: "fallback" });
       openMailtoFallback(name, email, message);
     }
   }
@@ -79,24 +82,27 @@ export function ContactForm() {
         <label className="form__item--label" htmlFor="message">
           Message
         </label>
-        <textarea className="input" id="message" name="message" required />
+        <textarea className="input" id="message" name="message" maxLength={5000} required />
+      </div>
+      <div className="form__trap" aria-hidden>
+        <label htmlFor="website">Website</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <button
         type="submit"
         className="form__submit"
-        disabled={status === "loading"}
+        disabled={status.kind === "loading"}
       >
-        {status === "loading" ? "Sending…" : "Send it my way"}
+        {status.kind === "loading" ? "Sending…" : "Send it my way"}
       </button>
       <p className="form__status" role="status" aria-live="polite">
-        {status === "success" ? (
+        {status.kind === "success" ? (
           <span className="form__status--success">
             Thanks for the message! Looking forward to speaking to you soon.
           </span>
         ) : null}
-        {status === "fallback"
-          ? "Opening your email app with the message filled in."
-          : null}
+        {status.kind === "error" ? status.message : null}
+        {status.kind === "fallback" ? "Opening your email app with the message filled in." : null}
       </p>
     </form>
   );

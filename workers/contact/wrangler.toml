@@ -1,0 +1,15 @@
+name = "portfolio-contact"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+
+[vars]
+TO_EMAIL = "tausifmeah@gmail.com"
+# Resend only allows this sender until tausifmeah.co.uk is verified in Resend.
+# After verifying, switch to e.g. "Tausif Meah <contact@tausifmeah.co.uk>".
+FROM_EMAIL = "Portfolio contact <onboarding@resend.dev>"
+ALLOWED_ORIGINS = "https://tausifmeah.co.uk,https://www.tausifmeah.co.uk,https://dev.tausifmeah.co.uk,http://localhost:43123,http://localhost:43124"
+
+[[ratelimits]]
+name = "CONTACT_LIMIT"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }

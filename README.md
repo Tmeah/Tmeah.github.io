@@ -62,12 +62,22 @@ One Pages site per repo shares a single custom domain in GitHub settings. To run
 
 1. Push this repository to `Tmeah/Tmeah.github.io` (or your user/organization Pages repo).
 2. In GitHub **Settings → Pages**, set source to **GitHub Actions**.
-3. Add repository secrets (optional, for the contact form):
-   - `VITE_EMAILJS_PUBLIC_KEY`
-   - `VITE_EMAILJS_SERVICE_ID`
-   - `VITE_EMAILJS_TEMPLATE_ID`
-4. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and deploys `dist/`.
-5. Keep `public/CNAME` as `tausifmeah.co.uk` for the custom domain.
+3. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and deploys `dist/`.
+4. Keep `public/CNAME` as `tausifmeah.co.uk` for the custom domain.
+
+## Contact form (Cloudflare Worker + Resend)
+
+The form posts to the Worker in `workers/contact`, which sends the message through Resend with the visitor's address as reply-to. The endpoint lives in `siteConfig.contactEndpoint`.
+
+```bash
+cd workers/contact
+npm install
+npx wrangler login
+npx wrangler secret put RESEND_API_KEY
+npx wrangler deploy
+```
+
+Allowed origins, the recipient, and the sender are in `wrangler.toml`. Until `tausifmeah.co.uk` is verified in Resend, the sender must stay `onboarding@resend.dev`, which can only deliver to the email on your Resend account.
 
 ## Content updates
 

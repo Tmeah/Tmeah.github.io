@@ -1240,6 +1240,14 @@ textarea.input {
   cursor: wait;
 }
 
+.form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form__status {
   margin-top: 14px;
   font-size: 14px;
