@@ -4,15 +4,17 @@ import { InnerPage } from "@/components/site/inner-page";
 import { getNextProject, getProjectBySlug } from "@/content/projects";
 import { mount } from "@/mount";
 
-const slug = document.getElementById("root")?.dataset.slug ?? "";
-const project = getProjectBySlug(slug);
-
-mount(
-  project ? (
+export function projectPage(slug: string) {
+  const project = getProjectBySlug(slug);
+  return project ? (
     <InnerPage theme={project.theme}>
       <CaseStudyLayout project={project} next={getNextProject(slug)} />
     </InnerPage>
   ) : (
     <NotFoundPage />
-  ),
-);
+  );
+}
+
+if (!import.meta.env.SSR) {
+  mount(projectPage(document.getElementById("root")?.dataset.slug ?? ""));
+}

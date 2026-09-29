@@ -1,4 +1,6 @@
 import { HomePage } from "@/components/home/home-page";
 import { mount } from "@/mount";
 
-mount(<HomePage />);
+export const page = <HomePage />;
+
+mount(page);

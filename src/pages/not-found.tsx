@@ -1,4 +1,6 @@
 import { NotFoundPage } from "@/components/site/not-found-page";
 import { mount } from "@/mount";
 
-mount(<NotFoundPage />);
+export const page = <NotFoundPage />;
+
+mount(page);

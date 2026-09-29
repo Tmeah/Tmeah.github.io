@@ -177,4 +177,6 @@ function placeholderNote(project: ArchiveProject) {
   return "private repo";
 }
 
-mount(<ArchivePage />);
+export const page = <ArchivePage />;
+
+mount(page);

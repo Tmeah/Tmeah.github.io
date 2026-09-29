@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import { ThemeButton } from "@/components/site/theme-button";
 
 type SiteNavProps = {
@@ -5,11 +6,12 @@ type SiteNavProps = {
   onOpenContact: () => void;
 };
 
-function isCaseStudiesPage() {
-  return window.location.pathname.startsWith("/projects/");
-}
+const noSubscription = () => () => {};
+const onCaseStudy = () => window.location.pathname.startsWith("/projects/");
 
 export function SiteNav({ onOpenAbout, onOpenContact }: SiteNavProps) {
+  const isCaseStudy = useSyncExternalStore(noSubscription, onCaseStudy, () => false);
+
   return (
     <nav className="nav" aria-label="Primary">
       <div className="nav__inner wrap">
@@ -32,7 +34,7 @@ export function SiteNav({ onOpenAbout, onOpenContact }: SiteNavProps) {
             <a
               href="/projects/"
               className="nav__link--anchor"
-              aria-current={isCaseStudiesPage() ? "page" : undefined}
+              aria-current={isCaseStudy ? "page" : undefined}
             >
               Case Studies
             </a>

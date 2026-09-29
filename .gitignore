@@ -15,6 +15,7 @@
 
 # build output
 /dist/
+/dist-ssr/
 
 # production
 /build

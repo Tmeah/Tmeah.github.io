@@ -34,4 +34,6 @@ function CaseStudiesPage() {
   );
 }
 
-mount(<CaseStudiesPage />);
+export const page = <CaseStudiesPage />;
+
+mount(page);

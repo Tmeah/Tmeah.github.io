@@ -1,9 +1,5 @@
 const reelTransitionName = "project-reel";
 
-type WindowWithNavigation = Window & {
-  navigation?: { activation?: NavigationActivation | null };
-};
-
 function projectSlug(url: string | null | undefined) {
   if (!url) {
     return null;
@@ -36,22 +32,15 @@ function nameReelFor(slug: string | null, transition: ViewTransition) {
 }
 
 // Pairs the reel on a project card with the reel in that project's case study
-// header, so it grows into place instead of cross-fading.
+// header, so it grows into place instead of cross-fading. The incoming side
+// (pagereveal) is registered by an inline script in first-paint-plugin.ts,
+// because prerendered pages can paint before this module runs.
 export function setupPageTransitions() {
   window.addEventListener("pageswap", (event) => {
     if (!event.viewTransition) {
       return;
     }
     const slug = projectSlug(event.activation?.entry.url) ?? projectSlug(location.href);
-    nameReelFor(slug, event.viewTransition);
-  });
-
-  window.addEventListener("pagereveal", (event) => {
-    if (!event.viewTransition) {
-      return;
-    }
-    const from = (window as WindowWithNavigation).navigation?.activation?.from;
-    const slug = projectSlug(location.href) ?? projectSlug(from?.url);
     nameReelFor(slug, event.viewTransition);
   });
 }

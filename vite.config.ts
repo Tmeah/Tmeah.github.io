@@ -5,7 +5,7 @@ import { firstPaint } from "./scripts/first-paint-plugin";
 
 const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   appType: "mpa",
   plugins: [react(), firstPaint()],
   resolve: {
@@ -14,7 +14,8 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
+    copyPublicDir: !isSsrBuild,
+    rollupOptions: isSsrBuild ? {} : {
       input: {
         home: fromRoot("./index.html"),
         archive: fromRoot("./archive/index.html"),
@@ -36,4 +37,4 @@ export default defineConfig({
     port: 43124,
     host: true,
   },
-});
+}));
