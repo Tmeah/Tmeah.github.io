@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Tausif Meah",
   title: "Full Stack Developer",
   location: "Wales, UK",
-  email: "tausifmeah@gmail.com",
+  email: "hello@tausifmeah.co.uk",
   contactEndpoint: "https://portfolio-contact.tausifmeah.workers.dev",
   url: "https://tausifmeah.co.uk",
   cvPath: "/cv/Tausif-Meah-CV-2026.pdf",
