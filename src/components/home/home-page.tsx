@@ -166,7 +166,14 @@ export function HomePage() {
               <Scribble>together?</Scribble>
             </h2>
             <div className="cta__row">
-              <a href={`mailto:${siteConfig.email}`} className="cta__email">
+              <a
+                href="#contact"
+                className="cta__email"
+                onClick={(event) => {
+                  event.preventDefault();
+                  openContact();
+                }}
+              >
                 {siteConfig.email} <Icon name="arrow-right" />
               </a>
               <button type="button" className="btn btn--primary" onClick={openContact}>
